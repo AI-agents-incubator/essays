@@ -11,8 +11,12 @@
 - [agent_organization.md](./agent_organization.md) — продолжение методологической модели: переход от одного автономного агента к мультиагентной организации. Внутри: класс задач, которые требуют такой системы, роли виртуальной компании, вертикальная и горизонтальная коммуникация, общая шина, артефакты, эскалация и организационная агентность.
 - [agent_organization_design.md](./agent_organization_design.md) — развёрнутая проектная спецификация агентной организации. Внутри: точный состав артефактов, их функции, связи между ними, рекомендуемая файловая структура, ownership ролей и полный циклический контур работы.
 - [agent_organization_self_learning.md](./agent_organization_self_learning.md) — методология самообучения агентной организации. Внутри: внешний и внутренний циклы, golden tasks, benchmark-suite, process audit, controlled change, risk of reward hacking и контур эволюции самой архитектуры.
-- [agent_org_tz_codex.md](./agent_org_tz_codex.md) — техническое задание для `Codex` на создание первой версии целевой инфраструктуры агентной организации. Внутри: одинаковое общее ядро требований, runtime-адаптер под `Codex`, bootstrap-логика, roles, artifacts, benchmark и learning-контур.
-- [agent_org_tz_claudecode.md](./agent_org_tz_claudecode.md) — техническое задание для `Claude Code` на создание первой версии целевой инфраструктуры агентной организации. Внутри: одинаковое общее ядро требований, runtime-адаптер под `Claude Code`, bootstrap-логика, roles, artifacts, benchmark и learning-контур.
+- [agent_org_tz_core.md](./agent_org_tz_core.md) — инвариантное ядро технического задания для всей инфраструктуры агентной организации. Внутри: единое source of truth, правило изоляции runtime-песочниц, общий состав артефактов, benchmark, learning-контур и критерии сравнения.
+- [agent_org_tz_codex.md](./agent_org_tz_codex.md) — runtime-addendum для `Codex`. Внутри: только Codex-specific способ исполнения общего ядра, write scope, runtime-файлы, execution trace и evaluation trace.
+- [agent_org_tz_claudecode.md](./agent_org_tz_claudecode.md) — runtime-addendum для `Claude Code`. Внутри: только Claude Code-specific способ исполнения общего ядра, write scope, runtime-файлы, execution trace и evaluation trace.
+- [core/README.md](./core/README.md) — каталог общего source of truth для эксперимента. Внутри: benchmark templates, expected results и общие evaluation criteria.
+- [runtimes/README.md](./runtimes/README.md) — каталог двух независимых execution-sandbox для `Codex` и `Claude Code`.
+- [comparison/README.md](./comparison/README.md) — каталог для сравнительной оценки двух реализаций.
 - [VibeCoding.md](./VibeCoding.md) — большой аналитический отчет о феномене vibe coding в 2025-2026 годах. Внутри: сообщества и платформы, Discord-экосистемы, Twitter/X, Reddit, Telegram, события в Bay Area, стек инструментов, риски и стратегические рекомендации.
 - [claudecode_process_1.md](./claudecode_process_1.md) — большой рабочий документ про то, как превращать ИИ из чата в управляемую систему. Внутри: оркестратор, skills, субагенты, tools, user flow, ТЗ, data contract, SQLite, Supabase, deploy, Playwright, тезаурус, а также большой блок про Claude Code, агентные пайплайны и примеры конфигураций.
 - [claudecode-precess_2.md](./claudecode-precess_2.md) — более структурированный гайд по Claude Code на базе официальной документации Anthropic. Внутри: settings, приоритеты настроек, subagents, skills, `CLAUDE.md`, rules, tools, permissions, hooks, sandbox, MCP, headless/SDK/GitHub Actions, browser automation и security practices.
@@ -34,7 +38,10 @@
 - Если нужен следующий уровень после `Agent Operating System`, читайте [agent_organization.md](./agent_organization.md).
 - Если нужен уже не обзор, а точная конструкция агентной организации как системы артефактов, читайте [agent_organization_design.md](./agent_organization_design.md).
 - Если нужен контур самообучения, benchmark-логика и golden tasks для агентной организации, читайте [agent_organization_self_learning.md](./agent_organization_self_learning.md).
-- Если нужен параллельный execution-brief для сравнения `Codex` и `Claude Code` на одной и той же целевой архитектуре, читайте [agent_org_tz_codex.md](./agent_org_tz_codex.md) и [agent_org_tz_claudecode.md](./agent_org_tz_claudecode.md).
+- Если нужен единый source of truth для будущих двух реализаций, читайте [agent_org_tz_core.md](./agent_org_tz_core.md).
+- Если нужен runtime-specific brief для `Codex`, читайте [agent_org_tz_codex.md](./agent_org_tz_codex.md).
+- Если нужен runtime-specific brief для `Claude Code`, читайте [agent_org_tz_claudecode.md](./agent_org_tz_claudecode.md).
+- Если нужен уже не только документ, а каркас эксперимента с общим ядром, изолированными песочницами и полем сравнения, начните с [core/README.md](./core/README.md), затем [runtimes/README.md](./runtimes/README.md) и [comparison/README.md](./comparison/README.md).
 - Если нужен обзор экосистемы и культурного контекста вокруг AI-assisted разработки, читайте [VibeCoding.md](./VibeCoding.md).
 - Если нужен методологический и прикладной материал по агентной работе с ИИ и Claude Code, читайте [claudecode_process_1.md](./claudecode_process_1.md).
 - Если нужен более системный и официальный разбор самого устройства Claude Code, читайте [claudecode-precess_2.md](./claudecode-precess_2.md).
