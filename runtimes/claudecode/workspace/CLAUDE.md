@@ -34,3 +34,7 @@ When finished, leave:
 - a run summary;
 - local evaluation artifacts;
 - at least one learning-oriented next-step record.
+
+Bootstrap entrypoints:
+- `agent_org/bootstrap/startup_sequence.md`
+- `agent_org/bootstrap/first_run_protocol.md`

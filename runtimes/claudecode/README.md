@@ -14,3 +14,8 @@
 
 - [runs/RUN-001_GT-001_launch_brief.md](./runs/RUN-001_GT-001_launch_brief.md)
 - [evaluation/RUN-001_evaluation_template.md](./evaluation/RUN-001_evaluation_template.md)
+
+## Первый завершённый запуск
+
+- [runs/RUN-001_GT-001_summary.md](./runs/RUN-001_GT-001_summary.md)
+- [evaluation/RUN-001_GT-001_evaluation.md](./evaluation/RUN-001_GT-001_evaluation.md)

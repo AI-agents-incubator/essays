@@ -18,6 +18,7 @@
 - [core/state/README.md](./core/state/README.md) — state-layer стратегия для долгоживущей агентной организации. Внутри: двухслойная модель `artifacts + state`, SQLite-first схема и путь миграции в Supabase/Postgres.
 - [runtimes/README.md](./runtimes/README.md) — каталог двух независимых execution-sandbox для `Codex` и `Claude Code`.
 - [comparison/README.md](./comparison/README.md) — каталог для сравнительной оценки двух реализаций.
+- [comparison/RUN-001_GT-001_scorecard.md](./comparison/RUN-001_GT-001_scorecard.md) — первый фактический scorecard параллельного прогона `GT-001` в двух независимых песочницах. Внутри: полнота структуры, bootstrap, role separation, state layer, learning trace и выводы о том, что переносить в core, а что оставлять runtime-specific.
 - [core/benchmarks/GT-001-bootstrap-runtime-sandbox.md](./core/benchmarks/GT-001-bootstrap-runtime-sandbox.md) — первая canonical golden task. Она проверяет, может ли runtime развернуть внутри своей песочницы минимально рабочую инфраструктуру агентной организации и оставить benchmark plus learning trace.
 - [core/expected_results/GT-001-expected_result.md](./core/expected_results/GT-001-expected_result.md) — expected result signature для `GT-001`.
 - [runtimes/codex/runs/RUN-001_GT-001_launch_brief.md](./runtimes/codex/runs/RUN-001_GT-001_launch_brief.md) — первый подготовленный launch-brief для запуска `Codex` в собственной sandbox.
@@ -50,6 +51,7 @@
 - Если нужен первый реальный benchmark, начните с [core/benchmarks/GT-001-bootstrap-runtime-sandbox.md](./core/benchmarks/GT-001-bootstrap-runtime-sandbox.md), затем смотрите [core/expected_results/GT-001-expected_result.md](./core/expected_results/GT-001-expected_result.md).
 - Если нужен уже готовый пакет для первого запуска в `Codex`, откройте [runtimes/codex/runs/RUN-001_GT-001_launch_brief.md](./runtimes/codex/runs/RUN-001_GT-001_launch_brief.md).
 - Если нужен такой же готовый пакет для первого запуска в `Claude Code`, откройте [runtimes/claudecode/runs/RUN-001_GT-001_launch_brief.md](./runtimes/claudecode/runs/RUN-001_GT-001_launch_brief.md).
+- Если нужен уже не launch, а результат первого параллельного прогона, откройте [comparison/RUN-001_GT-001_scorecard.md](./comparison/RUN-001_GT-001_scorecard.md).
 - Если нужен отдельный слой состояния для долгоживущей организации, начните с [core/state/README.md](./core/state/README.md).
 - Если нужен обзор экосистемы и культурного контекста вокруг AI-assisted разработки, читайте [VibeCoding.md](./VibeCoding.md).
 - Если нужен методологический и прикладной материал по агентной работе с ИИ и Claude Code, читайте [claudecode_process_1.md](./claudecode_process_1.md).
