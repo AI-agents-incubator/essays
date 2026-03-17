@@ -11,7 +11,7 @@ Read in this exact order before doing any work:
 5. `../../../core/state/storage_strategy.md`
 6. `../../../core/state/state_entities.md`
 7. `../../../core/state/sqlite_schema_template.sql`
-8. `../runs/RUN-001_GT-001_launch_brief.md`
+8. `../runs/CURRENT_MISSION.md`
 
 Write scope:
 - You may write only inside `runtimes/claudecode/workspace/`, `runtimes/claudecode/runs/`, and `runtimes/claudecode/evaluation/`.
@@ -38,3 +38,6 @@ When finished, leave:
 Bootstrap entrypoints:
 - `agent_org/bootstrap/startup_sequence.md`
 - `agent_org/bootstrap/first_run_protocol.md`
+
+Historical reference:
+- `../runs/RUN-001_GT-001_launch_brief.md`

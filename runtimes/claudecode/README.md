@@ -19,3 +19,8 @@
 
 - [runs/RUN-001_GT-001_summary.md](./runs/RUN-001_GT-001_summary.md)
 - [evaluation/RUN-001_GT-001_evaluation.md](./evaluation/RUN-001_GT-001_evaluation.md)
+
+## Текущий запуск
+
+- [runs/CURRENT_MISSION.md](./runs/CURRENT_MISSION.md)
+- [OPERATOR_PROMPT.md](./OPERATOR_PROMPT.md)
