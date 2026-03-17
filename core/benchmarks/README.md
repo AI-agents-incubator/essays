@@ -12,3 +12,7 @@
 Первая canonical golden task:
 
 - [GT-001-bootstrap-runtime-sandbox.md](./GT-001-bootstrap-runtime-sandbox.md)
+
+Вторая canonical golden task:
+
+- [GT-002-wave-synchronized-orchestration.md](./GT-002-wave-synchronized-orchestration.md)
