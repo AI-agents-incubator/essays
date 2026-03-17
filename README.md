@@ -8,6 +8,7 @@
 
 - [README.md](./README.md) — индекс репозитория и краткое описание материалов.
 - [agent_operating_system.md](./agent_operating_system.md) — короткий методологический конспект про переход `Ad hoc -> ТЗ -> Agent Operating System`. Внутри: три уровня зрелости работы с агентом, их задачи, ограничения и практический смысл проектных файлов правил и настроек.
+- [agent_organization.md](./agent_organization.md) — продолжение методологической модели: переход от одного автономного агента к мультиагентной организации. Внутри: класс задач, которые требуют такой системы, роли виртуальной компании, вертикальная и горизонтальная коммуникация, общая шина, артефакты, эскалация и организационная агентность.
 - [VibeCoding.md](./VibeCoding.md) — большой аналитический отчет о феномене vibe coding в 2025-2026 годах. Внутри: сообщества и платформы, Discord-экосистемы, Twitter/X, Reddit, Telegram, события в Bay Area, стек инструментов, риски и стратегические рекомендации.
 - [claudecode_process_1.md](./claudecode_process_1.md) — большой рабочий документ про то, как превращать ИИ из чата в управляемую систему. Внутри: оркестратор, skills, субагенты, tools, user flow, ТЗ, data contract, SQLite, Supabase, deploy, Playwright, тезаурус, а также большой блок про Claude Code, агентные пайплайны и примеры конфигураций.
 - [claudecode-precess_2.md](./claudecode-precess_2.md) — более структурированный гайд по Claude Code на базе официальной документации Anthropic. Внутри: settings, приоритеты настроек, subagents, skills, `CLAUDE.md`, rules, tools, permissions, hooks, sandbox, MCP, headless/SDK/GitHub Actions, browser automation и security practices.
@@ -22,6 +23,7 @@
 
 - Если нужен быстрый обзор репозитория, начните с этого файла.
 - Если нужен самый короткий методологический вход в тему, начните с [agent_operating_system.md](./agent_operating_system.md).
+- Если нужен следующий уровень после `Agent Operating System`, читайте [agent_organization.md](./agent_organization.md).
 - Если нужен обзор экосистемы и культурного контекста вокруг AI-assisted разработки, читайте [VibeCoding.md](./VibeCoding.md).
 - Если нужен методологический и прикладной материал по агентной работе с ИИ и Claude Code, читайте [claudecode_process_1.md](./claudecode_process_1.md).
 - Если нужен более системный и официальный разбор самого устройства Claude Code, читайте [claudecode-precess_2.md](./claudecode-precess_2.md).
