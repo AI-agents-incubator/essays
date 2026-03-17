@@ -17,6 +17,9 @@
 - [core/README.md](./core/README.md) — каталог общего source of truth для эксперимента. Внутри: benchmark templates, expected results и общие evaluation criteria.
 - [runtimes/README.md](./runtimes/README.md) — каталог двух независимых execution-sandbox для `Codex` и `Claude Code`.
 - [comparison/README.md](./comparison/README.md) — каталог для сравнительной оценки двух реализаций.
+- [core/benchmarks/GT-001-bootstrap-runtime-sandbox.md](./core/benchmarks/GT-001-bootstrap-runtime-sandbox.md) — первая canonical golden task. Она проверяет, может ли runtime развернуть внутри своей песочницы минимально рабочую инфраструктуру агентной организации и оставить benchmark plus learning trace.
+- [core/expected_results/GT-001-expected_result.md](./core/expected_results/GT-001-expected_result.md) — expected result signature для `GT-001`.
+- [runtimes/codex/runs/RUN-001_GT-001_launch_brief.md](./runtimes/codex/runs/RUN-001_GT-001_launch_brief.md) — первый подготовленный launch-brief для запуска `Codex` в собственной sandbox.
 - [VibeCoding.md](./VibeCoding.md) — большой аналитический отчет о феномене vibe coding в 2025-2026 годах. Внутри: сообщества и платформы, Discord-экосистемы, Twitter/X, Reddit, Telegram, события в Bay Area, стек инструментов, риски и стратегические рекомендации.
 - [claudecode_process_1.md](./claudecode_process_1.md) — большой рабочий документ про то, как превращать ИИ из чата в управляемую систему. Внутри: оркестратор, skills, субагенты, tools, user flow, ТЗ, data contract, SQLite, Supabase, deploy, Playwright, тезаурус, а также большой блок про Claude Code, агентные пайплайны и примеры конфигураций.
 - [claudecode-precess_2.md](./claudecode-precess_2.md) — более структурированный гайд по Claude Code на базе официальной документации Anthropic. Внутри: settings, приоритеты настроек, subagents, skills, `CLAUDE.md`, rules, tools, permissions, hooks, sandbox, MCP, headless/SDK/GitHub Actions, browser automation и security practices.
@@ -42,6 +45,8 @@
 - Если нужен runtime-specific brief для `Codex`, читайте [agent_org_tz_codex.md](./agent_org_tz_codex.md).
 - Если нужен runtime-specific brief для `Claude Code`, читайте [agent_org_tz_claudecode.md](./agent_org_tz_claudecode.md).
 - Если нужен уже не только документ, а каркас эксперимента с общим ядром, изолированными песочницами и полем сравнения, начните с [core/README.md](./core/README.md), затем [runtimes/README.md](./runtimes/README.md) и [comparison/README.md](./comparison/README.md).
+- Если нужен первый реальный benchmark, начните с [core/benchmarks/GT-001-bootstrap-runtime-sandbox.md](./core/benchmarks/GT-001-bootstrap-runtime-sandbox.md), затем смотрите [core/expected_results/GT-001-expected_result.md](./core/expected_results/GT-001-expected_result.md).
+- Если нужен уже готовый пакет для первого запуска в `Codex`, откройте [runtimes/codex/runs/RUN-001_GT-001_launch_brief.md](./runtimes/codex/runs/RUN-001_GT-001_launch_brief.md).
 - Если нужен обзор экосистемы и культурного контекста вокруг AI-assisted разработки, читайте [VibeCoding.md](./VibeCoding.md).
 - Если нужен методологический и прикладной материал по агентной работе с ИИ и Claude Code, читайте [claudecode_process_1.md](./claudecode_process_1.md).
 - Если нужен более системный и официальный разбор самого устройства Claude Code, читайте [claudecode-precess_2.md](./claudecode-precess_2.md).

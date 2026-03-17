@@ -6,3 +6,9 @@
 - правила повторяемой проверки.
 
 Эти документы должны быть одинаковыми для `Codex` и `Claude Code`.
+
+## Текущий benchmark
+
+Первая canonical golden task:
+
+- [GT-001-bootstrap-runtime-sandbox.md](./GT-001-bootstrap-runtime-sandbox.md)

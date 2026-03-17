@@ -9,3 +9,8 @@
 - [evaluation/README.md](./evaluation/README.md) — локальная оценка Codex-реализации.
 
 Нормативный runtime-addendum: [agent_org_tz_codex.md](../../agent_org_tz_codex.md)
+
+## Первый подготовленный запуск
+
+- [runs/RUN-001_GT-001_launch_brief.md](./runs/RUN-001_GT-001_launch_brief.md)
+- [evaluation/RUN-001_evaluation_template.md](./evaluation/RUN-001_evaluation_template.md)
