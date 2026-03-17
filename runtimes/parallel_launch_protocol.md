@@ -1,6 +1,6 @@
 # Parallel Launch Protocol
 
-> Версия файла: `v1.1`
+> Версия файла: `v1.2`
 > Дата версии: `2026-03-17`
 > Тип документа: `operator protocol`
 
@@ -45,6 +45,7 @@
 - `CLAUDE.md` для `Claude Code`
 - `CURRENT_MISSION.md` для активного прогона
 - `RUNTIME_STATUS.md` для сигнального слоя
+- `control_plane` для observer directives и runtime acknowledgements
 
 Можно сделать это двумя способами:
 
@@ -63,6 +64,8 @@
 - сам внести изменения в своей sandbox;
 - сам оставить summary, evaluation и learning trace.
 - сам вести `RUNTIME_STATUS.md` как главный сигнал состояния.
+- сам читать `OBSERVER_DIRECTIVE.md` перед следующим циклом.
+- сам подтверждать его через `RUNTIME_ACK.md`.
 
 Человек вмешивается только если:
 
@@ -108,6 +111,8 @@
 Если `status: completed`, значит runtime закончил run.
 
 Если `status: escalation_required`, значит агент не завершил работу и ждёт человека.
+
+Если `status: completed`, но в `OBSERVER_DIRECTIVE.md` стоит `hold`, значит runtime завершил этап и осознанно ждёт следующую внешнюю команду.
 
 ## Что делать после завершения
 

@@ -1,73 +1,85 @@
 # CURRENT MISSION: Codex Runtime
 
-> Версия файла: `v1.1`
+> Версия файла: `v2.0`
 > Дата версии: `2026-03-17`
-> Тип документа: `active runtime mission`
+> Тип документа: `active runtime loop`
 > Runtime: `Codex`
-> Текущий run: `RUN-002`
+> Текущая фаза: `post-RUN-002 / observer-directed`
 
 ## Исходное состояние
 
-`RUN-001` уже завершён. В sandbox существует минимальный operational scaffold:
+`RUN-002` завершён.
 
-- `agent_org/`
-- runtime-specific agents и skills
-- benchmark trace
-- evaluation trace
-- базовый state layer
+Сейчас runtime должен уметь не только выполнять run, но и:
 
-Следующий run нужен не для повторного bootstrap, а для перехода от первого scaffold к следующей стадии автономной работы.
+- ждать следующую директиву наблюдателя;
+- подтверждать, что директива увидена;
+- стартовать новый run только после явной команды через `control_plane`.
 
-## Цель RUN-002
+## Главная цель этого файла
 
-Выполнить первый autonomous continuation run для `Codex`, не ломая уже созданную структуру.
+Сделать следующий цикл работы `Codex` **observer-directed**.
 
-## Обязательные шаги
+Это означает:
 
-1. Прочитать `AGENTS.md` и восстановить нормативный контекст.
-2. Прочитать `RUNTIME_STATUS.md` и сразу перевести его в `in_progress`.
-3. Проверить текущее состояние sandbox после `RUN-001`.
-4. Провести audit текущих артефактов и найти структурные пробелы или несогласованности.
-5. Если live SQLite DB file ещё отсутствует, создать его в `agent_org/state/` на основе `sqlite_schema.sql`.
-6. Синхронизировать `state_registry.md` с фактическим состоянием state layer.
-7. Обновить evaluation-артефакты так, чтобы было видно, что sandbox перешёл от scaffold к operational continuation.
-8. Зафиксировать хотя бы одно improvement decision для следующего run.
-9. Оставить новый run summary и новую local evaluation trace.
-10. Обновить `RUNTIME_STATUS.md` финальным статусом и ссылками на итоговые артефакты.
+- runtime не должен самовольно стартовать `RUN-003`;
+- переход к следующему шагу идёт через `OBSERVER_DIRECTIVE.md`;
+- runtime обязан обновлять `RUNTIME_ACK.md`.
 
-## Что нужно обновить минимум
+## Обязательный порядок чтения перед следующим действием
 
-- `runtimes/codex/workspace/agent_org/state/`
-- `runtimes/codex/workspace/agent_org/evaluation/`
-- `runtimes/codex/workspace/agent_org/evolution/`
-- `runtimes/codex/runs/`
-- `runtimes/codex/evaluation/`
+1. `AGENTS.md`
+2. `RUNTIME_STATUS.md`
+3. `../../../control_plane/observer_runtime_protocol.md`
+4. `../../../control_plane/codex/OBSERVER_DIRECTIVE.md`
+5. `../../../control_plane/codex/RUNTIME_ACK.md`
 
-## Рекомендуемые выходные артефакты
+## Логика поведения
 
-- `runtimes/codex/runs/RUN-002_state_activation_summary.md`
-- `runtimes/codex/evaluation/RUN-002_state_activation_evaluation.md`
+### Если directive = `hold`
 
-Если в ходе run выяснится, что более точное имя итоговых файлов лучше отражает результат, агент может выбрать другое имя, но оно должно:
+- обновить `RUNTIME_ACK.md` в состояние `seen` или `accepted`
+- не запускать новый run
+- не менять структуру sandbox без отдельной директивы
+- ждать следующую команду наблюдателя
 
-- начинаться с `RUN-002`
-- быть понятным по смыслу
-- явно относиться к этому run
+### Если directive = `continue_with_next_run`
+
+- обновить `RUNTIME_ACK.md` в состояние `accepted`
+- перевести `RUNTIME_STATUS.md` из `completed` в `in_progress`
+- стартовать следующий явно разрешённый run
+- после завершения снова обновить и `RUNTIME_STATUS.md`, и `RUNTIME_ACK.md`
+
+### Если directive = `repair_current_state`
+
+- принять директиву через `RUNTIME_ACK.md`
+- выполнить только repair-задачу, указанную наблюдателем
+- не превращать repair в новый широкий run без отдельного разрешения
+
+### Если directive = `prepare_comparison`
+
+- подготовить требуемый comparison package
+- не начинать следующий engineering run автоматически
+
+### Если directive = `human_review_required`
+
+- остановиться
+- обновить `RUNTIME_ACK.md` в `needs_clarification` или эквивалентное состояние
+- ждать человека
 
 ## Ограничения
 
 - Нельзя менять `core/`
 - Нельзя менять `comparison/`
 - Нельзя менять `runtimes/claudecode/`
-- Нельзя повторно “строить всё заново”, если задача решается эволюцией существующей структуры
+- Нельзя начинать новый run без observer directive
 
 ## Что считается успешным результатом
 
-Успешный run означает, что `Codex`:
+Успех этого слоя означает, что `Codex`:
 
-- самостоятельно восстановил контекст;
-- автономно выполнил continuation work;
-- усилил state layer;
-- оставил trace принятых решений;
-- корректно обновил `RUNTIME_STATUS.md`;
-- явно подготовил основу для `RUN-003`.
+- умеет стоять в осознанном ожидании;
+- умеет читать observer directive;
+- умеет подтверждать её через `RUNTIME_ACK.md`;
+- не стартует следующий run самовольно;
+- может перейти к `RUN-003` только по внешней директиве.
