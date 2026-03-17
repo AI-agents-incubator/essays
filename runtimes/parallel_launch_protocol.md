@@ -45,7 +45,7 @@
 - `CLAUDE.md` для `Claude Code`
 - `CURRENT_MISSION.md` для активного прогона
 - `RUNTIME_STATUS.md` для сигнального слоя
-- `control_plane` для observer directives и runtime acknowledgements
+- локальный `control/` внутри каждой runtime-песочницы для observer directives и runtime acknowledgements
 
 Можно сделать это двумя способами:
 
@@ -53,6 +53,12 @@
 - либо просто сказать агенту: “Прочитай файл `.../OPERATOR_PROMPT.md` и следуй ему”.
 
 С практической точки зрения это одно и то же.
+
+Важно:
+
+- ответы агента в чате не считаются источником истины автоматически;
+- если оператор спрашивает о состоянии, агент обязан заново перечитать свои `RUNTIME_STATUS.md`, `OBSERVER_DIRECTIVE.md` и `RUNTIME_ACK.md`;
+- если ответ из чата противоречит этим файлам, верить нужно файлам, а не памяти треда.
 
 ### 3. Не микроменеджьте
 

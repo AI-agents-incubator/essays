@@ -5,14 +5,14 @@
 > Тип документа: `runtime signal`
 
 - runtime: `Codex`
-- current_run: `RUN-002`
-- status: `planned`
-- started_at: `not_started`
-- updated_at: `2026-03-17`
-- summary_file: `not_set`
-- evaluation_file: `not_set`
+- current_run: `RUN-007`
+- status: `completed`
+- started_at: `2026-03-17 13:09:31 PDT`
+- updated_at: `2026-03-17 13:28:10 PDT`
+- summary_file: `runs/RUN-007_projection_watcher_adaptive_refresh_summary.md`
+- evaluation_file: `evaluation/RUN-007_projection_watcher_adaptive_refresh_evaluation.md`
 - needs_human: `no`
-- next_run: `not_set`
+- next_run: `none`
 - blocking_issue: `none`
 
 ## Правило

@@ -14,7 +14,7 @@
 
 - ждать следующую директиву наблюдателя;
 - подтверждать, что директива увидена;
-- стартовать новый run только после явной команды через `control_plane`.
+- стартовать новый run только после явной команды через локальный runtime-facing control layer.
 
 ## Главная цель этого файла
 
@@ -24,15 +24,15 @@
 
 - runtime не должен самовольно стартовать `RUN-003`;
 - переход к следующему шагу идёт через `OBSERVER_DIRECTIVE.md`;
-- runtime обязан обновлять `RUNTIME_ACK.md`.
+- runtime обязан обновлять локальный `RUNTIME_ACK.md`.
 
 ## Обязательный порядок чтения перед следующим действием
 
-1. `AGENTS.md`
-2. `RUNTIME_STATUS.md`
-3. `../../../control_plane/observer_runtime_protocol.md`
-4. `../../../control_plane/codex/OBSERVER_DIRECTIVE.md`
-5. `../../../control_plane/codex/RUNTIME_ACK.md`
+1. `workspace/AGENTS.md`
+2. `runs/RUNTIME_STATUS.md`
+3. `control/observer_runtime_protocol.md`
+4. `control/OBSERVER_DIRECTIVE.md`
+5. `control/RUNTIME_ACK.md`
 
 ## Логика поведения
 
@@ -59,6 +59,9 @@
 ### Если directive = `prepare_comparison`
 
 - подготовить требуемый comparison package
+- не запускать новый engineering run
+- не менять `current_run`, если директива относится к closeout уже завершённого run
+- перевести `RUNTIME_ACK.md` в `completed`, когда comparison/closure package готов
 - не начинать следующий engineering run автоматически
 
 ### Если directive = `human_review_required`

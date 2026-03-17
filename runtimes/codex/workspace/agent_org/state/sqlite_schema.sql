@@ -82,15 +82,36 @@ CREATE TABLE IF NOT EXISTS audit_findings (
   FOREIGN KEY (benchmark_run_id) REFERENCES benchmark_runs(id)
 );
 
+CREATE TABLE IF NOT EXISTS improvement_backlog (
+  id TEXT PRIMARY KEY,
+  title TEXT NOT NULL,
+  source_reference TEXT NOT NULL,
+  status TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS change_proposals (
   id TEXT PRIMARY KEY,
   source_finding_id TEXT,
+  backlog_item_id TEXT,
   target_artifact TEXT NOT NULL,
   proposal_type TEXT NOT NULL,
   expected_effect TEXT,
   status TEXT NOT NULL,
   validating_benchmark_id TEXT,
-  updated_at TEXT NOT NULL
+  updated_at TEXT NOT NULL,
+  FOREIGN KEY (source_finding_id) REFERENCES audit_findings(id),
+  FOREIGN KEY (backlog_item_id) REFERENCES improvement_backlog(id)
+);
+
+CREATE TABLE IF NOT EXISTS approved_changes (
+  id TEXT PRIMARY KEY,
+  run_id TEXT NOT NULL,
+  source_reference TEXT,
+  change_summary TEXT NOT NULL,
+  status TEXT NOT NULL,
+  updated_at TEXT NOT NULL,
+  FOREIGN KEY (run_id) REFERENCES organization_runs(id)
 );
 
 CREATE TABLE IF NOT EXISTS state_variables (

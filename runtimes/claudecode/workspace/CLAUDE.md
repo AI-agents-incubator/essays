@@ -4,21 +4,21 @@ This workspace is not a normal software project. It is a runtime sandbox for bui
 
 Read in this exact order before doing any work:
 
-1. `../../../agent_org_tz_core.md`
-2. `../../../agent_org_tz_claudecode.md`
-3. `../../../core/benchmarks/GT-001-bootstrap-runtime-sandbox.md`
-4. `../../../core/expected_results/GT-001-expected_result.md`
-5. `../../../core/state/storage_strategy.md`
-6. `../../../core/state/state_entities.md`
-7. `../../../core/state/sqlite_schema_template.sql`
-8. `../runs/CURRENT_MISSION.md`
-9. `../runs/RUNTIME_STATUS.md`
-10. `../../../control_plane/observer_runtime_protocol.md`
-11. `../../../control_plane/claudecode/OBSERVER_DIRECTIVE.md`
-12. `../../../control_plane/claudecode/RUNTIME_ACK.md`
+1. `../../agent_org_tz_core.md`
+2. `../../agent_org_tz_claudecode.md`
+3. `../../core/benchmarks/GT-001-bootstrap-runtime-sandbox.md`
+4. `../../core/expected_results/GT-001-expected_result.md`
+5. `../../core/state/storage_strategy.md`
+6. `../../core/state/state_entities.md`
+7. `../../core/state/sqlite_schema_template.sql`
+8. `runs/CURRENT_MISSION.md`
+9. `runs/RUNTIME_STATUS.md`
+10. `control/observer_runtime_protocol.md`
+11. `control/OBSERVER_DIRECTIVE.md`
+12. `control/RUNTIME_ACK.md`
 
 Write scope:
-- You may write only inside `runtimes/claudecode/workspace/`, `runtimes/claudecode/runs/`, and `runtimes/claudecode/evaluation/`.
+- You may write only inside `runtimes/claudecode/workspace/`, `runtimes/claudecode/runs/`, `runtimes/claudecode/evaluation/`, and `runtimes/claudecode/control/`.
 - Do not modify `core/`, `comparison/`, or `runtimes/codex/`.
 
 Primary goal:
@@ -33,7 +33,9 @@ Operational rules:
 - Do not replace structure with essays.
 - Do not expand scope beyond GT-001 unless required for structural completeness.
 - Do not start a new run until the observer directive explicitly allows it.
-- If the observer directive is `hold`, update the runtime ack and wait.
+- If the observer directive is `hold`, update the local runtime ack and wait.
+- Before answering any question about current state, first re-read `runs/RUNTIME_STATUS.md`, `control/OBSERVER_DIRECTIVE.md`, and `control/RUNTIME_ACK.md`.
+- If session memory contradicts those files, explicitly say the session memory is stale and trust the files.
 
 When finished, leave:
 - a clear bootstrap path;
@@ -48,4 +50,4 @@ Bootstrap entrypoints:
 - `agent_org/bootstrap/first_run_protocol.md`
 
 Historical reference:
-- `../runs/RUN-001_GT-001_launch_brief.md`
+- `runs/RUN-001_GT-001_launch_brief.md`

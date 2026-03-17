@@ -1,0 +1,7 @@
+.DS_Store
+CLAUDE.md
+**/__pycache__/
+*.pyc
+execution_plane/HUMAN_PROGRESS.md
+runtimes/claudecode/workspace/agent_org/state/runtime_state.sqlite
+runtimes/codex/workspace/agent_org/state/runtime_state.sqlite
