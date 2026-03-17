@@ -7,11 +7,13 @@
 ## Документы
 
 - [README.md](./README.md) — индекс репозитория и краткое описание материалов.
+- [agent_operating_system.md](./agent_operating_system.md) — короткий методологический конспект про переход `Ad hoc -> ТЗ -> Agent Operating System`. Внутри: три уровня зрелости работы с агентом, их задачи, ограничения и практический смысл проектных файлов правил и настроек.
 - [VibeCoding.md](./VibeCoding.md) — большой аналитический отчет о феномене vibe coding в 2025-2026 годах. Внутри: сообщества и платформы, Discord-экосистемы, Twitter/X, Reddit, Telegram, события в Bay Area, стек инструментов, риски и стратегические рекомендации.
 - [claudecode_process_1.md](./claudecode_process_1.md) — большой рабочий документ про то, как превращать ИИ из чата в управляемую систему. Внутри: оркестратор, skills, субагенты, tools, user flow, ТЗ, data contract, SQLite, Supabase, deploy, Playwright, тезаурус, а также большой блок про Claude Code, агентные пайплайны и примеры конфигураций.
 - [claudecode-precess_2.md](./claudecode-precess_2.md) — более структурированный гайд по Claude Code на базе официальной документации Anthropic. Внутри: settings, приоритеты настроек, subagents, skills, `CLAUDE.md`, rules, tools, permissions, hooks, sandbox, MCP, headless/SDK/GitHub Actions, browser automation и security practices.
 - [codex_process_1.md](./codex_process_1.md) — практический гайд по актуальному устройству Codex на базе официальной документации OpenAI. Внутри: subagents, skills, tools, MCP, `AGENTS.md`, `config.toml`, approval policy, sandbox, веб-доступ, automations и набор официальных ссылок для дальнейшего изучения.
 - [claudecode_vs_codex.md](./claudecode_vs_codex.md) — расширенный сравнительный документ по Claude Code и Codex на базе двух Claude Code гайдов и одного Codex гайда. Внутри: краткая аннотация для неразработчиков, платформенное сравнение, сравнение практических сценариев, простые правила выбора и тезаурус терминов.
+- [claudecode_vs_codex2.md](./claudecode_vs_codex2.md) — альтернативный практический взгляд на сравнение Claude Code и Codex. Внутри: акцент не на списке функций, а на поведении в длинной работе, роли `Codex -> Claude Code -> Codex`, оговорки про зрелость обоих инструментов и рабочий, а не абсолютный характер такого разделения.
 - [Use Claude Code Desktop.md](./Use%20Claude%20Code%20Desktop.md) — локальная копия документации по работе с Claude Code Desktop. Внутри: сессии, diff review, preview, PR monitoring, parallel worktrees, scheduled tasks, connectors и работа в local, SSH и cloud окружениях.
 - [Claude Code settings.md](./Claude%20Code%20settings.md) — локальная копия документации по настройкам Claude Code. Внутри: configuration scopes, `settings.json`, managed settings, переменные окружения, приоритеты конфигурации и файловая структура настроек.
 - [Configure permissions.md](./Configure%20permissions.md) — локальная копия документации по системе разрешений Claude Code. Внутри: permission modes, allow/ask/deny rules, синтаксис правил, wildcard-паттерны, managed policies и ограничения bypass-режима.
@@ -19,9 +21,11 @@
 ## Как читать
 
 - Если нужен быстрый обзор репозитория, начните с этого файла.
+- Если нужен самый короткий методологический вход в тему, начните с [agent_operating_system.md](./agent_operating_system.md).
 - Если нужен обзор экосистемы и культурного контекста вокруг AI-assisted разработки, читайте [VibeCoding.md](./VibeCoding.md).
 - Если нужен методологический и прикладной материал по агентной работе с ИИ и Claude Code, читайте [claudecode_process_1.md](./claudecode_process_1.md).
 - Если нужен более системный и официальный разбор самого устройства Claude Code, читайте [claudecode-precess_2.md](./claudecode-precess_2.md).
 - Если нужен отдельный актуальный разбор устройства Codex и его механизмов управления, читайте [codex_process_1.md](./codex_process_1.md).
 - Если нужен прямой и понятный неразработчику выбор между двумя агентами по функциям, ограничениям и типам кейсов, читайте [claudecode_vs_codex.md](./claudecode_vs_codex.md).
+- Если нужен дополнительный практический угол зрения на распределение ролей между двумя агентами, читайте [claudecode_vs_codex2.md](./claudecode_vs_codex2.md).
 - Если нужен практический справочник по самому Claude Code, начните с [Use Claude Code Desktop.md](./Use%20Claude%20Code%20Desktop.md), затем переходите к [Claude Code settings.md](./Claude%20Code%20settings.md) и [Configure permissions.md](./Configure%20permissions.md).
