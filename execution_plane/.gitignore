@@ -1,0 +1,7 @@
+*.pid
+*.log
+*.out
+runtime_process_state.json
+observer_event_log.md
+last_messages/
+logs/

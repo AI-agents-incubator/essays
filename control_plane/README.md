@@ -21,6 +21,10 @@
 - `observer -> runtime` через `OBSERVER_DIRECTIVE.md`
 - `runtime -> observer` через `RUNTIME_ACK.md`
 
+Но даже после этого протокол остаётся пассивным, если нет слоя, который умеет реально резюмировать paused runtime sessions.
+
+Именно поэтому поверх `control_plane` теперь существует ещё и `execution_plane`.
+
 ## Почему это отдельный слой
 
 Этот слой вынесен из `runtimes/` специально.
