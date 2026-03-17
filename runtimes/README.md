@@ -20,5 +20,6 @@
 ## Как запускать сейчас
 
 - операторский протокол: [parallel_launch_protocol.md](./parallel_launch_protocol.md)
+- сигнальный протокол: [runtime_status_protocol.md](./runtime_status_protocol.md)
 - стартовый prompt для `Codex`: [codex/OPERATOR_PROMPT.md](./codex/OPERATOR_PROMPT.md)
 - стартовый prompt для `Claude Code`: [claudecode/OPERATOR_PROMPT.md](./claudecode/OPERATOR_PROMPT.md)

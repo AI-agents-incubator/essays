@@ -23,4 +23,5 @@
 ## Текущий запуск
 
 - [runs/CURRENT_MISSION.md](./runs/CURRENT_MISSION.md)
+- [runs/RUNTIME_STATUS.md](./runs/RUNTIME_STATUS.md)
 - [OPERATOR_PROMPT.md](./OPERATOR_PROMPT.md)

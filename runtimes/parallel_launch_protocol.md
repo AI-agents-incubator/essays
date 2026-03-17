@@ -1,6 +1,6 @@
 # Parallel Launch Protocol
 
-> Версия файла: `v1.0`
+> Версия файла: `v1.1`
 > Дата версии: `2026-03-17`
 > Тип документа: `operator protocol`
 
@@ -44,6 +44,14 @@
 - `AGENTS.md` для `Codex`
 - `CLAUDE.md` для `Claude Code`
 - `CURRENT_MISSION.md` для активного прогона
+- `RUNTIME_STATUS.md` для сигнального слоя
+
+Можно сделать это двумя способами:
+
+- либо вставить текст из `OPERATOR_PROMPT.md`;
+- либо просто сказать агенту: “Прочитай файл `.../OPERATOR_PROMPT.md` и следуй ему”.
+
+С практической точки зрения это одно и то же.
 
 ### 3. Не микроменеджьте
 
@@ -54,6 +62,7 @@
 - сам спланировать run;
 - сам внести изменения в своей sandbox;
 - сам оставить summary, evaluation и learning trace.
+- сам вести `RUNTIME_STATUS.md` как главный сигнал состояния.
 
 Человек вмешивается только если:
 
@@ -66,6 +75,7 @@
 
 Во время работы полезно смотреть не на каждое действие, а на несколько признаков:
 
+- переводит ли агент `RUNTIME_STATUS.md` в `in_progress`;
 - соблюдает ли агент write scope;
 - создаёт ли он новые run-артефакты, а не переписывает историю хаотично;
 - обновляет ли state layer осмысленно;
@@ -78,11 +88,26 @@
 
 - стартовал из entrypoint без ручного сопровождения;
 - сам нашёл текущую mission;
+- сам обновил `RUNTIME_STATUS.md`;
 - выполнил run внутри своей sandbox;
 - оставил run summary;
 - оставил evaluation trace;
 - обновил state layer и learning trace;
 - сформулировал следующий run.
+
+## Как понять, что работа завершена
+
+В первой версии не нужен отдельный демон.
+
+Наблюдатель смотрит:
+
+1. в `RUNTIME_STATUS.md`
+2. в указанный там `summary_file`
+3. в указанный там `evaluation_file`
+
+Если `status: completed`, значит runtime закончил run.
+
+Если `status: escalation_required`, значит агент не завершил работу и ждёт человека.
 
 ## Что делать после завершения
 
@@ -97,3 +122,4 @@
 
 - `Codex`: [codex/OPERATOR_PROMPT.md](./codex/OPERATOR_PROMPT.md)
 - `Claude Code`: [claudecode/OPERATOR_PROMPT.md](./claudecode/OPERATOR_PROMPT.md)
+- Протокол статусов: [runtime_status_protocol.md](./runtime_status_protocol.md)

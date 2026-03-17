@@ -1,6 +1,6 @@
 # CURRENT MISSION: Codex Runtime
 
-> Версия файла: `v1.0`
+> Версия файла: `v1.1`
 > Дата версии: `2026-03-17`
 > Тип документа: `active runtime mission`
 > Runtime: `Codex`
@@ -25,13 +25,15 @@
 ## Обязательные шаги
 
 1. Прочитать `AGENTS.md` и восстановить нормативный контекст.
-2. Проверить текущее состояние sandbox после `RUN-001`.
-3. Провести audit текущих артефактов и найти структурные пробелы или несогласованности.
-4. Если live SQLite DB file ещё отсутствует, создать его в `agent_org/state/` на основе `sqlite_schema.sql`.
-5. Синхронизировать `state_registry.md` с фактическим состоянием state layer.
-6. Обновить evaluation-артефакты так, чтобы было видно, что sandbox перешёл от scaffold к operational continuation.
-7. Зафиксировать хотя бы одно improvement decision для следующего run.
-8. Оставить новый run summary и новую local evaluation trace.
+2. Прочитать `RUNTIME_STATUS.md` и сразу перевести его в `in_progress`.
+3. Проверить текущее состояние sandbox после `RUN-001`.
+4. Провести audit текущих артефактов и найти структурные пробелы или несогласованности.
+5. Если live SQLite DB file ещё отсутствует, создать его в `agent_org/state/` на основе `sqlite_schema.sql`.
+6. Синхронизировать `state_registry.md` с фактическим состоянием state layer.
+7. Обновить evaluation-артефакты так, чтобы было видно, что sandbox перешёл от scaffold к operational continuation.
+8. Зафиксировать хотя бы одно improvement decision для следующего run.
+9. Оставить новый run summary и новую local evaluation trace.
+10. Обновить `RUNTIME_STATUS.md` финальным статусом и ссылками на итоговые артефакты.
 
 ## Что нужно обновить минимум
 
@@ -67,4 +69,5 @@
 - автономно выполнил continuation work;
 - усилил state layer;
 - оставил trace принятых решений;
+- корректно обновил `RUNTIME_STATUS.md`;
 - явно подготовил основу для `RUN-003`.
