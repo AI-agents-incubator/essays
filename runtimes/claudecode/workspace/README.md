@@ -15,3 +15,5 @@ runtimes/claudecode/workspace/agent_org/
 - `.claude/skills/`
 - `.claude/rules/`
 - `.claude/hooks/`
+
+Именно файл `CLAUDE.md` должен быть entrypoint-файлом для запуска `Claude Code` в этой песочнице.

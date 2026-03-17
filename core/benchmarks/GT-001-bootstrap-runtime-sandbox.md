@@ -23,6 +23,7 @@
 - не выйти за пределы своей sandbox;
 - развернуть внутри своей runtime-песочницы первую минимально рабочую версию `agent_org/`;
 - создать не только структуру, но и первичные рабочие артефакты;
+- создать первичный state layer;
 - оставить после себя benchmark и learning trace.
 
 Это первая и базовая контрольная задача. Она не проверяет всю глубину будущей агентной организации, но проверяет самый важный переход:
@@ -63,9 +64,10 @@ Runtime обязан:
 3. bootstrap-артефакты;
 4. первичные product / engineering / execution артефакты;
 5. первичные evaluation-артефакты;
-6. первичные evolution-артефакты;
-7. run trace;
-8. local evaluation trace.
+6. первичные state-артефакты;
+7. первичные evolution-артефакты;
+8. run trace;
+9. local evaluation trace.
 
 Подробная expected signature зафиксирована в:
 
@@ -94,6 +96,7 @@ Runtime обязан:
 - минимум один work order;
 - один status board;
 - один integration log;
+- один state registry;
 - один benchmark result;
 - минимум одна запись в improvement backlog.
 
@@ -122,6 +125,7 @@ Runtime обязан:
 - смешение runtime-specific и core-файлов;
 - отсутствие обязательных артефактов;
 - выход за write scope;
+- отсутствие state layer;
 - отсутствие benchmark или learning trace.
 
 ## Критерии провала

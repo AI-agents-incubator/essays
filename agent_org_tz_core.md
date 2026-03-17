@@ -1,6 +1,6 @@
 # Agent Organization Infrastructure: Core Technical Assignment
 
-> Версия файла: `v1.0`
+> Версия файла: `v1.1`
 > Дата версии: `2026-03-16`
 > Тип документа: `инвариантное ядро технического задания`
 > Основание:
@@ -22,6 +22,7 @@
 - единый состав целевых артефактов;
 - единый benchmark-контур;
 - единые критерии оценки;
+- единую стратегию state layer;
 - единые правила изоляции двух реализаций.
 
 Этот документ является **source of truth** для обеих runtime-версий:
@@ -38,6 +39,7 @@ Runtime-специфичные документы не должны перепи
 - папок;
 - файлов;
 - форматов артефактов;
+- состояния и долгоживущей памяти;
 - ролей;
 - правил handoff;
 - правил эскалации;
@@ -72,6 +74,7 @@ core/
   benchmarks/
   expected_results/
   evaluation/
+  state/
 runtimes/
   codex/
     workspace/
@@ -116,6 +119,7 @@ comparison/
 - benchmark-templates;
 - expected result templates;
 - comparison criteria;
+- state model and storage strategy;
 - общие правила оценки;
 - общая методология сравнения.
 
@@ -182,6 +186,12 @@ runtimes/<runtime>/workspace/agent_org/
     benchmark_results.md
     process_audits.md
     metric_dashboard.md
+  state/
+    README.md
+    state_registry.md
+    storage_strategy.md
+    sqlite_schema.sql
+    supabase_migration_path.md
   evolution/
     improvement_backlog.md
     change_proposals.md
@@ -192,6 +202,24 @@ runtimes/<runtime>/workspace/agent_org/
 ```
 
 Это обязательный целевой каркас для обеих реализаций.
+
+## 7a. Инвариантное требование к state layer
+
+Обе реализации должны содержать отдельный слой состояния.
+
+Он нужен для того, чтобы организация могла жить:
+- не минуты, а недели и месяцы;
+- не только как набор документов, но и как operational system;
+- с восстановимым контекстом;
+- с накоплением run history;
+- с накоплением benchmark/evaluation history.
+
+Базовая стратегия для v1:
+- локальный `SQLite` внутри каждой runtime-песочницы;
+- файловый слой остаётся control plane и explainability layer;
+- позже допускается миграция в `Supabase / Postgres` как более устойчивый backend.
+
+State layer не заменяет артефакты. Он дополняет их.
 
 ## 8. Инвариантные требования к содержанию артефактов
 
@@ -284,6 +312,8 @@ runtimes/<runtime>/workspace/agent_org/
 
 Самообучение трактуется только как **управляемое изменение организационного слоя**, а не как свободное переписывание системы.
 
+Learning trace должен иметь связь со state layer, чтобы накопленный operational контекст не терялся между циклами.
+
 ## 13. Инвариантная canonical golden task
 
 Обе реализации должны использовать одну и ту же первую контрольную задачу.
@@ -321,6 +351,15 @@ runtimes/<runtime>/workspace/agent_org/
 - score interpretation rules;
 - единый шаблон сравнения двух runtime-реализаций;
 - правила фиксации сильных и слабых сторон.
+
+## 16a. Что должно лежать в `core/state/`
+
+В `core/state/` должны лежать:
+- state storage strategy;
+- state entity model;
+- SQLite-first schema template;
+- маршрут миграции в долгоживущий backend;
+- правила разделения artifact layer и state layer.
 
 ## 17. Что должно лежать в `runtimes/<runtime>/runs/`
 

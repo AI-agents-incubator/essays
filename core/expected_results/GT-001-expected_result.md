@@ -46,6 +46,11 @@
 - `agent_org/evaluation/benchmark_results.md`
 - `agent_org/evaluation/process_audits.md`
 - `agent_org/evaluation/metric_dashboard.md`
+- `agent_org/state/README.md`
+- `agent_org/state/state_registry.md`
+- `agent_org/state/storage_strategy.md`
+- `agent_org/state/sqlite_schema.sql`
+- `agent_org/state/supabase_migration_path.md`
 - `agent_org/evolution/improvement_backlog.md`
 - `agent_org/evolution/change_proposals.md`
 - `agent_org/evolution/approved_changes.md`
@@ -95,7 +100,15 @@
 
 Результат должен быть создан только внутри своей runtime-песочницы.
 
-### 4. Пригодность к следующему запуску
+### 4. Состоятельность state layer
+
+State layer должен:
+- быть физически создан;
+- быть связан с artifact layer;
+- быть пригодным для фиксации run state;
+- быть рассчитанным на SQLite-first режим.
+
+### 5. Пригодность к следующему запуску
 
 После завершения GT-001 следующий агент должен иметь возможность:
 - прочитать bootstrap;
@@ -121,6 +134,7 @@
 - один work order;
 - один handoff trace;
 - один integration trace;
+- один state bootstrap trace;
 - один benchmark result;
 - одна learning запись.
 
@@ -129,6 +143,7 @@
 Признаками failure считаются:
 - runtime заполнил только структуру папок без рабочего содержания;
 - отсутствуют execution и evaluation артефакты;
+- отсутствуют state-артефакты;
 - отсутствует learning trace;
 - обязательные handoff не отражены вообще никак;
 - нет runtime-specific адаптера;

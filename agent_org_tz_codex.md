@@ -1,6 +1,6 @@
 # Agent Organization Infrastructure: Codex Runtime Addendum
 
-> Версия файла: `v2.0`
+> Версия файла: `v2.1`
 > Дата версии: `2026-03-16`
 > Тип документа: `runtime-specific addendum`
 > Основание:
@@ -66,6 +66,13 @@ runtimes/codex/workspace/agent_org/
 - не размывают структуру;
 - не дублируют бессмысленно другие артефакты.
 
+Также `Codex` должен создать и поддерживать локальный state layer для долгоживущей работы:
+- `agent_org/state/README.md`
+- `agent_org/state/state_registry.md`
+- `agent_org/state/storage_strategy.md`
+- `agent_org/state/sqlite_schema.sql`
+- `agent_org/state/supabase_migration_path.md`
+
 ## 5. Требования к `AGENTS.md`
 
 `AGENTS.md` должен:
@@ -83,6 +90,8 @@ runtimes/codex/workspace/agent_org/
 - поддерживать работу в пределах workspace;
 - задавать безопасные approvals;
 - не ломать benchmark и evaluation trace.
+
+Конфиг не должен мешать локальному SQLite-first state layer внутри sandbox.
 
 Приоритет должен быть у:
 - воспроизводимости;
@@ -148,6 +157,7 @@ Codex-реализация успешна, если:
 - runtime-файлы оформлены как рабочая среда для этой структуры;
 - bootstrap читается ясно;
 - roles, artifacts, benchmark и learning-контур связаны между собой;
+- state layer присутствует и готов к долговременной работе;
 - есть независимый trace прогонов и локальной оценки.
 
 ## 12. Формат финального отчёта Codex

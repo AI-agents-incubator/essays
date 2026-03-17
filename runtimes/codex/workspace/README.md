@@ -13,3 +13,5 @@ runtimes/codex/workspace/agent_org/
 - `.codex/config.toml`
 - `.codex/agents/`
 - `.agents/skills/`
+
+Именно файл `AGENTS.md` должен быть entrypoint-файлом для запуска `Codex` в этой песочнице.
