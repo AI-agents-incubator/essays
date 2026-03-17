@@ -1,6 +1,6 @@
 # Parallel Launch Protocol
 
-> Версия файла: `v1.2`
+> Версия файла: `v1.3`
 > Дата версии: `2026-03-17`
 > Тип документа: `operator protocol`
 
@@ -12,6 +12,8 @@
 - `Claude Code`
 
 Обе песочницы уже подготовлены. Их не нужно дополнительно конфигурировать вручную. Нужно только открыть для каждой отдельный тред или отдельную рабочую сессию и передать стартовый prompt.
+
+Текущий launch-ready benchmark wave: `GT-002`.
 
 ## Базовый принцип
 
@@ -44,6 +46,7 @@
 - `AGENTS.md` для `Codex`
 - `CLAUDE.md` для `Claude Code`
 - `CURRENT_MISSION.md` для активного прогона
+- `RUN-002_GT-002_launch_brief.md` для следующей wave
 - `RUNTIME_STATUS.md` для сигнального слоя
 - локальный `control/` внутри каждой runtime-песочницы для observer directives и runtime acknowledgements
 
@@ -97,12 +100,13 @@
 
 - стартовал из entrypoint без ручного сопровождения;
 - сам нашёл текущую mission;
+- сам прочитал `GT-002` launch brief;
 - сам обновил `RUNTIME_STATUS.md`;
 - выполнил run внутри своей sandbox;
 - оставил run summary;
 - оставил evaluation trace;
 - обновил state layer и learning trace;
-- сформулировал следующий run.
+- сформулировал следующий run или следующий barrier-state.
 
 ## Как понять, что работа завершена
 
@@ -133,4 +137,6 @@
 
 - `Codex`: [codex/OPERATOR_PROMPT.md](./codex/OPERATOR_PROMPT.md)
 - `Claude Code`: [claudecode/OPERATOR_PROMPT.md](./claudecode/OPERATOR_PROMPT.md)
+- `Codex GT-002 brief`: [codex/runs/RUN-002_GT-002_launch_brief.md](./codex/runs/RUN-002_GT-002_launch_brief.md)
+- `Claude Code GT-002 brief`: [claudecode/runs/RUN-002_GT-002_launch_brief.md](./claudecode/runs/RUN-002_GT-002_launch_brief.md)
 - Протокол статусов: [runtime_status_protocol.md](./runtime_status_protocol.md)

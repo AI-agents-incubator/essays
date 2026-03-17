@@ -5,6 +5,8 @@
 ```text
 Работай только внутри /Users/alexeykrolmini/Code/essays/runtimes/codex/.
 
+Текущая подготовленная benchmark wave: GT-002.
+
 Сначала прочитай:
 1. /Users/alexeykrolmini/Code/essays/runtimes/codex/workspace/AGENTS.md
 2. /Users/alexeykrolmini/Code/essays/runtimes/codex/runs/CURRENT_MISSION.md
@@ -12,6 +14,7 @@
 4. /Users/alexeykrolmini/Code/essays/runtimes/codex/control/observer_runtime_protocol.md
 5. /Users/alexeykrolmini/Code/essays/runtimes/codex/control/OBSERVER_DIRECTIVE.md
 6. /Users/alexeykrolmini/Code/essays/runtimes/codex/control/RUNTIME_ACK.md
+7. /Users/alexeykrolmini/Code/essays/runtimes/codex/runs/RUN-002_GT-002_launch_brief.md
 
 После этого автономно выполни текущую mission.
 
@@ -23,13 +26,15 @@
 - веди /Users/alexeykrolmini/Code/essays/runtimes/codex/runs/RUNTIME_STATUS.md как главный статус run
 - веди /Users/alexeykrolmini/Code/essays/runtimes/codex/control/RUNTIME_ACK.md как локальное подтверждение observer directive
 - не начинай новый run без observer directive
+- если запускается GT-002, ориентируйся не только на локальный completed status, но и на общую wave-coordination, stage barriers и final hold reconciliation
 - если я спрашиваю тебя о текущем состоянии, перед ответом заново перечитай `RUNTIME_STATUS.md`, `OBSERVER_DIRECTIVE.md` и `RUNTIME_ACK.md`; не отвечай по памяти сессии
 
 В конце оставь:
 - run summary
 - evaluation trace
 - обновление state layer
-- краткое описание следующего рекомендуемого run
+- coordination trace, если текущая wave этого требует
+- краткое описание следующего рекомендуемого run или следующего barrier-state
 - финальный статус в RUNTIME_STATUS.md
 - обновлённый RUNTIME_ACK.md
 ```

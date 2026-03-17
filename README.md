@@ -25,6 +25,7 @@
 - [execution_plane/README.md](./execution_plane/README.md) — слой фактического headless-launch и resume. Внутри: почему одного control plane мало, как оркестратор читает директивы и автоматически резюмирует `Codex` и `Claude Code` без ручной пересылки prompt-ов.
 - [comparison/README.md](./comparison/README.md) — каталог для сравнительной оценки двух реализаций.
 - [comparison/RUN-001_GT-001_scorecard.md](./comparison/RUN-001_GT-001_scorecard.md) — первый фактический scorecard параллельного прогона `GT-001` в двух независимых песочницах. Внутри: полнота структуры, bootstrap, role separation, state layer, learning trace и выводы о том, что переносить в core, а что оставлять runtime-specific.
+- [comparison/RUN-002_GT-002_scorecard_template.md](./comparison/RUN-002_GT-002_scorecard_template.md) — шаблон scorecard для следующего сравнения по `GT-002`. Внутри: критерии wave synchronization, stage barriers, monitor honesty и final hold reconciliation.
 - [core/benchmarks/GT-001-bootstrap-runtime-sandbox.md](./core/benchmarks/GT-001-bootstrap-runtime-sandbox.md) — первая canonical golden task. Она проверяет, может ли runtime развернуть внутри своей песочницы минимально рабочую инфраструктуру агентной организации и оставить benchmark plus learning trace.
 - [core/expected_results/GT-001-expected_result.md](./core/expected_results/GT-001-expected_result.md) — expected result signature для `GT-001`.
 - [core/benchmarks/GT-002-wave-synchronized-orchestration.md](./core/benchmarks/GT-002-wave-synchronized-orchestration.md) — вторая canonical golden task. Она проверяет уже не локальный bootstrap, а общую wave-синхронизацию двух runtime, shared stage barriers, честный human monitor и финальное схлопывание протокола.
@@ -69,6 +70,7 @@
 - Если нужен такой же готовый пакет для первого запуска в `Claude Code`, откройте [runtimes/claudecode/runs/RUN-001_GT-001_launch_brief.md](./runtimes/claudecode/runs/RUN-001_GT-001_launch_brief.md).
 - Если нужен уже следующий launch-ready пакет для benchmark wave coordination, откройте [runtimes/codex/runs/RUN-002_GT-002_launch_brief.md](./runtimes/codex/runs/RUN-002_GT-002_launch_brief.md) и [runtimes/claudecode/runs/RUN-002_GT-002_launch_brief.md](./runtimes/claudecode/runs/RUN-002_GT-002_launch_brief.md).
 - Если нужен уже не launch, а результат первого параллельного прогона, откройте [comparison/RUN-001_GT-001_scorecard.md](./comparison/RUN-001_GT-001_scorecard.md).
+- Если нужен comparison-ready шаблон для следующей волны, откройте [comparison/RUN-002_GT-002_scorecard_template.md](./comparison/RUN-002_GT-002_scorecard_template.md).
 - Если нужен отдельный слой состояния для долгоживущей организации, начните с [core/state/README.md](./core/state/README.md).
 - Если нужен обзор экосистемы и культурного контекста вокруг AI-assisted разработки, читайте [VibeCoding.md](./VibeCoding.md).
 - Если нужен методологический и прикладной материал по агентной работе с ИИ и Claude Code, читайте [claudecode_process_1.md](./claudecode_process_1.md).
