@@ -11,6 +11,8 @@
 
 Этот каталог не должен хранить runtime-specific конфигурацию.
 
+Также этот каталог не должен превращаться в live execution-workspace. Если какой-то урок уже доказан в отдельной runtime-среде, сюда нужно переносить не сырой runtime-output, а только новый инвариант, benchmark definition или expected-result contract.
+
 ## Подкаталоги
 
 - [benchmarks/README.md](./benchmarks/README.md) — benchmark-шаблоны и canonical golden tasks.
