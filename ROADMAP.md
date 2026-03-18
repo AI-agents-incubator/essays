@@ -1,6 +1,6 @@
 # Roadmap
 
-> Версия файла: `v1.4`
+> Версия файла: `v1.5`
 > Дата версии: `2026-03-18`
 > Тип документа: `project roadmap`
 
@@ -15,6 +15,7 @@
 - benchmark-спецификации;
 - expected results;
 - launch packages;
+- project starter kit;
 - базовые comparison templates.
 
 Здесь **не должен** вестись живой длительный runtime-эксперимент, если для него уже создана отдельная рабочая среда.
@@ -168,6 +169,12 @@
 - `wave_failed`
 - `partial_success`
 - запрет бесконечного redispatch как "нормальной автономной работы"
+
+Кроме того, в baseline уже добавлен plug-and-play starter layer:
+
+- installable scaffold для новой папки проекта;
+- project input templates;
+- bootstrap path для handoff от человека к агентной организации.
 
 ## Что делать дальше
 

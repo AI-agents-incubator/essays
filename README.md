@@ -28,6 +28,12 @@
 - `partial_success`
 - запрет бесконечного redispatch как "нормальной автономной работы"
 
+Кроме того, baseline теперь содержит и **plug-and-play starter kit** для нового проекта:
+
+- installable scaffold;
+- project input templates;
+- bootstrap path для handoff от человека к агентной организации.
+
 ## Документы
 
 - [README.md](./README.md) — индекс репозитория и краткое описание материалов.
@@ -42,6 +48,7 @@
 - [core/README.md](./core/README.md) — каталог общего source of truth для эксперимента. Внутри: benchmark templates, expected results и общие evaluation criteria.
 - [core/state/README.md](./core/state/README.md) — state-layer стратегия для долгоживущей агентной организации. Внутри: двухслойная модель `artifacts + state`, SQLite-first схема и путь миграции в Supabase/Postgres.
 - [runtimes/README.md](./runtimes/README.md) — каталог двух независимых execution-sandbox для `Codex` и `Claude Code`.
+- [project_starter/README.md](./project_starter/README.md) — deployable starter kit для нового проекта. Внутри: install script, scaffold manifest и минимальная рабочая структура агентной организации, которую можно развернуть в пустую папку.
 - [runtimes/parallel_launch_protocol.md](./runtimes/parallel_launch_protocol.md) — операторский протокол параллельного запуска двух runtime-песочниц. Внутри: как открыть две независимые сессии, какой стартовый prompt дать каждому агенту, что наблюдать во время run и что считать успешным автономным запуском.
 - [runtimes/runtime_status_protocol.md](./runtimes/runtime_status_protocol.md) — сигнальный протокол для двух runtime-песочниц. Внутри: статус-модель `planned -> in_progress -> completed/blocked/escalation_required`, обязательные поля `RUNTIME_STATUS.md` и правило, как наблюдатель понимает, что run завершён.
 - [runtime_baselines/README.md](./runtime_baselines/README.md) — каталог baseline-пакетов операционной системы агента. Внутри: отдельные restoreable templates для `Codex` и `Claude Code`, которые ставятся до project overlay и до любого активного run.
@@ -86,6 +93,7 @@
 - Если нужен runtime-specific brief для `Claude Code`, читайте [agent_org_tz_claudecode.md](./agent_org_tz_claudecode.md).
 - Если нужен уже не только документ, а каркас эксперимента с общим ядром, изолированными песочницами и полем сравнения, начните с [core/README.md](./core/README.md), затем [runtimes/README.md](./runtimes/README.md) и [comparison/README.md](./comparison/README.md).
 - Если нужен именно реальный параллельный запуск двух агентов, начните с [runtimes/parallel_launch_protocol.md](./runtimes/parallel_launch_protocol.md), затем используйте [runtimes/codex/OPERATOR_PROMPT.md](./runtimes/codex/OPERATOR_PROMPT.md) и [runtimes/claudecode/OPERATOR_PROMPT.md](./runtimes/claudecode/OPERATOR_PROMPT.md).
+- Если нужен уже не baseline-документ, а deployable starting point для нового проекта, начните с [project_starter/README.md](./project_starter/README.md), затем используйте [project_starter/install_project_scaffold.sh](./project_starter/install_project_scaffold.sh).
 - Если нужен контроль завершения и понятный сигнал от каждого runtime, смотрите [runtimes/runtime_status_protocol.md](./runtimes/runtime_status_protocol.md), затем [runtimes/codex/runs/RUNTIME_STATUS.md](./runtimes/codex/runs/RUNTIME_STATUS.md) и [runtimes/claudecode/runs/RUNTIME_STATUS.md](./runtimes/claudecode/runs/RUNTIME_STATUS.md).
 - Если нужен не активный runtime, а стандартный пакет метафайлов по умолчанию для каждого типа агента, начните с [runtime_baselines/README.md](./runtime_baselines/README.md), затем смотрите [runtime_baselines/codex/README.md](./runtime_baselines/codex/README.md) и [runtime_baselines/claudecode/README.md](./runtime_baselines/claudecode/README.md).
 - Если нужен не только status-сигнал, а уже двусторонняя связь между runtime и наблюдателем, начните с [control_plane/README.md](./control_plane/README.md), затем смотрите [control_plane/observer_runtime_protocol.md](./control_plane/observer_runtime_protocol.md).
