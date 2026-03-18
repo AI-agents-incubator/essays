@@ -1,6 +1,6 @@
 # Roadmap
 
-> Версия файла: `v1.1`
+> Версия файла: `v1.2`
 > Дата версии: `2026-03-18`
 > Тип документа: `project roadmap`
 
@@ -56,6 +56,18 @@
 - comparison template.
 
 ### GT-004
+
+Статус: `specified and packaged`
+
+Что зафиксировано:
+
+- benchmark;
+- expected result;
+- launch packets;
+- evaluation templates;
+- comparison template.
+
+### GT-005
 
 Статус: `specified and packaged`
 

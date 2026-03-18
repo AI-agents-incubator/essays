@@ -24,3 +24,7 @@
 Четвёртая canonical golden task:
 
 - [GT-004-no-mid-wave-operator-tuning.md](./GT-004-no-mid-wave-operator-tuning.md)
+
+Пятая canonical golden task:
+
+- [GT-005-graceful-failure-escalation.md](./GT-005-graceful-failure-escalation.md)

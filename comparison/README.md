@@ -15,3 +15,4 @@
 - [RUN-002_GT-002_scorecard_template.md](./RUN-002_GT-002_scorecard_template.md)
 - [RUN-003_GT-003_scorecard_template.md](./RUN-003_GT-003_scorecard_template.md)
 - [RUN-004_GT-004_scorecard_template.md](./RUN-004_GT-004_scorecard_template.md)
+- [RUN-005_GT-005_scorecard_template.md](./RUN-005_GT-005_scorecard_template.md)
