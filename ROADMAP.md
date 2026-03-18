@@ -55,6 +55,18 @@
 - evaluation templates;
 - comparison template.
 
+### GT-004
+
+Статус: `specified and packaged`
+
+Что зафиксировано:
+
+- benchmark;
+- expected result;
+- launch packets;
+- evaluation templates;
+- comparison template.
+
 ## Следующая лестница benchmark-ов
 
 Ниже перечислены **следующие уровни зрелости**, которые должны проверяться уже в отдельных execution-средах, а не обязательно внутри этого baseline-репозитория.

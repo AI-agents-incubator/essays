@@ -20,3 +20,7 @@
 Третья canonical golden task:
 
 - [GT-003-autonomous-closeout-recovery.md](./GT-003-autonomous-closeout-recovery.md)
+
+Четвёртая canonical golden task:
+
+- [GT-004-no-mid-wave-operator-tuning.md](./GT-004-no-mid-wave-operator-tuning.md)
