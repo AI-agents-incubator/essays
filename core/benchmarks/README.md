@@ -32,3 +32,7 @@
 Шестая canonical golden task:
 
 - [GT-006-retry-budget-exhaustion-closeout.md](./GT-006-retry-budget-exhaustion-closeout.md)
+
+Седьмая canonical golden task:
+
+- [GT-007-runtime-authored-failure-package.md](./GT-007-runtime-authored-failure-package.md)

@@ -17,3 +17,4 @@
 - [RUN-004_GT-004_scorecard_template.md](./RUN-004_GT-004_scorecard_template.md)
 - [RUN-005_GT-005_scorecard_template.md](./RUN-005_GT-005_scorecard_template.md)
 - [RUN-006_GT-006_scorecard_template.md](./RUN-006_GT-006_scorecard_template.md)
+- [RUN-007_GT-007_scorecard_template.md](./RUN-007_GT-007_scorecard_template.md)
