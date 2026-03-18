@@ -28,3 +28,7 @@
 Пятая canonical golden task:
 
 - [GT-005-graceful-failure-escalation.md](./GT-005-graceful-failure-escalation.md)
+
+Шестая canonical golden task:
+
+- [GT-006-retry-budget-exhaustion-closeout.md](./GT-006-retry-budget-exhaustion-closeout.md)

@@ -11,3 +11,4 @@
 - [GT-003-expected_result.md](./GT-003-expected_result.md)
 - [GT-004-expected_result.md](./GT-004-expected_result.md)
 - [GT-005-expected_result.md](./GT-005-expected_result.md)
+- [GT-006-expected_result.md](./GT-006-expected_result.md)
