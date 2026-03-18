@@ -20,6 +20,11 @@
 - [runs/RUN-002_GT-002_launch_brief.md](./runs/RUN-002_GT-002_launch_brief.md)
 - [evaluation/RUN-002_GT-002_evaluation_template.md](./evaluation/RUN-002_GT-002_evaluation_template.md)
 
+## Следующий benchmark после GT-002
+
+- [runs/RUN-003_GT-003_launch_brief.md](./runs/RUN-003_GT-003_launch_brief.md)
+- [evaluation/RUN-003_GT-003_evaluation_template.md](./evaluation/RUN-003_GT-003_evaluation_template.md)
+
 ## Первый завершённый запуск
 
 - [runs/RUN-001_GT-001_summary.md](./runs/RUN-001_GT-001_summary.md)

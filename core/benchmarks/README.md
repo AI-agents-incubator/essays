@@ -16,3 +16,7 @@
 Вторая canonical golden task:
 
 - [GT-002-wave-synchronized-orchestration.md](./GT-002-wave-synchronized-orchestration.md)
+
+Третья canonical golden task:
+
+- [GT-003-autonomous-closeout-recovery.md](./GT-003-autonomous-closeout-recovery.md)

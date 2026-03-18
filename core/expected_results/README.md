@@ -8,3 +8,4 @@
 
 - [GT-001-expected_result.md](./GT-001-expected_result.md)
 - [GT-002-expected_result.md](./GT-002-expected_result.md)
+- [GT-003-expected_result.md](./GT-003-expected_result.md)

@@ -13,3 +13,4 @@
 - [findings_log.md](./findings_log.md)
 - [RUN-001_GT-001_scorecard.md](./RUN-001_GT-001_scorecard.md)
 - [RUN-002_GT-002_scorecard_template.md](./RUN-002_GT-002_scorecard_template.md)
+- [RUN-003_GT-003_scorecard_template.md](./RUN-003_GT-003_scorecard_template.md)
