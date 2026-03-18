@@ -1,7 +1,7 @@
 # Observer <-> Runtime Protocol
 
-> Версия файла: `v1.0`
-> Дата версии: `2026-03-17`
+> Версия файла: `v1.1`
+> Дата версии: `2026-03-18`
 > Тип документа: `bidirectional protocol`
 
 ## Зачем нужен этот протокол
@@ -87,6 +87,7 @@ Observer обновляет `OBSERVER_DIRECTIVE.md`.
 - `prepare_comparison`
 - `stop`
 - `human_review_required`
+- `wave_failed`
 
 ### Шаг 4. Runtime подтверждает
 
@@ -169,6 +170,59 @@ observer не должен оставлять runtime в паузе без пр�
 - полноценная автономность начинается тогда, когда автоматизированы оба перехода:
   - `completed -> next directive`
   - `last open item resolved -> terminal closeout -> autonomous_cycle_complete`
+
+## Retry Budget Rule
+
+Автономный observer-loop не имеет права бесконечно повторять одну и ту же директиву.
+
+Поэтому для каждой активной observer directive должен существовать bounded repair/relaunch contour:
+
+- `directive_id`
+- `retry_counter`
+- `max_retries`
+- причина повторного запуска
+- терминальное правило завершения после exhaustion
+
+Базовое правило:
+
+- repeated `continue_with_next_run` или `repair_current_state` по одному и тому же проблемному участку допускаются только до исчерпания `max_retries`;
+- после этого observer обязан прекратить redispatch;
+- состояние должно быть оформлено как `retry_budget_exhausted`;
+- затем observer обязан выписать терминальную директиву `human_review_required` или `wave_failed`.
+
+Иными словами:
+
+- бесконечный redispatch считается дефектом orchestration;
+- ограниченный retry loop считается допустимым repair contour;
+- exhaustion без terminal closeout считается дефектом control plane.
+
+## Partial Success Rule
+
+Если один runtime выполнил свою часть wave, а второй дошёл до `retry_budget_exhausted`, система не должна затирать успешную часть как будто её не было.
+
+В такой ситуации observer обязан различать:
+
+- локальный успех одной ветки;
+- провал другой ветки;
+- системный итог всей wave.
+
+Минимально допустимая схема:
+
+- локально успешная ветка фиксируется как `partial_success` на уровне wave;
+- проблемная ветка фиксируется через `human_review_required` или `wave_failed`;
+- comparison и terminal closeout должны сохранять оба факта одновременно.
+
+## Final Consistency Rule
+
+Финальный `hold` не может считаться завершённым только потому, что runtime status уже выглядит как `completed`.
+
+Финальный terminal state допустим только если одновременно выполнены три условия:
+
+1. `OBSERVER_DIRECTIVE.md` содержит terminal directive с финальным статусом;
+2. `RUNTIME_ACK.md` ссылается на тот же `directive_id`;
+3. `RUNTIME_ACK.md` подтверждает эту директиву как `accepted` или `completed`, в зависимости от локальной семантики.
+
+Если `directive_id` в observer и runtime ack не совпадают, система должна считаться не завершённой, а `protocol_inconsistent`.
 
 ## Следующий уровень
 

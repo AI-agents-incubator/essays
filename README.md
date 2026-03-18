@@ -19,6 +19,15 @@
 
 Живые длительные runtime-прогоны и отдельные execution-эксперименты лучше вести в независимых рабочих средах, а сюда возвращать только переносимые инварианты и уже оформленные benchmark-level выводы.
 
+После первых execution-экспериментов в baseline уже закреплены не только happy-path правила, но и базовые failure-governance инварианты:
+
+- `retry_budget`
+- `retry_budget_exhausted`
+- `human_review_required`
+- `wave_failed`
+- `partial_success`
+- запрет бесконечного redispatch как "нормальной автономной работы"
+
 ## Документы
 
 - [README.md](./README.md) — индекс репозитория и краткое описание материалов.

@@ -1,6 +1,6 @@
 # Roadmap
 
-> Версия файла: `v1.0`
+> Версия файла: `v1.1`
 > Дата версии: `2026-03-18`
 > Тип документа: `project roadmap`
 
@@ -98,6 +98,17 @@
 - может ли system-level closeout опираться не только на observer signal, но и на runtime-authored failure package;
 - уменьшается ли разрыв между partial-success peer и failed runtime в comparison-ready материале.
 
+## Что уже перенесено обратно в baseline
+
+Из execution-экспериментов обратно в baseline уже возвращены следующие переносимые инварианты:
+
+- `retry_budget`
+- `retry_budget_exhausted`
+- `human_review_required`
+- `wave_failed`
+- `partial_success`
+- запрет бесконечного redispatch как "нормальной автономной работы"
+
 ## Что делать дальше
 
 Для этого baseline-репозитория следующий практический шаг такой:
@@ -106,7 +117,7 @@
 2. переносить сюда только инварианты, которые уже доказаны в отдельных execution-средах;
 3. не смешивать baseline и живые прогоны в одном рабочем контуре.
 
-## Что переносить обратно в baseline
+## Что ещё переносить обратно в baseline
 
 Смысл baseline не в том, чтобы копировать сюда весь runtime-output.
 
@@ -116,11 +127,6 @@
 - новые expected result signatures;
 - новые comparison templates;
 - методологические выводы, которые доказали переносимость;
-- новые core-инварианты:
-  - `retry_budget`
-  - `retry_budget_exhausted`
-  - `human_review_required`
-  - `wave_failed`
-  - `partial_success`
+- новые core-инварианты, которые ещё не были закреплены в baseline.
 
 Если изменение остаётся runtime-specific, оно должно оставаться в отдельной execution-среде.
