@@ -27,6 +27,7 @@
 
 - [install_project_scaffold.sh](./install_project_scaffold.sh) — shell-скрипт развёртывания starter scaffold в новую папку проекта.
 - [SCAFFOLD_MANIFEST.md](./SCAFFOLD_MANIFEST.md) — описание того, какие папки и файлы создаются и зачем они нужны.
+- [PLUG_AND_PLAY_USER_FLOW.md](./PLUG_AND_PLAY_USER_FLOW.md) — верхнеуровневое product-описание starter kit с точки зрения пользователя. Внутри: целевой user flow, границы автономности, этапы handoff и признаки готовности формата.
 - [template_project/](./template_project/) — минимальная проектная структура, которая копируется в новый проект.
 
 ## Как использовать
