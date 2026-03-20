@@ -11,6 +11,7 @@
 ## Входные материалы
 
 - [Конспект маршрута освоения Codex](../codex-agent-learning-path.md)
+- [Отдельный практический guide по иерархии настроек и памяти Codex](../codex-memory-and-settings-hierarchy.md)
 - [Индекс репозитория essays](../README.md)
 
 ## Текущий статус
@@ -47,3 +48,9 @@
 1. сделать редакторский проход и улучшить существующие главы;
 2. читать параллельную книгу по Claude Code и сравнить две рабочие среды;
 3. собирать практические приложения, шаблоны и operating packages для реальных проектов.
+
+## Companion guide
+
+Если после книги нужен не следующий большой этап, а короткий справочник именно по слоям `AGENTS.md`, `.codex/config.toml`, `.rules` и `requirements.toml`, используйте:
+
+- [../codex-memory-and-settings-hierarchy.md](../codex-memory-and-settings-hierarchy.md)
