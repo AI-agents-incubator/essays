@@ -1,0 +1,15 @@
+# Project-level Codex config template
+# Target file when applied:
+# /Users/alexeykrolmini/Code/coursevibecode/.codex/config.toml
+
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+sandbox_workspace_write.network_access = true
+
+# Optional stricter or looser variants:
+# sandbox_mode = "read-only"
+# sandbox_mode = "danger-full-access"
+
+# Recommended use in this project:
+# - workspace-write when we want strong autonomy but still avoid full-machine access by default
+# - danger-full-access only if we explicitly decide that zero friction matters more than containment

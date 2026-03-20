@@ -1,0 +1,21 @@
+# User-level Codex config template
+# Target file when applied:
+# ~/.codex/config.toml
+
+model = "gpt-5.4"
+model_reasoning_effort = "xhigh"
+personality = "pragmatic"
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+sandbox_workspace_write.network_access = true
+
+[projects."/Users/alexeykrolmini/Code/coursevibecode"]
+trust_level = "trusted"
+
+[features]
+multi_agent = true
+
+# Notes:
+# 1. This template intentionally trusts only the target project.
+# 2. Do not keep broad trust like /Users/alexeykrolmini unless you really want that risk.
+# 3. workspace-write + network access is a balanced default for long autonomous work.
