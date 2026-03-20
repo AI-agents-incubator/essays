@@ -1,21 +1,20 @@
 # Prompt For Next Playbooks Session
 
-Use this exact prompt in the next session if you open it inside `2_lessons/playbooks`:
+Use this exact prompt in the next session if you open it inside `playbooks`:
 
 ```text
-Работай в /Users/alexeykrolmini/Code/coursevibecode/2_lessons/playbooks.
+Работай в /Users/alexeykrolmini/Code/essays/playbooks.
 
 Сначала прочитай по порядку:
 1. AGENTS.md
 2. SESSION-HANDOFF.md
 3. BACKLOG.md
 4. README.md
-5. ../AGENTS.md
-6. ../BACKLOG.md
-7. ../README.md
+5. ../README.md
+6. ../ROADMAP.md
 
-Считай, что корневой AGENTS.md проекта относится только к framework/runtime и не управляет логикой написания курса в этой папке.
-Главный рабочий слой для этой сессии — локальные инструкции папки playbooks и section-level инструкции папки 2_lessons.
+Считай, что главный рабочий слой для этой сессии — локальные инструкции папки playbooks.
+Корневые README.md и ROADMAP.md дают только общий контекст репозитория, а не заменяют локальные правила этой папки.
 
 После чтения не пересказывай лишнее.
 Сразу восстанови рабочий контекст и продолжай автономно по backlog.
@@ -23,7 +22,7 @@ Use this exact prompt in the next session if you open it inside `2_lessons/playb
 Останавливайся только при структурной развилке, конфликте инструкций или риске повредить важную существующую структуру.
 
 Работай в ветке:
-codex/2-lessons-session-reset
+codex/playbooks-session-reset
 
 Текущая точка продолжения:
 возвращайся в эту папку только если здесь появится новый реальный артефакт или обнаружится wording drift

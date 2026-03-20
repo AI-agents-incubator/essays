@@ -3,15 +3,15 @@
 ## Purpose
 
 This file is the transition form for the next session specifically for:
-- `2_lessons/playbooks`
+- `playbooks`
 
 It should be used after a context reset or when a new clean session starts.
 
 ## Active Scope
 
-- repo: `/Users/alexeykrolmini/Code/coursevibecode`
-- active folder: `2_lessons/playbooks`
-- recommended branch: `codex/2-lessons-session-reset`
+- repo: `/Users/alexeykrolmini/Code/essays`
+- active folder: `playbooks`
+- recommended branch: `codex/playbooks-session-reset`
 
 ## What Is Already Complete
 
@@ -46,9 +46,8 @@ Read in this order:
 2. `SESSION-HANDOFF.md`
 3. `BACKLOG.md`
 4. `README.md`
-5. `../AGENTS.md`
-6. `../BACKLOG.md`
-7. `../README.md`
+5. `../README.md`
+6. `../ROADMAP.md`
 
 ## Working Contract
 

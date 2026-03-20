@@ -647,7 +647,7 @@ cd /путь/к/вашему/проекту
 Например:
 
 ```bash
-cd /Users/alexeykrolmini/Code/coursevibecode
+cd /Users/alexeykrolmini/Code/essays
 ```
 
 Если вы не знаете путь наизусть, есть удобный способ на Mac:

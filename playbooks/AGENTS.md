@@ -3,7 +3,7 @@
 ## Scope
 
 These instructions apply to:
-- `2_lessons/playbooks`
+- `playbooks`
 
 ## Goal
 
@@ -18,11 +18,9 @@ Each playbook should help the reader complete one real scenario without needing 
 
 ## Parent Layer Note
 
-The repository root `AGENTS.md` is infrastructure-only.
-The `2_lessons/AGENTS.md` file is the section-level baseline.
-
-For work inside `2_lessons/playbooks`, this local file is the primary authoring layer.
-If there is any tension between generic infrastructure guidance and course-writing guidance, follow the course-writing guidance here.
+This repository does not use a section-level `2_lessons` layer anymore.
+For work inside `playbooks`, this local file is the primary authoring layer.
+Use the repository root [README.md](../README.md) and [ROADMAP.md](../ROADMAP.md) as the upper repo context.
 
 ## Writing Rules
 
@@ -49,14 +47,13 @@ Each playbook should include:
 
 ## Session Startup Rule
 
-If a new session starts directly inside `2_lessons/playbooks`, first read:
+If a new session starts directly inside `playbooks`, first read:
 1. `AGENTS.md`
 2. `SESSION-HANDOFF.md`
 3. `BACKLOG.md`
 4. `README.md`
-5. `../AGENTS.md`
-6. `../BACKLOG.md`
-7. `../README.md`
+5. `../README.md`
+6. `../ROADMAP.md`
 
 Then resume from the nearest unfinished playbook.
 

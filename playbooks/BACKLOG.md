@@ -27,7 +27,6 @@
 ## Working Rule
 
 After each meaningful playbook update:
-- update `2_lessons/playbooks/README.md`
-- update `2_lessons/README.md`
-- update `COURSE-INDEX.md`
+- update `playbooks/README.md`
+- update root `README.md`
 - verify that links work on GitHub
