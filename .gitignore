@@ -1,5 +1,6 @@
 .DS_Store
 CLAUDE.md
+.claude/settings.local.json
 **/__pycache__/
 *.pyc
 execution_plane/HUMAN_PROGRESS.md

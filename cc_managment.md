@@ -227,6 +227,27 @@ tools, subagents, MCP, shell, web"]
 - `ask` для `push/deploy/network`: это правильная граница.
 - `sandbox.enabled = true`: по docs это главный механизм автономной bash-работы с изоляцией.
 
+### Критический security pattern: `.claude/settings.local.json` не должен становиться хранилищем кредов
+
+Практический инцидент показал опасный сценарий:
+если пользователь жмёт `Allow` на команду, где уже лежат inline creds,
+локальный permission-layer может сохранить не абстрактное правило, а почти готовую команду с:
+
+- ключами;
+- токенами;
+- IP и пользователями;
+- другими чувствительными аргументами.
+
+Отдельный разбор:
+[claude-code-settings-local-json-credentials-incident.md](./claude-code-settings-local-json-credentials-incident.md)
+
+Из этого следуют обязательные правила:
+
+- `.claude/settings.local.json` считать secret-adjacent файлом;
+- не одобрять через `Allow` команды с inline creds;
+- хранить реальные секреты отдельно от permission-файлов;
+- защищать `.claude/settings.local.json` на уровне репозитория, а не только локальной машины.
+
 ## 4. Базовый шаблон `CLAUDE.md`
 Путь: `./CLAUDE.md`
 

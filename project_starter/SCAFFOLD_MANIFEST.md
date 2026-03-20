@@ -44,6 +44,14 @@ agent_org/
 START_HERE.md
 ```
 
+Дополнительно installer должен гарантировать базовую git-защиту для локального permission-файла:
+
+```text
+.gitignore
+  # Claude Code local permissions — NEVER commit (may contain credentials)
+  .claude/settings.local.json
+```
+
 ## Зачем нужен каждый блок
 
 ### `project_input/`
@@ -66,6 +74,16 @@ START_HERE.md
 - порядок чтения;
 - первый цикл действий;
 - правило перехода от project request к product and engineering framing.
+
+### `.gitignore`
+
+Это не просто "мелкая настройка git", а часть security baseline.
+
+Здесь проект должен заранее защищать:
+
+- `.claude/settings.local.json`
+
+чтобы локальный permission-layer не мог случайно попасть в git даже если в будущем внутри него окажутся secret-bearing command strings.
 
 ### `agent_org/charter/`
 

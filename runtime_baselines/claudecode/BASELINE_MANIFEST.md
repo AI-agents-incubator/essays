@@ -45,6 +45,14 @@
 - auto allow bash if sandboxed: `true`
 - unsandboxed commands: `false`
 
+## Security invariants
+
+- `.claude/settings.local.json` is treated as a local override file, not a secrets file
+- permission approvals must stay secret-free
+- inline credentials must never be normalized into persistent permission entries
+- repository policy should protect `.claude/settings.local.json` from git
+- preflight should audit local permission state before long autonomous runs
+
 ## Комментарий
 
 Это baseline-профиль "автономность внутри контролируемой песочницы".
