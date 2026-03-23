@@ -1,23 +1,29 @@
 # essays
 
-Репозиторий теперь содержит только учебно-методический контур: книги, гайды, learning paths и playbooks по `Codex`, `Claude Code` и практической работе с ИИ-агентами.
+Репозиторий содержит учебные, обзорные и прикладные материалы по `Codex`, `Claude Code`, инструментам для кода и агентным workflow.
 
-Основной контент находится в [education/README.md](/Users/alexeykrolmini/Code/essays/education/README.md).
+Главный контентный раздел сейчас находится в [tools/README.md](./tools/README.md).
 
 ## Структура
 
-- [education/README.md](/Users/alexeykrolmini/Code/essays/education/README.md) — общий индекс учебного раздела.
-- [education/root_docs](/Users/alexeykrolmini/Code/essays/education/root_docs) — guides, explainers, comparisons, learning paths и reference notes.
-- [education/codex-book/README.md](/Users/alexeykrolmini/Code/essays/education/codex-book/README.md) — книга по `Codex`.
-- [education/claude-code-book/README.md](/Users/alexeykrolmini/Code/essays/education/claude-code-book/README.md) — книга по `Claude Code`.
-- [education/playbooks/README.md](/Users/alexeykrolmini/Code/essays/education/playbooks/README.md) — прикладные пошаговые сценарии.
+- [tools/README.md](./tools/README.md) — общий индекс основного раздела.
+- [tools/root_docs](./tools/root_docs) — guides, explainers, comparisons, learning paths и reference notes.
+- [tools/codex-book/README.md](./tools/codex-book/README.md) — книга по `Codex`.
+- [tools/claude-code-book/README.md](./tools/claude-code-book/README.md) — книга по `Claude Code`.
+- [tools/playbooks/README.md](./tools/playbooks/README.md) — прикладные пошаговые сценарии.
+- [tools/reports/README.md](./tools/reports/README.md) — weekly watchlist reports.
+- [tools/tooling_watchlist.md](./tools/tooling_watchlist.md) — спецификация еженедельного мониторинга инструментов для кода и агентных систем.
+- [tools/twitter_product_filter.md](./tools/twitter_product_filter.md) — спецификация фильтрации новых продуктовых сигналов из X/Twitter.
+- [beforerag.md](./beforerag.md) — standalone essay про SQLite-first подход, структуру данных и преждевременный RAG.
 
 ## Start Here
 
-- [codex-agent-learning-path.md](/Users/alexeykrolmini/Code/essays/education/root_docs/codex-agent-learning-path.md)
-- [claude-code-agent-learning-path.md](/Users/alexeykrolmini/Code/essays/education/root_docs/claude-code-agent-learning-path.md)
-- [codex-book/README.md](/Users/alexeykrolmini/Code/essays/education/codex-book/README.md)
-- [claude-code-book/README.md](/Users/alexeykrolmini/Code/essays/education/claude-code-book/README.md)
-- [playbooks/README.md](/Users/alexeykrolmini/Code/essays/education/playbooks/README.md)
+- [tools/README.md](./tools/README.md)
+- [tools/root_docs/codex-agent-learning-path.md](./tools/root_docs/codex-agent-learning-path.md)
+- [tools/root_docs/claude-code-agent-learning-path.md](./tools/root_docs/claude-code-agent-learning-path.md)
+- [tools/codex-book/README.md](./tools/codex-book/README.md)
+- [tools/claude-code-book/README.md](./tools/claude-code-book/README.md)
+- [tools/playbooks/README.md](./tools/playbooks/README.md)
+- [tools/tooling_watchlist.md](./tools/tooling_watchlist.md)
 
-Остальные файлы в корне, такие как [CLAUDE.md](/Users/alexeykrolmini/Code/essays/CLAUDE.md) и [`.claude`](/Users/alexeykrolmini/Code/essays/.claude), являются локальной инфраструктурой среды, а не частью учебного контента.
+Корневые [CLAUDE.md](./CLAUDE.md) и [`.claude`](./.claude) относятся к локальной среде и правилам работы агента, а не к основному контенту.
