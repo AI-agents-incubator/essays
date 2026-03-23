@@ -1,163 +1,23 @@
 # essays
 
-Репозиторий с текстовыми материалами про ИИ, агентные системы, современную практику разработки, а также локальными и авторскими материалами по Claude Code и Codex. Основной контент хранится в markdown-документах.
+Репозиторий теперь содержит только учебно-методический контур: книги, гайды, learning paths и playbooks по `Codex`, `Claude Code` и практической работе с ИИ-агентами.
 
-Крупные `process`-файлы и сравнительные гайды в этом репозитории содержат в начале блока версию локального файла и дату актуальности источников. Если у внешней документации нет явного номера версии страницы, практическим эквивалентом версии считается дата проверки.
+Основной контент находится в [education/README.md](/Users/alexeykrolmini/Code/essays/education/README.md).
 
-## Статус репозитория
+## Структура
 
-Этот репозиторий нужно трактовать как **reference baseline**.
+- [education/README.md](/Users/alexeykrolmini/Code/essays/education/README.md) — общий индекс учебного раздела.
+- [education/root_docs](/Users/alexeykrolmini/Code/essays/education/root_docs) — guides, explainers, comparisons, learning paths и reference notes.
+- [education/codex-book/README.md](/Users/alexeykrolmini/Code/essays/education/codex-book/README.md) — книга по `Codex`.
+- [education/claude-code-book/README.md](/Users/alexeykrolmini/Code/essays/education/claude-code-book/README.md) — книга по `Claude Code`.
+- [education/playbooks/README.md](/Users/alexeykrolmini/Code/essays/education/playbooks/README.md) — прикладные пошаговые сценарии.
 
-То есть здесь хранятся:
+## Start Here
 
-- методология;
-- source of truth;
-- benchmark-спецификации;
-- expected results;
-- launch packages;
-- базовые comparison templates.
+- [codex-agent-learning-path.md](/Users/alexeykrolmini/Code/essays/education/root_docs/codex-agent-learning-path.md)
+- [claude-code-agent-learning-path.md](/Users/alexeykrolmini/Code/essays/education/root_docs/claude-code-agent-learning-path.md)
+- [codex-book/README.md](/Users/alexeykrolmini/Code/essays/education/codex-book/README.md)
+- [claude-code-book/README.md](/Users/alexeykrolmini/Code/essays/education/claude-code-book/README.md)
+- [playbooks/README.md](/Users/alexeykrolmini/Code/essays/education/playbooks/README.md)
 
-Живые длительные runtime-прогоны и отдельные execution-эксперименты лучше вести в независимых рабочих средах, а сюда возвращать только переносимые инварианты и уже оформленные benchmark-level выводы.
-
-После первых execution-экспериментов в baseline уже закреплены не только happy-path правила, но и базовые failure-governance инварианты:
-
-- `retry_budget`
-- `retry_budget_exhausted`
-- `human_review_required`
-- `wave_failed`
-- `partial_success`
-- запрет бесконечного redispatch как "нормальной автономной работы"
-
-Кроме того, baseline теперь содержит и **plug-and-play starter kit** для нового проекта:
-
-- installable scaffold;
-- project input templates;
-- bootstrap path для handoff от человека к агентной организации.
-
-## Документы
-
-- [README.md](./README.md) — индекс репозитория и краткое описание материалов.
-- [ROADMAP.md](./ROADMAP.md) — короткая дорожная карта baseline-репозитория. Внутри: что здесь считается завершённым, какие benchmark-волны идут дальше и какие уроки нужно возвращать обратно в core.
-- [agent_operating_system.md](./agent_operating_system.md) — короткий методологический конспект про переход `Ad hoc -> ТЗ -> Agent Operating System`. Внутри: три уровня зрелости работы с агентом, их задачи, ограничения и практический смысл проектных файлов правил и настроек.
-- [agent_organization.md](./agent_organization.md) — продолжение методологической модели: переход от одного автономного агента к мультиагентной организации. Внутри: класс задач, которые требуют такой системы, роли виртуальной компании, вертикальная и горизонтальная коммуникация, общая шина, артефакты, эскалация и организационная агентность.
-- [agent_organization_design.md](./agent_organization_design.md) — развёрнутая проектная спецификация агентной организации. Внутри: точный состав артефактов, их функции, связи между ними, рекомендуемая файловая структура, ownership ролей и полный циклический контур работы.
-- [agent_organization_self_learning.md](./agent_organization_self_learning.md) — методология самообучения агентной организации. Внутри: внешний и внутренний циклы, golden tasks, benchmark-suite, process audit, controlled change, risk of reward hacking и контур эволюции самой архитектуры.
-- [agent_org_tz_core.md](./agent_org_tz_core.md) — инвариантное ядро технического задания для всей инфраструктуры агентной организации. Внутри: единое source of truth, правило изоляции runtime-песочниц, общий состав артефактов, benchmark, learning-контур и критерии сравнения.
-- [agent_org_tz_codex.md](./agent_org_tz_codex.md) — runtime-addendum для `Codex`. Внутри: только Codex-specific способ исполнения общего ядра, write scope, runtime-файлы, execution trace и evaluation trace.
-- [agent_org_tz_claudecode.md](./agent_org_tz_claudecode.md) — runtime-addendum для `Claude Code`. Внутри: только Claude Code-specific способ исполнения общего ядра, write scope, runtime-файлы, execution trace и evaluation trace.
-- [core/README.md](./core/README.md) — каталог общего source of truth для эксперимента. Внутри: benchmark templates, expected results и общие evaluation criteria.
-- [core/state/README.md](./core/state/README.md) — state-layer стратегия для долгоживущей агентной организации. Внутри: двухслойная модель `artifacts + state`, SQLite-first схема и путь миграции в Supabase/Postgres.
-- [runtimes/README.md](./runtimes/README.md) — каталог двух независимых execution-sandbox для `Codex` и `Claude Code`.
-- [project_starter/README.md](./project_starter/README.md) — deployable starter kit для нового проекта. Внутри: install script, scaffold manifest и минимальная рабочая структура агентной организации, которую можно развернуть в пустую папку.
-- [project_starter/PLUG_AND_PLAY_USER_FLOW.md](./project_starter/PLUG_AND_PLAY_USER_FLOW.md) — формальное верхнеуровневое описание продукта с точки зрения пользователя. Внутри: целевой user flow, handoff к агентной организации, discovery-phase, execution pipeline и признаки готовности plug-and-play формата.
-- [agent_os_autonomy.md](./agent_os_autonomy.md) — отдельный методологический документ про переход от терминала к автономной агентной архитектуре на уровне ОС. Внутри: почему терминал — это только точка входа, как агент превращается в OS-процесс, как это связано с headless, демонами, SDK и мультиагентной организацией.
-- [autonomity/context-degradation-and-autonomy-drift.md](./autonomity/context-degradation-and-autonomy-drift.md) — методологическая заметка о том, почему в длинных агентных сессиях падает степень автономности. Внутри: признаки drift, soft vs hard reset, session preflight и меры компенсации через внешние артефакты.
-- [autonomity/os-level-autonomy-insight.md](./autonomity/os-level-autonomy-insight.md) — практический инсайт про автономность на уровне ОС. Внутри: почему агент может жить вне UI, чем системная автономность отличается от сессионной и как это связано с организацией агентов.
-- [autonomity/agent-sdk-platform-shift.md](./autonomity/agent-sdk-platform-shift.md) — стратегическая заметка о платформенном сдвиге от `bash + claude -p` к нативной оркестрации через `Agent SDK`. Внутри: что именно меняется архитектурно и что при этом сохраняется.
-- [autonomity/agent-sdk-migration-plan.md](./autonomity/agent-sdk-migration-plan.md) — черновой migration plan от bash-loop архитектуры к SDK-native оркестратору. Внутри: этапы, ограничения, PoC и критерии перехода.
-- [autonomity/session-reset-protocol.md](./autonomity/session-reset-protocol.md) — короткий операционный протокол восстановления автономности при деградации длинной сессии.
-- [autonomity/coursevibecode-codex/README.md](./autonomity/coursevibecode-codex/README.md) — отдельный внешний autonomy pack для `coursevibecode`. Внутри: шаблоны `config.toml`, `AGENTS.md`, backlog и порядок применения слоёв для длинной автономной работы `Codex`.
-- [autonomity/codex-a.md](./autonomity/codex-a.md) — рабочий план и развёрнутые настройки автономного прохода для книжного проекта по `Codex`.
-- [codex-agent-learning-path.md](./codex-agent-learning-path.md) — большой учебный маршрут освоения `Codex` для нетехнической аудитории. Внутри: поэтапное объяснение инструмента, постановки задач, памяти проекта, настроек, автономности и перехода к агентной организации.
-- [claude-code-agent-learning-path.md](./claude-code-agent-learning-path.md) — аналогичный учебный маршрут по `Claude Code` для нетехнической аудитории. Внутри: работа с режимами исследования/планирования/исполнения, настройками, памятью проекта и ростом самостоятельности агента.
-- [codex-book/README.md](./codex-book/README.md) — оглавление полной книги по `Codex`. Внутри: девять последовательных глав от первого знакомства до `Agent Operating System` и агентной организации.
-- [claude-code-book/README.md](./claude-code-book/README.md) — оглавление полной книги по `Claude Code`. Внутри: девять последовательных глав от первого знакомства до `Agent Operating System` и агентной организации.
-- [playbooks/README.md](./playbooks/README.md) — каталог прикладных playbooks. Внутри: готовые пошаговые сценарии работы с агентами, от первого безопасного обзора проекта до управляемой автономности и минимальной агентной организации.
-- [chat_vs_cowork_vs_code.md](./chat_vs_cowork_vs_code.md) — сравнительная таблица `Chat vs Cowork vs Claude Code` с пояснениями по возможностям. Внутри: что реально даёт терминал, песочница, headless, SDK и где проходит граница между нетехническим и инженерным режимом работы.
-- [claude_code_interfaces.md](./claude_code_interfaces.md) — отдельный разбор интерфейсов `Claude Code`: CLI, VS Code Extension и Desktop App. Внутри: что у них общее, чем они различаются и какой интерфейс выбирать под конкретный режим работы.
-- [codex-memory-and-settings-hierarchy.md](./codex-memory-and-settings-hierarchy.md) — отдельный практический разбор иерархии `AGENTS.md`, `.codex/config.toml`, `.rules` и `requirements.toml` простым языком.
-- [claude-code-memory-and-settings-hierarchy.md](./claude-code-memory-and-settings-hierarchy.md) — отдельный практический разбор иерархии `CLAUDE.md`, `rules` и `settings.json` простым языком.
-- [claude-code-settings-local-json-credentials-incident.md](./claude-code-settings-local-json-credentials-incident.md) — отдельный разбор security-инцидента, где локальный permission-файл превратился в контейнер для секретов. Внутри: как это происходит, почему `Allow` на inline-cred команды опасен и какие правила теперь обязательны.
-- [codex-vs-claude-code-in-practice.md](./codex-vs-claude-code-in-practice.md) — практический гид по выбору между `Codex` и `Claude Code` через реальные рабочие сценарии, а не абстрактное сравнение функций.
-- [runtimes/parallel_launch_protocol.md](./runtimes/parallel_launch_protocol.md) — операторский протокол параллельного запуска двух runtime-песочниц. Внутри: как открыть две независимые сессии, какой стартовый prompt дать каждому агенту, что наблюдать во время run и что считать успешным автономным запуском.
-- [runtimes/runtime_status_protocol.md](./runtimes/runtime_status_protocol.md) — сигнальный протокол для двух runtime-песочниц. Внутри: статус-модель `planned -> in_progress -> completed/blocked/escalation_required`, обязательные поля `RUNTIME_STATUS.md` и правило, как наблюдатель понимает, что run завершён.
-- [runtime_baselines/README.md](./runtime_baselines/README.md) — каталог baseline-пакетов операционной системы агента. Внутри: отдельные restoreable templates для `Codex` и `Claude Code`, которые ставятся до project overlay и до любого активного run.
-- [runtime_baselines/runtime_preflight_protocol.md](./runtime_baselines/runtime_preflight_protocol.md) — обязательный preflight перед автономным запуском. Внутри: порядок `baseline -> project overlay -> active run`, checklist и критерии того, что runtime действительно подготовлен.
-- [control_plane/README.md](./control_plane/README.md) — внешний двусторонний коммуникационный слой между runtime и наблюдателем. Внутри: observer directives, runtime acknowledgements и схема того, как следующий шаг передаётся уже не через ручной чат, а через артефакты.
-- [execution_plane/README.md](./execution_plane/README.md) — слой фактического headless-launch и resume. Внутри: почему одного control plane мало, как оркестратор читает директивы и автоматически резюмирует `Codex` и `Claude Code` без ручной пересылки prompt-ов.
-- [comparison/README.md](./comparison/README.md) — каталог для сравнительной оценки двух реализаций.
-- [comparison/RUN-001_GT-001_scorecard.md](./comparison/RUN-001_GT-001_scorecard.md) — первый фактический scorecard параллельного прогона `GT-001` в двух независимых песочницах. Внутри: полнота структуры, bootstrap, role separation, state layer, learning trace и выводы о том, что переносить в core, а что оставлять runtime-specific.
-- [comparison/RUN-002_GT-002_scorecard_template.md](./comparison/RUN-002_GT-002_scorecard_template.md) — шаблон scorecard для следующего сравнения по `GT-002`. Внутри: критерии wave synchronization, stage barriers, monitor honesty и final hold reconciliation.
-- [core/benchmarks/GT-001-bootstrap-runtime-sandbox.md](./core/benchmarks/GT-001-bootstrap-runtime-sandbox.md) — первая canonical golden task. Она проверяет, может ли runtime развернуть внутри своей песочницы минимально рабочую инфраструктуру агентной организации и оставить benchmark plus learning trace.
-- [core/expected_results/GT-001-expected_result.md](./core/expected_results/GT-001-expected_result.md) — expected result signature для `GT-001`.
-- [core/benchmarks/GT-002-wave-synchronized-orchestration.md](./core/benchmarks/GT-002-wave-synchronized-orchestration.md) — вторая canonical golden task. Она проверяет уже не локальный bootstrap, а общую wave-синхронизацию двух runtime, shared stage barriers, честный human monitor и финальное схлопывание протокола.
-- [core/expected_results/GT-002-expected_result.md](./core/expected_results/GT-002-expected_result.md) — expected result signature для `GT-002`.
-- [runtimes/codex/runs/RUN-001_GT-001_launch_brief.md](./runtimes/codex/runs/RUN-001_GT-001_launch_brief.md) — первый подготовленный launch-brief для запуска `Codex` в собственной sandbox.
-- [runtimes/claudecode/runs/RUN-001_GT-001_launch_brief.md](./runtimes/claudecode/runs/RUN-001_GT-001_launch_brief.md) — симметричный launch-brief для запуска `Claude Code` в собственной sandbox.
-- [runtimes/codex/runs/RUN-002_GT-002_launch_brief.md](./runtimes/codex/runs/RUN-002_GT-002_launch_brief.md) — launch-brief для `Codex` на `GT-002`, где проверяется общая wave-синхронизация, stage barriers и final hold reconciliation.
-- [runtimes/claudecode/runs/RUN-002_GT-002_launch_brief.md](./runtimes/claudecode/runs/RUN-002_GT-002_launch_brief.md) — симметричный launch-brief для `Claude Code` на `GT-002`.
-- [VibeCoding.md](./VibeCoding.md) — большой аналитический отчет о феномене vibe coding в 2025-2026 годах. Внутри: сообщества и платформы, Discord-экосистемы, Twitter/X, Reddit, Telegram, события в Bay Area, стек инструментов, риски и стратегические рекомендации.
-- [claudecode_process_1.md](./claudecode_process_1.md) — большой рабочий документ про то, как превращать ИИ из чата в управляемую систему. Внутри: оркестратор, skills, субагенты, tools, user flow, ТЗ, data contract, SQLite, Supabase, deploy, Playwright, тезаурус, а также большой блок про Claude Code, агентные пайплайны и примеры конфигураций.
-- [claudecode-precess_2.md](./claudecode-precess_2.md) — более структурированный гайд по Claude Code на базе официальной документации Anthropic. Внутри: settings, приоритеты настроек, subagents, skills, `CLAUDE.md`, rules, tools, permissions, hooks, sandbox, MCP, headless/SDK/GitHub Actions, browser automation и security practices.
-- [codex_process_1.md](./codex_process_1.md) — практический гайд по актуальному устройству Codex на базе официальной документации OpenAI. Внутри: subagents, skills, tools, MCP, `AGENTS.md`, `config.toml`, approval policy, sandbox, веб-доступ, automations и набор официальных ссылок для дальнейшего изучения.
-- [cc_managment.md](./cc_managment.md) — структурированный прикладной гайд по устройству и настройке `Claude Code`. Внутри: `settings.json`, `CLAUDE.md`, permissions, hooks, skills, subagents, архитектурные схемы и рекомендуемая конфигурация для безопасной автономной работы.
-- [cc_managment_readme.md](./cc_managment_readme.md) — короткая входная версия к гайду по `Claude Code`. Подходит как быстрый onboarding перед чтением полного документа.
-- [codex_managment.md](./codex_managment.md) — структурированный прикладной гайд по устройству и настройке `Codex`. Внутри: `config.toml`, `AGENTS.md`, skills, subagents, rules, sandbox, MCP, automations, `exec`, `SDK` и архитектурные схемы.
-- [codex_managment_readme.md](./codex_managment_readme.md) — короткая входная версия к гайду по `Codex`. Подходит как быстрый обзор перед чтением полного документа.
-- [claudecode_vs_codex.md](./claudecode_vs_codex.md) — расширенный сравнительный документ по Claude Code и Codex на базе двух Claude Code гайдов и одного Codex гайда. Внутри: краткая аннотация для неразработчиков, платформенное сравнение, сравнение практических сценариев, простые правила выбора и тезаурус терминов.
-- [claudecode_vs_codex2.md](./claudecode_vs_codex2.md) — альтернативный практический взгляд на сравнение Claude Code и Codex. Внутри: акцент не на списке функций, а на поведении в длинной работе, роли `Codex -> Claude Code -> Codex`, оговорки про зрелость обоих инструментов и рабочий, а не абсолютный характер такого разделения.
-- [Use Claude Code Desktop.md](./Use%20Claude%20Code%20Desktop.md) — локальная копия документации по работе с Claude Code Desktop. Внутри: сессии, diff review, preview, PR monitoring, parallel worktrees, scheduled tasks, connectors и работа в local, SSH и cloud окружениях.
-- [Claude Code settings.md](./Claude%20Code%20settings.md) — локальная копия документации по настройкам Claude Code. Внутри: configuration scopes, `settings.json`, managed settings, переменные окружения, приоритеты конфигурации и файловая структура настроек.
-- [Configure permissions.md](./Configure%20permissions.md) — локальная копия документации по системе разрешений Claude Code. Внутри: permission modes, allow/ask/deny rules, синтаксис правил, wildcard-паттерны, managed policies и ограничения bypass-режима.
-
-## Как читать
-
-- Если нужен быстрый обзор репозитория, начните с этого файла.
-- Если нужен не весь индекс, а только текущее положение дел и следующая лестница benchmark-ов, откройте [ROADMAP.md](./ROADMAP.md).
-- Если нужен самый короткий методологический вход в тему, начните с [agent_operating_system.md](./agent_operating_system.md).
-- Если нужен следующий уровень после `Agent Operating System`, читайте [agent_organization.md](./agent_organization.md).
-- Если нужен уже не обзор, а точная конструкция агентной организации как системы артефактов, читайте [agent_organization_design.md](./agent_organization_design.md).
-- Если нужен контур самообучения, benchmark-логика и golden tasks для агентной организации, читайте [agent_organization_self_learning.md](./agent_organization_self_learning.md).
-- Если нужен единый source of truth для будущих двух реализаций, читайте [agent_org_tz_core.md](./agent_org_tz_core.md).
-- Если нужен runtime-specific brief для `Codex`, читайте [agent_org_tz_codex.md](./agent_org_tz_codex.md).
-- Если нужен runtime-specific brief для `Claude Code`, читайте [agent_org_tz_claudecode.md](./agent_org_tz_claudecode.md).
-- Если нужен уже не только документ, а каркас эксперимента с общим ядром, изолированными песочницами и полем сравнения, начните с [core/README.md](./core/README.md), затем [runtimes/README.md](./runtimes/README.md) и [comparison/README.md](./comparison/README.md).
-- Если нужен именно реальный параллельный запуск двух агентов, начните с [runtimes/parallel_launch_protocol.md](./runtimes/parallel_launch_protocol.md), затем используйте [runtimes/codex/OPERATOR_PROMPT.md](./runtimes/codex/OPERATOR_PROMPT.md) и [runtimes/claudecode/OPERATOR_PROMPT.md](./runtimes/claudecode/OPERATOR_PROMPT.md).
-- Если нужен уже не baseline-документ, а deployable starting point для нового проекта, начните с [project_starter/README.md](./project_starter/README.md), затем используйте [project_starter/install_project_scaffold.sh](./project_starter/install_project_scaffold.sh).
-- Если нужен формальный user flow и high-level product spec именно для plug-and-play сценария, читайте [project_starter/PLUG_AND_PLAY_USER_FLOW.md](./project_starter/PLUG_AND_PLAY_USER_FLOW.md).
-- Если нужен методологический блок про агента как OS-процесс, а не как UI-ассистента, начните с [agent_os_autonomy.md](./agent_os_autonomy.md), затем читайте [autonomity/os-level-autonomy-insight.md](./autonomity/os-level-autonomy-insight.md) и [autonomity/agent-sdk-platform-shift.md](./autonomity/agent-sdk-platform-shift.md).
-- Если нужен новый методологический блок именно про автономность длинных сессий, контекстный drift и восстановление operating contract, начните с [autonomity/context-degradation-and-autonomy-drift.md](./autonomity/context-degradation-and-autonomy-drift.md), затем смотрите [autonomity/session-reset-protocol.md](./autonomity/session-reset-protocol.md) и [autonomity/autonomy-drift-incident-log-template.md](./autonomity/autonomy-drift-incident-log-template.md).
-- Если нужен отдельный прикладной набор шаблонов для автономной работы `Codex` в `coursevibecode`, начните с [autonomity/coursevibecode-codex/README.md](./autonomity/coursevibecode-codex/README.md), затем применяйте [autonomity/coursevibecode-codex/06-apply-order.md](./autonomity/coursevibecode-codex/06-apply-order.md).
-- Если нужен длинный, но простой учебный маршрут для нетехнического пользователя, начните с [codex-agent-learning-path.md](./codex-agent-learning-path.md) или [claude-code-agent-learning-path.md](./claude-code-agent-learning-path.md), а затем переходите в соответствующую книгу: [codex-book/README.md](./codex-book/README.md) или [claude-code-book/README.md](./claude-code-book/README.md).
-- Если нужны не теоретические материалы, а готовые рабочие сценарии, начните с [playbooks/README.md](./playbooks/README.md).
-- Если нужно понять, где заканчивается обычный чат и начинается инженерная агентная среда, читайте [chat_vs_cowork_vs_code.md](./chat_vs_cowork_vs_code.md), затем [claude_code_interfaces.md](./claude_code_interfaces.md).
-- Если нужен отдельный практический материал про внутреннюю иерархию памяти и настроек в Codex, читайте [codex-memory-and-settings-hierarchy.md](./codex-memory-and-settings-hierarchy.md).
-- Если нужен отдельный практический материал про внутреннюю иерархию памяти и настроек в Claude Code, читайте [claude-code-memory-and-settings-hierarchy.md](./claude-code-memory-and-settings-hierarchy.md).
-- Если нужен практический security-паттерн про риск утечки секретов через `.claude/settings.local.json`, начните с [claude-code-settings-local-json-credentials-incident.md](./claude-code-settings-local-json-credentials-incident.md), затем читайте [claude-code-memory-and-settings-hierarchy.md](./claude-code-memory-and-settings-hierarchy.md), [claude-code-book/04-claude-code-settings-and-permissions.md](./claude-code-book/04-claude-code-settings-and-permissions.md) и [runtime_baselines/runtime_preflight_protocol.md](./runtime_baselines/runtime_preflight_protocol.md).
-- Если нужен прикладной выбор между двумя средами через реальные use cases, а не через списки функций, читайте [codex-vs-claude-code-in-practice.md](./codex-vs-claude-code-in-practice.md).
-- Если нужен контроль завершения и понятный сигнал от каждого runtime, смотрите [runtimes/runtime_status_protocol.md](./runtimes/runtime_status_protocol.md), затем [runtimes/codex/runs/RUNTIME_STATUS.md](./runtimes/codex/runs/RUNTIME_STATUS.md) и [runtimes/claudecode/runs/RUNTIME_STATUS.md](./runtimes/claudecode/runs/RUNTIME_STATUS.md).
-- Если нужен не активный runtime, а стандартный пакет метафайлов по умолчанию для каждого типа агента, начните с [runtime_baselines/README.md](./runtime_baselines/README.md), затем смотрите [runtime_baselines/codex/README.md](./runtime_baselines/codex/README.md) и [runtime_baselines/claudecode/README.md](./runtime_baselines/claudecode/README.md).
-- Если нужен не только status-сигнал, а уже двусторонняя связь между runtime и наблюдателем, начните с [control_plane/README.md](./control_plane/README.md), затем смотрите [control_plane/observer_runtime_protocol.md](./control_plane/observer_runtime_protocol.md).
-- Если нужен уже не только communication layer, а реальный механизм, который поднимает runtime после новой директивы, смотрите [execution_plane/README.md](./execution_plane/README.md) и [execution_plane/orchestrator_protocol.md](./execution_plane/orchestrator_protocol.md).
-- Если нужен первый реальный benchmark, начните с [core/benchmarks/GT-001-bootstrap-runtime-sandbox.md](./core/benchmarks/GT-001-bootstrap-runtime-sandbox.md), затем смотрите [core/expected_results/GT-001-expected_result.md](./core/expected_results/GT-001-expected_result.md).
-- Если нужен следующий benchmark, который проверяет уже не bootstrap, а общую wave-координацию и честный мониторинг, откройте [core/benchmarks/GT-002-wave-synchronized-orchestration.md](./core/benchmarks/GT-002-wave-synchronized-orchestration.md), затем [core/expected_results/GT-002-expected_result.md](./core/expected_results/GT-002-expected_result.md).
-- Если нужен следующий benchmark после wave synchronization, который проверяет уже автономный closeout recovery без observer-side правки runtime truth files, откройте [core/benchmarks/GT-003-autonomous-closeout-recovery.md](./core/benchmarks/GT-003-autonomous-closeout-recovery.md), затем [core/expected_results/GT-003-expected_result.md](./core/expected_results/GT-003-expected_result.md).
-- Если нужен следующий benchmark после GT-003, который проверяет уже frozen operational contracts и отсутствие mid-wave operator tuning, откройте [core/benchmarks/GT-004-no-mid-wave-operator-tuning.md](./core/benchmarks/GT-004-no-mid-wave-operator-tuning.md), затем [core/expected_results/GT-004-expected_result.md](./core/expected_results/GT-004-expected_result.md).
-- Если нужен следующий benchmark после GT-004, который проверяет bounded retry и graceful failure escalation, откройте [core/benchmarks/GT-005-graceful-failure-escalation.md](./core/benchmarks/GT-005-graceful-failure-escalation.md), затем [core/expected_results/GT-005-expected_result.md](./core/expected_results/GT-005-expected_result.md).
-- Если нужен следующий benchmark после GT-005, который проверяет уже строгий closeout после исчерпания retry budget, откройте [core/benchmarks/GT-006-retry-budget-exhaustion-closeout.md](./core/benchmarks/GT-006-retry-budget-exhaustion-closeout.md), затем [core/expected_results/GT-006-expected_result.md](./core/expected_results/GT-006-expected_result.md).
-- Если нужен следующий benchmark после GT-006, который проверяет уже runtime-authored failure package, откройте [core/benchmarks/GT-007-runtime-authored-failure-package.md](./core/benchmarks/GT-007-runtime-authored-failure-package.md), затем [core/expected_results/GT-007-expected_result.md](./core/expected_results/GT-007-expected_result.md).
-- Если нужен уже готовый пакет для первого запуска в `Codex`, откройте [runtimes/codex/runs/RUN-001_GT-001_launch_brief.md](./runtimes/codex/runs/RUN-001_GT-001_launch_brief.md).
-- Если нужен такой же готовый пакет для первого запуска в `Claude Code`, откройте [runtimes/claudecode/runs/RUN-001_GT-001_launch_brief.md](./runtimes/claudecode/runs/RUN-001_GT-001_launch_brief.md).
-- Если нужен уже следующий launch-ready пакет для benchmark wave coordination, откройте [runtimes/codex/runs/RUN-002_GT-002_launch_brief.md](./runtimes/codex/runs/RUN-002_GT-002_launch_brief.md) и [runtimes/claudecode/runs/RUN-002_GT-002_launch_brief.md](./runtimes/claudecode/runs/RUN-002_GT-002_launch_brief.md).
-- Если нужен уже следующий launch-ready пакет для автономного closeout recovery, откройте [runtimes/codex/runs/RUN-003_GT-003_launch_brief.md](./runtimes/codex/runs/RUN-003_GT-003_launch_brief.md) и [runtimes/claudecode/runs/RUN-003_GT-003_launch_brief.md](./runtimes/claudecode/runs/RUN-003_GT-003_launch_brief.md).
-- Если нужен уже следующий launch-ready пакет для проверки работы на frozen contracts без mid-wave tuning, откройте [runtimes/codex/runs/RUN-004_GT-004_launch_brief.md](./runtimes/codex/runs/RUN-004_GT-004_launch_brief.md) и [runtimes/claudecode/runs/RUN-004_GT-004_launch_brief.md](./runtimes/claudecode/runs/RUN-004_GT-004_launch_brief.md).
-- Если нужен уже следующий launch-ready пакет для graceful failure escalation, откройте [runtimes/codex/runs/RUN-005_GT-005_launch_brief.md](./runtimes/codex/runs/RUN-005_GT-005_launch_brief.md) и [runtimes/claudecode/runs/RUN-005_GT-005_launch_brief.md](./runtimes/claudecode/runs/RUN-005_GT-005_launch_brief.md).
-- Если нужен уже следующий launch-ready пакет для retry-budget exhaustion closeout, откройте [runtimes/codex/runs/RUN-006_GT-006_launch_brief.md](./runtimes/codex/runs/RUN-006_GT-006_launch_brief.md) и [runtimes/claudecode/runs/RUN-006_GT-006_launch_brief.md](./runtimes/claudecode/runs/RUN-006_GT-006_launch_brief.md).
-- Если нужен уже следующий launch-ready пакет для runtime-authored failure package, откройте [runtimes/codex/runs/RUN-007_GT-007_launch_brief.md](./runtimes/codex/runs/RUN-007_GT-007_launch_brief.md) и [runtimes/claudecode/runs/RUN-007_GT-007_launch_brief.md](./runtimes/claudecode/runs/RUN-007_GT-007_launch_brief.md).
-- Если нужен уже не launch, а результат первого параллельного прогона, откройте [comparison/RUN-001_GT-001_scorecard.md](./comparison/RUN-001_GT-001_scorecard.md).
-- Если нужен comparison-ready шаблон для следующей волны, откройте [comparison/RUN-002_GT-002_scorecard_template.md](./comparison/RUN-002_GT-002_scorecard_template.md).
-- Если нужен comparison-ready шаблон для следующего шага после GT-002, откройте [comparison/RUN-003_GT-003_scorecard_template.md](./comparison/RUN-003_GT-003_scorecard_template.md).
-- Если нужен comparison-ready шаблон для frozen-contract wave, откройте [comparison/RUN-004_GT-004_scorecard_template.md](./comparison/RUN-004_GT-004_scorecard_template.md).
-- Если нужен comparison-ready шаблон для graceful failure escalation, откройте [comparison/RUN-005_GT-005_scorecard_template.md](./comparison/RUN-005_GT-005_scorecard_template.md).
-- Если нужен comparison-ready шаблон для retry-budget exhaustion closeout, откройте [comparison/RUN-006_GT-006_scorecard_template.md](./comparison/RUN-006_GT-006_scorecard_template.md).
-- Если нужен comparison-ready шаблон для runtime-authored failure package, откройте [comparison/RUN-007_GT-007_scorecard_template.md](./comparison/RUN-007_GT-007_scorecard_template.md).
-- Если нужен отдельный слой состояния для долгоживущей организации, начните с [core/state/README.md](./core/state/README.md).
-- Если нужен обзор экосистемы и культурного контекста вокруг AI-assisted разработки, читайте [VibeCoding.md](./VibeCoding.md).
-- Если нужен методологический и прикладной материал по агентной работе с ИИ и Claude Code, читайте [claudecode_process_1.md](./claudecode_process_1.md).
-- Если нужен более системный и официальный разбор самого устройства Claude Code, читайте [claudecode-precess_2.md](./claudecode-precess_2.md).
-- Если нужен отдельный актуальный разбор устройства Codex и его механизмов управления, читайте [codex_process_1.md](./codex_process_1.md).
-- Если нужен самый прикладной и структурированный гайд по устройству Claude Code, читайте [cc_managment.md](./cc_managment.md); для быстрого входа используйте [cc_managment_readme.md](./cc_managment_readme.md).
-- Если нужен самый прикладной и структурированный гайд по устройству Codex, читайте [codex_managment.md](./codex_managment.md); для быстрого входа используйте [codex_managment_readme.md](./codex_managment_readme.md).
-- Если нужен прямой и понятный неразработчику выбор между двумя агентами по функциям, ограничениям и типам кейсов, читайте [claudecode_vs_codex.md](./claudecode_vs_codex.md).
-- Если нужен дополнительный практический угол зрения на распределение ролей между двумя агентами, читайте [claudecode_vs_codex2.md](./claudecode_vs_codex2.md).
-- Если нужен практический справочник по самому Claude Code, начните с [Use Claude Code Desktop.md](./Use%20Claude%20Code%20Desktop.md), затем переходите к [Claude Code settings.md](./Claude%20Code%20settings.md) и [Configure permissions.md](./Configure%20permissions.md).
+Остальные файлы в корне, такие как [CLAUDE.md](/Users/alexeykrolmini/Code/essays/CLAUDE.md) и [`.claude`](/Users/alexeykrolmini/Code/essays/.claude), являются локальной инфраструктурой среды, а не частью учебного контента.
