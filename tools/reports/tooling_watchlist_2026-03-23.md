@@ -1,172 +1,324 @@
 # Tooling Watchlist — Code & Agents
 
-Еженедельный отчёт · 16-22 марта 2026 · Выпуск #2
-
-## 1. Executive Summary
-
-- **Cursor Composer 2: дешевле на 86%, но скандал с Kimi K2.5.** Cursor выпустил Composer 2 (19 марта) на базе open-source Kimi K2.5 (Moonshot AI) с RL-дообучением. CursorBench 61.3 (бьёт Claude Opus 4.6), цена $0.50/M input Standard. В тот же день обнаружен model ID kimi-k2p5-rl-0317 — Cursor не указал базовую модель. После критики сообщества Cursor признал базу; Moonshot подтвердил авторизованное партнёрство через Fireworks AI.
-
-- **OpenAI приобретает Astral (uv, Ruff, ty) + GPT-5.4 mini/nano.** 19 марта OpenAI объявила о покупке Astral — авторов uv, Ruff и ty, которыми пользуются миллионы Python-разработчиков. Параллельно вышли GPT-5.4 mini (2x быстрее, 30% квоты Codex) и nano ($0.20/M input). Стратегия: встроить Codex во весь жизненный цикл разработки.
-
-- **Claude Code: 6 релизов за неделю + Cowork Dispatch.** Anthropic выпустил v2.1.76-2.1.81 за 6 дней: StopFailure hook, --bare флаг для CI, MCP push-каналы (--channels), видимость rate limits в statusline, -80MB RAM на старте. Cowork Dispatch (17 марта) — управление десктопным агентом с телефона через persistent thread.
-
-- **Google Stitch: «vibe design» обрушил Figma на 7-10%.** Google перезапустил Stitch (18 марта) как AI-дизайн-канвас: бесконечный холст, voice-дизайн, DESIGN.md формат, MCP-сервер для экспорта в Claude Code/Cursor. Акции Figma упали 7-10%. AI Studio получил full-stack vibe coding с Firebase и Next.js.
-
-- **xAI: Grok Computer «скоро» + Grok 4.20 GA.** В коде Grok обнаружен флаг enable_grok_computer — компьютерный агент на базе Grok + Tesla. Маск подтвердил: «скоро». Grok 4.20 вышел из бета (2M контекст, 230 tok/sec, $2/$6). grok-cli v1.0.0-rc3 добавил sub-agents, MCP, Telegram-управление.
-
-## 2. По инструментам
-
-### Claude Code / Cowork (Anthropic)
-
-**Новые фичи:**
-
-- 6 релизов за неделю (v2.1.76 - v2.1.81): StopFailure hook (обработка ошибок API), plugin persistent state, streaming line-by-line, VSCode /remote-control, --console auth, turn duration toggle.
-- v2.1.80: rate limits видны в statusline (использование 5-часового и 7-дневного окон), --channels research preview (MCP серверы могут push-ить сообщения в сессию), -80MB RAM на старте для 250K-файловых репо.
-- v2.1.81: --bare флаг для headless CI/CD скриптинга (без hooks, LSP, plugins), MCP output collapsing (сворачивание выхода в одну строку).
-- v2.1.77: Opus 4.6 output tokens: 64K default / 128K max. Фикс критической уязвимости: PreToolUse hooks с allow обходили deny-правила.
-- Cowork Dispatch (17 марта): persistent thread между десктопом и телефоном. Отправляете задачу с iPhone/Android, Claude выполняет на десктопе. Research preview для Max, затем Pro.
-- Промо 2x лимитов (13-28 марта): двойные лимиты в off-peak часы для Free/Pro/Max/Team. Бонусное использование НЕ считается против недельных лимитов.
-
-**Кейсы:**
-
-- Rakuten: реализация функции в vLLM (12.5M строк кода) за 7 часов автономной работы, 99.9% числовая точность.
-- TELUS: 500,000+ часов сэкономлено, код доставляется на 30% быстрее, 13,000+ внутренних AI-решений.
-- Viget: Node.js CLI-менеджер — /debug нашёл root cause (storage.js:24, тихое обрезание описаний >200 символов) без изменений кода; Issue #2: 4 файла, 17 новых тестов, PR — за один промпт.
-- Anthropic внутренне: 90% кода — AI-written, 60% работы с AI (было 28% год назад), 60-100 внутренних релизов/день.
-
-**Оценка:** Полезно прямо сейчас — да. --bare флаг для CI и --channels (MCP push) — ключевые для автоматизации. Cowork Dispatch пока research preview с ~50/50 надёжностью, но концепция управления агентом с телефона — практичная для длинных задач. 6 релизов за неделю показывают максимальную скорость итераций среди всех инструментов.
+> **Отчёт за неделю:** 17–23 марта 2026  
+> **Дата генерации:** 23 марта 2026  
+> **Версия спецификации:** 3.1
 
 ---
 
-### Codex (OpenAI)
+## Executive Summary
 
-**Новые фичи:**
-
-- GPT-5.4 mini (17-18 марта): 2x быстрее предшественника, 400K контекст, 30% квоты Codex (сессии в 3.3x длиннее). API: $0.75/$4.50/M. GPT-5.4 nano: API-only, $0.20/$1.25/M — для классификации и лёгких субагентов.
-- Приобретение Astral (19 марта): uv, Ruff и ty входят в экосистему Codex. 2M+ WAU подтверждено, 3x рост пользователей с января 2026. Оценка сделки ~$500M+.
-- CLI 0.115.0 (16 марта): full-res image inspection, Python SDK для filesystem RPCs, Smart Approvals с guardian-маршрутизацией, realtime websocket transcription.
-- CLI 0.116.0 (19 марта): device-code ChatGPT sign-in, userpromptsubmit hook (перехват промптов), memory citations в сообщениях агента. Регрессия на Debian 12.
-- Codex App 26.312: custom themes, revamped Automations (local vs worktree, custom model и reasoning level на автоматизацию, templates).
-- Скандал со скоростью (21 марта): пользователи сообщают об эффективном 2x замедлении; /fast режим теперь сжигает кредиты 2x быстрее. Обычная скорость стала «заблокированной за paywall».
-
-**Кейсы:**
-
-- WorkOS: 4-5 параллельных задач обслуживания утром, 85-90% success rate (было 40-60%). 2-3 готовых PR к завтраку.
-- Nathan Lambert: GPT-5.4 + /fast + xhigh reasoning как execution-стадия после планирования в Claude Opus. Никогда не попадает в rate limit на $200/мес плане.
-- Enterprise RBAC рефакторинг: Express.js auth middleware > role-based access > тесты > self-correct > PR. Ноль ручных вмешательств, +47/-12 строк, 4 теста пройдены.
-
-**Оценка:** Полезно прямо сейчас — да. Приобретение Astral — стратегический шаг: uv/Ruff/ty встроятся в Codex-экосистему. GPT-5.4 mini как субагент-модель — экономичная замена основной модели для рутинных задач. Скандал с /fast (2x кредитов за прежнюю скорость) — серьёзный минус для пользователей Pro-плана.
+- **Claude Code выпустил 5 релизов (v2.1.77–2.1.81)** с критическими изменениями для CI/CD-пайплайнов (`--bare`), безопасности хуков и нового механизма каналов (`--channels`). Opus 4.6 получил лимит вывода 64K/128K токенов — существенно расширяет возможности для длинных кодогенераций.
+- **Codex CLI 0.116.0** добавил хук `userpromptsubmit` для перехвата и модификации промптов до выполнения — ключевая фича для enterprise-безопасности и автоматизации. В Codex App обновлены Automations с поддержкой разных моделей и уровней рассуждения на задачу.
+- **Google Stitch перезапущен как «vibe design»** — бесконечный AI-канвас с голосовым управлением, одновременной генерацией 5 экранов, MCP-сервером и экспортом в AI Studio/Figma/React. Gemini CLI v0.34.0 включил Plan Mode по умолчанию и gVisor-песочницу.
+- **Grok 4.20 вышел из беты** — 2M контекст, 230 tok/sec, мультиагентная система через параметр API `agent_count`. В коде обнаружен флаг `enable_grok_computer` — Musk подтвердил скорый запуск computer-use.
+- **Тема недели: безопасность агентов.** Claude Code исправил критическую уязвимость с тихим отключением песочницы и обходом `deny`-правил в хуках. Codex добавил `userpromptsubmit` как гейткипер перед выполнением. Gemini CLI встроил gVisor. Тренд — все инструменты усиливают изоляцию выполнения.
 
 ---
 
-### Cursor
-
-**Новые фичи:**
-
-- Composer 2 (19 марта): собственная модель на базе Kimi K2.5 + RL. CursorBench 61.3 (Composer 1.5: 44.2), Terminal-Bench 61.7 (бьёт Claude Opus ~58). Цена: $0.50/$2.50 Standard (-86% от Composer 1.5). Отдельный пул кредитов от Claude/GPT.
-- Compaction-in-the-loop RL: модель учится сжимать собственный контекст до ~1000 токенов при достижении лимита. Это часть обучающего сигнала — многочасовые сессии без деградации.
-- Security Automation Templates (16 марта): 4 шаблона из внутренней security-команды Cursor. Agentic Security Review (тысячи PR, сотни предотвращённых проблем), Vuln Hunter, Anybump (автопатч зависимостей), Invariant Sentinel (ежедневный drift-мониторинг).
-- Скандал Kimi K2.5 (19-22 марта): разработчик нашёл model ID kimi-k2p5-rl-0317. Moonshot AI подтвердил токенизатор. Лицензия Kimi требует UI-атрибуцию при >$20M/мес выручки; у Cursor ~$2B ARR. Cursor признал базу, назвал отсутствие disclosure «промахом». Moonshot подтвердил легитимность партнёрства.
-
-**Кейсы:**
-
-- Money Forward (1000+ сотрудников): 15-20 часов экономии на инженера/неделю. QA: -70% времени на тест-кейсы (Jira/Notion > Playwright через MCP). Дизайнеры итерируют по live-фронтенду прямо в Cursor.
-- Cursor Security: Anybump полностью автоматизировал патчинг зависимостей. Agentic Security Review предотвратил сотни проблем за 2 месяца.
-- Разработчик: сложная UI-задача за 1 час (vs 2.5 часа на Gemini 3.1 Pro). SaaS-фича за 5-10 минут (vs 30-45 с Claude). Слабость: 6.4M токенов на модификацию типов переводов — провал.
-
-**Оценка:** Полезно прямо сейчас — да, с оговорками. Composer 2 Standard — лучшее соотношение цена/качество на рынке для повседневных задач. Security templates — бесплатная отправная точка для DevSecOps. Риск: скандал с Kimi подорвал доверие; если Anthropic определит, что K2.5 дистиллирован из Claude, доступ Cursor к Claude может быть ограничен.
+## По инструментам
 
 ---
 
-### Google (AI Studio / Stitch / Jules / Gemini CLI)
+### 🔵 Приоритет 1: Claude Code / Cowork (Anthropic)
 
-**Новые фичи:**
+**5 релизов за неделю: v2.1.77 → v2.1.81 (17–20 марта 2026)**
 
-- Google Stitch «vibe design» (18 марта): перезапуск как AI-канвас. Бесконечный холст (5 экранов одновременно), voice-дизайн, DESIGN.md-формат для портативности дизайн-систем, Agent Manager для параллельных направлений, MCP-сервер + SDK, экспорт в AI Studio/Antigravity/Figma/React. Бесплатно: 350 генераций/мес. Акции Figma -7-10%.
-- AI Studio full-stack vibe coding (19 марта): Antigravity-агент в Build mode. Firebase auto-provisioning (Firestore + Auth), Secrets Manager, Next.js, автоустановка библиотек (Framer Motion, Shadcn), persistent state между сессиями, мультиплеер.
-- Gemini CLI v0.34.0 (17 марта): gVisor sandboxing, LXC контейнеры (экспериментально), tracker CRUD-инструменты, A2A timeout до 30 мин, фикс OOM на длинных сессиях. Plan Mode по умолчанию (из v0.33.0).
-- Jules: CI Fixer (авто-цикл fix > commit > resubmit на упавших GitHub Actions), Planning Critic (-9.5% отказов задач), Gemini 3.1 Pro по умолчанию, до 60 параллельных задач на Ultra.
-- Antigravity: ценовая реструктуризация сильно урезала квоты Pro ($20/мес). Ultra ($250/мес) теперь необходим для стабильного доступа к продвинутым моделям. Первый официальный Codelab (16 марта).
-- Скрытое изменение safety-фильтра в AI Studio: полное удаление ответа при любом триггере (вместо soft stop). >50% ответов удаляются, токены расходуются. Нет официального ответа от Google.
+#### Новые фичи
 
-**Кейсы:**
+**1. Флаг `--bare` для headless CI/CD (v2.1.81)**
 
-- Gemini CLI + Jules стек: Rust/WebAssembly Mandelbrot-приложение. CLI сгенерировал конфиг ESLint, SonarJS, Dependency Cruiser, Vitest, GitHub Actions. 3 Jules-агента (security, performance, UI) создают ежедневные PR, мерж с телефона.
-- Stitch > AI Studio: от дизайна до deploy за 20-25 минут. Извлечение дизайн-системы из URL, 5 экранов одновременно, voice для вариантов, экспорт в AI Studio для кода.
-- AI Studio: мультиплеерная 3D-игра Neon Arena из одного промпта (Three.js + WebSocket + Firebase Auth + leaderboard).
-- Gemini CLI Plan Mode: миграция БД — CLI читает схему, проверяет GitHub issues, генерирует план, разработчик редактирует inline, затем Flash выполняет.
+- **Что это:** CLI-флаг, который запускает Claude Code без hooks, LSP, синхронизации плагинов и обхода директорий скиллов. Синтаксис: `claude --bare -p "текст промпта" [--output-format json]`.
+- **Зачем нужен:** В CI/CD-окружениях (GitHub Actions, Jenkins) IDE-функционал не нужен и вызывает ошибки — нет терминала для интерактива, нет LSP-сервера. `--bare` убирает всё лишнее, оставляя только ядро агента.
+- **Пример использования:**
+  ```bash
+  # В GitHub Actions workflow
+  claude --bare -p "Review this PR for security issues" --output-format json > review.json
+  
+  # В скрипте автоматической проверки
+  claude --bare -p "Run lint and fix all TypeScript errors in src/" --output-format stream-json
+  ```
+- **Дополнительно:** снижение потребления RAM на ~80 МБ за счёт отказа от загрузки плагинов.
 
-**Оценка:** Полезно прямо сейчас — да (Stitch + Jules + Gemini CLI Plan Mode). Stitch с DESIGN.md и MCP — первый бесплатный инструмент дизайна, который встраивается в код-пайплайн. Jules CI Fixer по-прежнему лучший бесплатный инструмент для ночных проверок. Минус: ценовая реструктуризация Antigravity и молчание Google по safety-фильтру.
+**2. Флаг `--channels` — push-сообщения от MCP-серверов (v2.1.81, research preview)**
+
+- **Что это:** Экспериментальный флаг, позволяющий MCP-серверам отправлять сообщения прямо в сессию Claude Code в реальном времени. Синтаксис: `claude --channels`.
+- **Зачем нужен:** До этого MCP-серверы могли только отвечать на запросы (pull-модель). С `--channels` сервер может сам инициировать отправку данных — например, уведомление о завершении CI-билда, алерт от мониторинга, обновление от другого агента.
+- **Пример использования:**
+  ```bash
+  # Запуск с включёнными каналами
+  claude --channels
+  
+  # MCP-сервер мониторинга может push'ить:
+  # "Деплой staging завершён, 2 теста упали: test_auth.py, test_api.py"
+  # Прямо в контекст текущей сессии
+  ```
+- **Статус:** Research preview — API каналов может измениться.
+
+**3. `StopFailure` hook event (v2.1.78)**
+
+- **Что это:** Новое событие в системе хуков, которое срабатывает, когда turn агента завершается из-за API-ошибки (rate limit, сбой авторизации, сетевая ошибка). Конфигурация в `.claude/settings.json` или `CLAUDE.md`.
+- **Зачем нужен:** Раньше при падении API-вызова сессия просто останавливалась. Теперь можно автоматически реагировать: отправить уведомление в Slack, записать в лог, переключиться на fallback-модель, или подождать и повторить.
+- **Пример использования:**
+  ```json
+  {
+    "hooks": {
+      "StopFailure": [{
+        "type": "command",
+        "command": "curl -X POST $SLACK_WEBHOOK -d '{\"text\": \"Claude Code сессия упала: rate limit\"}'"
+      }]
+    }
+  }
+  ```
+
+**4. `${CLAUDE_PLUGIN_DATA}` — персистентное состояние плагинов (v2.1.78)**
+
+- **Что это:** Переменная окружения, указывающая на директорию, где плагины могут хранить данные, которые сохраняются между обновлениями плагина. При `plugin uninstall` — запрос подтверждения перед удалением.
+- **Зачем нужен:** Ранее обновление плагина удаляло все его данные (кеши, настройки, историю). Теперь плагины могут хранить конфигурацию и состояние в `${CLAUDE_PLUGIN_DATA}`, и оно переживает reinstall/update.
+- **Пример:** Плагин для управления задачами хранит свой state в `${CLAUDE_PLUGIN_DATA}/tasks.json` — при обновлении плагина данные на месте.
+
+**5. Frontmatter `effort`, `maxTurns`, `disallowedTools` для плагинных агентов (v2.1.78)**
+
+- **Что это:** Новые поля frontmatter, которые плагины могут задавать в своих скиллах и агентах: `effort` (уровень усилия модели), `maxTurns` (максимальное число шагов), `disallowedTools` (список запрещённых инструментов).
+- **Зачем нужен:** Позволяет плагин-авторам ограничивать поведение агента — например, review-плагин может запретить агенту использовать Bash и ограничить до 5 шагов, чтобы тот только читал код и писал комментарии, не выполняя команды.
+- **Пример (frontmatter в skill файле):**
+  ```yaml
+  ---
+  effort: low
+  maxTurns: 5
+  disallowedTools: ["Bash", "Write"]
+  ---
+  Review the PR and provide inline comments only.
+  ```
+
+**6. Opus 4.6 — выходные токены 64K по умолчанию / 128K максимум (v2.1.77)**
+
+- **Что это:** Лимит выходных токенов для Opus 4.6 увеличен до 64K по умолчанию (ранее 16K), с возможностью до 128K.
+- **Зачем нужен:** При генерации длинных файлов (миграции, большие рефакторинги, documentation) модель раньше обрезала вывод. Теперь можно генерировать целые модули за один шаг.
+
+**7. `allowRead` sandbox setting (v2.1.77)**
+
+- **Что это:** Новая настройка песочницы: `sandbox.filesystem.allowRead` — разрешает чтение определённых путей вне рабочей директории.
+- **Зачем нужен:** В монорепозиториях агенту часто нужно читать shared-конфигурации или зависимости за пределами текущего пакета. `allowRead` разрешает чтение без разрешения записи — баланс безопасности и удобства.
+- **Пример (`settings.json`):**
+  ```json
+  {
+    "sandbox": {
+      "filesystem": {
+        "allowRead": ["/shared/configs", "/node_modules/.cache"]
+      }
+    }
+  }
+  ```
+
+**8. Инструмент `ExitWorktree` (v2.1.79)**
+
+- **Что это:** Новый встроенный инструмент, позволяющий агенту программно завершить работу в worktree и вернуться в основной рабочий каталог.
+- **Зачем нужен:** При работе с git worktrees (параллельные ветки) агент может застрять в worktree после завершения задачи. `ExitWorktree` позволяет чисто выйти.
+
+**9. `CLAUDE_CODE_DISABLE_CRON` env var (v2.1.79)**
+
+- **Что это:** Переменная окружения для отключения фоновых cron-задач Claude Code. Синтаксис: `CLAUDE_CODE_DISABLE_CRON=1 claude`.
+- **Зачем нужен:** В CI/CD и тестовых окружениях фоновые задачи мешают — запускают ненужные проверки, конкурируют за ресурсы. Этот флаг полностью отключает cron-подсистему.
+
+**10. Исправление стоимости: prompt cache fix (v2.1.79–80)**
+
+- **Что это:** Исправлена ошибка кеширования промптов, которая приводила к повторным запросам вместо использования кеша.
+- **Зачем нужен:** Снижение стоимости API-вызовов **до 12x** для сессий с повторяющимся контекстом. Критично для команд с активным использованием — экономия может составить сотни долларов в месяц.
+
+#### Исправления безопасности
+
+- **Тихое отключение песочницы (v2.1.78):** Если `sandbox.enabled: true`, но зависимости песочницы отсутствовали, Claude Code молча работал без изоляции. Теперь показывается предупреждение при старте.
+- **Обход deny-правил в хуках (v2.1.77):** PreToolUse хуки с `allow` могли перекрывать `deny`-правила — агент видел и пытался использовать заблокированные MCP-инструменты. Исправлено: `deny` теперь приоритетнее `allow`.
+- **Защищённые директории в bypassPermissions (v2.1.78):** `.git`, `.claude` и другие защищённые директории были доступны на запись в режиме `bypassPermissions`. Исправлено.
+
+#### Оптимизации производительности
+
+- `--resume` стал на **45% быстрее** (v2.1.77).
+- Старт на macOS ускорен на **~60 мс** (v2.1.77).
+- Потребление RAM снижено на **~80 МБ** (v2.1.81).
+
+#### Кейсы использования
+
+**Кейс: Claude Code как most-used AI coding tool (опрос The Pragmatic Engineer, март 2026)**
+- **Проблема:** Инженерам нужен был инструмент, который не просто автодополняет, а выполняет задачи end-to-end — рефакторинг, миграции, полные фичи.
+- **Решение:** По данным [опроса The Pragmatic Engineer](https://dev.to/alexmercedcoder/ai-weekly-claude-code-dominates-mcp-goes-mainstream-week-of-march-5-2026-15af) (~1000 инженеров), Claude Code стал самым используемым AI coding tool, обогнав GitHub Copilot и Cursor за 8 месяцев. 75% инженеров в небольших компаниях используют его как основной инструмент.
+- **Результат:** 55% инженеров регулярно используют AI-агентов (а не просто автокомплит). Среднее — 2–4 инструмента одновременно.
+
+#### Оценка: Да — тестировать на этой неделе
+
+`--bare` — критически важен для CI/CD интеграций. Исправления безопасности хуков обязательны к обновлению. `--channels` стоит попробовать если используете MCP.
 
 ---
 
-### xAI (Grok)
+### 🟢 Приоритет 1: Codex (OpenAI)
 
-**Новые фичи:**
+**2 релиза CLI: v0.115.0 (16 марта) и v0.116.0 (19 марта). Codex App v26.312.**
 
-- Grok 4.20 GA (18 марта): вышел из бета. 2M контекст, 230 tok/sec (быстрее Gemini Flash и GPT-5.4 на output), $2/$6/M. Multi-agent: 4 или 16 агентов через API параметр agent_count.
-- enable_grok_computer (22 марта): флаг обнаружен в коде Grok. Маск: «Coming out soon». Совместная разработка с Tesla (проект Macrohard). Компьютерный агент: Grok рассуждает, агент управляет экраном/клавиатурой/мышью.
-- grok-cli v1.0.0-rc3 (22 марта): open-source терминальный агент. Sub-agents по умолчанию, MCP, headless JSON (CI), Telegram remote control. Дефолтная модель: grok-code-fast-1.
-- Grok Build (18 марта): локальный open-source агент, 8 параллельных агентов (Planner, Search, Coder, Reviewer, Tester). Нет облачных зависимостей, нет API-затрат.
-- Provisioned Throughput (12 марта, adoption 16-17): $10/unit/day, SLA 99.9%. grok-4-1-fast-reasoning: 31,500 input TPM/unit.
-- Collections API (активен на неделе): встроенный RAG — до 100K файлов / 100GB. DeepCodeBench: 86% (Gemini Pro 3: 85%, GPT-5.1: 81%). $2.50/1000 поисков.
-- Найм с Wall Street (17 марта): трейдеры, банкиры, кредитные аналитики для обучения Grok финансовому моделированию.
+#### Новые фичи
 
-**Кейсы:**
+**1. Хук `userpromptsubmit` (CLI v0.116.0)**
 
-- grok-code-fast-1 в Copilot Free: автоматический выбор в VS Code/JetBrains/Xcode. 70.8% SWE-Bench, 92 tok/sec, 256K контекст, >90% prompt cache hit.
-- Grok 4.20 multi-agent (16 агентов): высокая производительность на tau2-Bench (69.6%). Потребляет значительно больше токенов.
-- grok-cli: headless JSON output для CI, Telegram remote control для длительных задач, sub-agents по умолчанию.
+- **Что это:** Хук, который срабатывает после того, как пользователь отправил промпт, но до того, как агент начнёт его выполнять. Хук может заблокировать промпт, модифицировать его или добавить контекст. Промпт не попадает в историю, пока хук не одобрит его.
+- **Зачем нужен:** Enterprise-безопасность: можно фильтровать промпты на наличие секретов, PII, или запрещённых действий до выполнения. Автоматизация: можно дополнять промпт контекстом из внешних систем (Jira-тикет, последний коммит).
+- **Пример использования:**
+  ```python
+  # Hook script: augment_prompt.py
+  import sys, json
+  
+  data = json.load(sys.stdin)
+  prompt = data["prompt"]
+  
+  # Блокировка если содержит секреты
+  if "API_KEY" in prompt or "password" in prompt:
+      print(json.dumps({"action": "block", "reason": "Prompt contains secrets"}))
+  else:
+      # Добавить контекст из текущей ветки
+      import subprocess
+      branch = subprocess.check_output(["git", "branch", "--show-current"]).strip()
+      augmented = f"[Branch: {branch}] {prompt}"
+      print(json.dumps({"action": "allow", "prompt": augmented}))
+  ```
 
-**Оценка:** Возможно позже (Grok Computer, Grok Build) / уже полезно (grok-code-fast-1 как fast tier). enable_grok_computer — самый интригующий анонс недели, но до релиза — неизвестно. grok-cli с Telegram-управлением — интересная альтернатива для CI/CD. Основной gap: Claude Sonnet 5 чинит баги в 1.6x быстрее и на 56% дешевле. Ждём результатов ребилда к Q3.
+**2. Device-code ChatGPT sign-in (CLI v0.116.0)**
+
+- **Что это:** Новый метод авторизации через ChatGPT: CLI генерирует device-code, пользователь авторизуется через браузер на ChatGPT. Также поддержка обновления существующих токенов ChatGPT.
+- **Зачем нужен:** На headless-серверах и в WSL нет возможности открыть браузер для OAuth-потока. Device-code позволяет авторизоваться с любого устройства, введя код.
+
+**3. Full-resolution image inspection (CLI v0.115.0)**
+
+- **Что это:** Модели могут запрашивать полноразмерное изображение через `view_image` и `codex.emitImage(..., detail: "original")` вместо downsized версии.
+- **Зачем нужен:** Для точных визуальных задач — проверка пикселей в UI-скриншотах, анализ диаграмм, работа с дизайн-макетами, где сжатие теряет детали.
+
+**4. Python SDK для filesystem RPCs (CLI v0.115.0)**
+
+- **Что это:** Python SDK получил прямой доступ к файловой системе Codex через RPC-вызовы. Можно читать, писать, перемещать файлы программно из Python-скриптов.
+- **Зачем нужен:** Скрипты автоматизации (тесты, деплой, обработка данных) могут напрямую взаимодействовать с файловой системой Codex без костылей через shell-команды.
+
+**5. Smart Approvals — guardian subagent (CLI v0.115.0)**
+
+- **Что это:** Система маршрутизации через sub-агента-«стража», который решает, нужно ли одобрение пользователя для конкретного действия. Автоматически одобряет безопасные операции, запрашивает подтверждение для рискованных.
+- **Зачем нужен:** Баланс между скоростью (не спрашивать одобрение на `cat file.txt`) и безопасностью (спрашивать перед `rm -rf` или деплоем). Guardian-агент анализирует контекст и риск каждого действия.
+
+**6. Codex App v26.312 — обновлённые Automations**
+
+- **Что это:** Полностью переработанные Automations в десктопном приложении Codex. Теперь можно настраивать: local vs. worktree execution, кастомную модель и уровень reasoning на каждую автоматизацию.
+- **Зачем нужен:** Разные задачи требуют разных моделей: быстрый lint — дешёвая модель без reasoning, сложный рефакторинг — мощная модель с deep reasoning. Теперь это настраивается per-automation.
+
+**7. `--channels` для realtime websocket (CLI v0.115.0)**
+
+- **Что это:** Поддержка websocket-каналов для realtime-коммуникации между CLI и серверами. Аналогично Claude Code `--channels`.
+- **Зачем нужен:** Стриминг обновлений от внешних систем прямо в сессию Codex — CI-статусы, результаты тестов, уведомления.
+
+#### Кейсы использования
+
+**Кейс: WorkOS — 85–90% success rate на maintenance-задачах (Zack Proser, Applied AI team)**
+- **Проблема:** Команда Applied AI в WorkOS поддерживает несколько full-stack JavaScript-приложений (Cloudflare, Vercel). Ежедневные maintenance-задачи (фиксы TypeScript-ошибок, обновление API-схем, миграции middleware) съедали 30–40% утреннего времени.
+- **Решение:** Инженер параллельно ставит 4–5 задач в Codex утром до начала deep work: «Fix TypeScript error in onboarding flow», «Update webhooks endpoint for new event schema», «Add error boundaries to admin dashboard», «Migrate legacy auth middleware». Codex работает параллельно во время кофе.
+- **Результат:** Success rate вырос с 40–60% до **85–90%** для well-scoped maintenance-задач. Двухуровневый подход: Codex для рутины, Claude Code/Cursor для архитектурных задач. Источник: [Zack Proser — Codex Review 2026](https://zackproser.com/blog/openai-codex-review-2026).
+
+#### Оценка: Да — тестировать на этой неделе
+
+`userpromptsubmit` — ключевая фича для команд, которые хотят автоматизировать и контролировать промпты. Smart Approvals меняет баланс «скорость vs. безопасность». Стоит обновиться до 0.116.0.
 
 ---
 
-## 3. Таблица сравнения
+### 🟡 Приоритет 2: Google (Stitch / AI Studio / Jules / Gemini CLI)
 
-| Инструмент | Новые фичи | Новые кейсы | Влияние | Тесты? |
+#### Google Stitch — перезапуск как «vibe design» (18 марта 2026)
+
+- **Что это:** Радикальное обновление Stitch — из простого генератора макетов в полноценную AI-платформу дизайна с бесконечным канвасом. Ключевые возможности:
+  - **Одновременная генерация 5 экранов** — можно описать весь flow приложения, и Stitch сгенерирует набор экранов с единым дизайном.
+  - **Голосовые команды** — описание изменений голосом прямо в канвасе.
+  - **DESIGN.md** — агент-friendly markdown-файл для экспорта/импорта дизайн-системы между проектами и инструментами.
+  - **MCP-сервер + SDK** — Stitch как MCP-сервер для интеграции в агентные пайплайны (2.4K stars на GitHub).
+  - **Экспорт:** AI Studio, Antigravity, Figma (с Auto Layout), React-компоненты, HTML/Tailwind CSS.
+- **Бесплатный тариф:** 350 генераций/месяц.
+- **Для инженеров:** URL-based design extraction — вставляешь URL, Stitch анализирует дизайн-систему (цвета, типографика, spacing, стиль компонентов) и создаёт макеты в том же стиле.
+- Источник: [Google Blog — Introducing «vibe design» with Stitch](https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-ai-ui-design/)
+
+#### Gemini CLI v0.34.0 (17 марта 2026)
+
+- **Plan Mode включён по умолчанию** — CLI теперь по умолчанию разбивает сложные задачи на шаги и выполняет их последовательно. Ранее нужно было активировать вручную.
+- **gVisor (runsc) sandboxing** — нативная поддержка gVisor для изоляции выполнения команд. Это production-grade песочница от Google (используется в GKE). Экспериментальная поддержка LXC-контейнеров.
+- **A2A (agent-to-agent) timeout увеличен до 30 минут** — для длительных задач между агентами.
+- Источник: [Gemini CLI Changelogs](https://geminicli.com/docs/changelogs/)
+
+#### Jules — обновления марта
+
+- **CI Fixer** — автоматическое исправление упавших CI-тестов.
+- **Planning Critic** — sub-агент, который ревьюит план выполнения перед стартом.
+- **Gemini 3.1 Pro** стал моделью по умолчанию.
+- **Важно:** С 25 марта бесплатный тариф Gemini ограничен Flash-моделями; Pro-модели только по подписке.
+
+#### Оценка: Возможно позже
+
+Stitch интересен для прототипирования UI — стоит попробовать если есть задачи по дизайну. MCP-сервер Stitch может быть полезен в агентных пайплайнах. Gemini CLI gVisor — хороший шаг для безопасности, но если уже используете Claude Code/Codex — не срочно.
+
+---
+
+### ⚪ Приоритет 3: xAI (Grok — инструменты для кода и агентов)
+
+#### Grok 4.20 — выход из беты (март 2026)
+
+- **2M контекстное окно**, скорость вывода **~230 tok/sec**, цена API: **$2 input / $6 output за 1M токенов**.
+- **Мультиагентная система** через параметр API `agent_count`: 4 специализированных агента (координатор + исследователь + логик + креативный), режим «Heavy» — до 16 агентов для глубоких задач.
+- Источник: [xAI Release Notes](https://docs.x.ai/developers/release-notes)
+
+#### `enable_grok_computer` — computer-use на подходе
+
+- Флаг обнаружен в коде (22 марта). Musk подтвердил «coming soon» — Grok получит возможность управлять компьютером (по аналогии с Claude computer use). Деталей реализации пока нет.
+
+#### grok-cli v1.0.0-rc3
+
+- Sub-агенты, MCP-поддержка, headless JSON-режим, удалённое управление через Telegram.
+- Источник: [GitHub — superagent-ai/grok-cli](https://github.com/superagent-ai/grok-cli/releases)
+
+#### grok-code-fast-1 в GitHub Copilot Free
+
+- Модель доступна через auto model selection в Copilot Free на VS Code, JetBrains, Xcode, Eclipse.
+- Источник: [GitHub Blog — Grok Code Fast 1 in Copilot Free](https://github.blog/changelog/2026-03-04-grok-code-fast-1-is-now-available-in-copilot-free-auto-model-selection/)
+
+#### Оценка: Нет — наблюдать
+
+Мультиагентная система Grok 4.20 интересна концептуально, но экосистема инструментов пока незрелая. `enable_grok_computer` стоит отслеживать — если реализация будет на уровне Claude computer use, это станет значимым.
+
+---
+
+## Таблица сравнения
+
+| Инструмент | Новые фичи | Новые кейсы | Влияние | Тесты на этой неделе |
 |---|---|---|---|---|
-| Claude Code / Cowork | 6 релизов (v2.1.76-81); --bare CI; --channels MCP push; Dispatch; 2x лимиты промо | Rakuten 99.9% точность; TELUS 500K+ часов; Viget debug в 1 промпт; 90% AI-кода Anthropic | Высокое | Да |
-| Codex (OpenAI) | GPT-5.4 mini/nano; Astral (uv/Ruff/ty); CLI 0.115-0.116; Automations revamp; /fast скандал | WorkOS 85-90% success; RBAC auto-refactor; Claude+Codex 2-model workflow | Высокое | Да |
-| Cursor | Composer 2 (-86% цена, Kimi K2.5 база); Security Templates (4 шт.); Kimi скандал | Money Forward -20ч/нед; Security auto-patch; UI задача 1ч vs 2.5ч; 6.4M токенов fail | Высокое | Да |
-| Google (AI Studio / Stitch / Jules) | Stitch vibe design + MCP; AI Studio full-stack; Gemini CLI v0.34; Jules CI Fixer; Safety-фильтр проблема | Gemini CLI+Jules стек; Stitch > deploy 20 мин; Neon Arena мультиплеер; Plan Mode миграции | Среднее-высокое | Да (Stitch) |
-| xAI (Grok) | Grok 4.20 GA; enable_grok_computer; grok-cli rc3; Grok Build local; Collections RAG | grok-code-fast-1 в Copilot; 16-agent research; grok-cli CI+Telegram | Среднее | Нет (ждать) |
+| **Claude Code** | `--bare` для CI/CD, `--channels` (MCP push), `StopFailure` hook, frontmatter ограничения агентов, Opus 4.6 64K/128K токенов, исправления безопасности хуков и песочницы | #1 AI coding tool по опросу (75% в малых компаниях) | **Высокое** | **Да** |
+| **Codex CLI** | `userpromptsubmit` хук, device-code auth, Smart Approvals guardian, full-res image inspection, Python SDK filesystem, обновлённые Automations | WorkOS: 85–90% success rate, 4–5 параллельных задач утром | **Высокое** | **Да** |
+| **Google Stitch / Gemini CLI / Jules** | Stitch «vibe design» перезапуск (MCP, DESIGN.md, 5 экранов, голос), Gemini CLI Plan Mode + gVisor, Jules CI Fixer + Planning Critic | — | **Среднее** | **Нет** |
+| **xAI (Grok)** | Grok 4.20 GA (2M ctx, мультиагент), `enable_grok_computer` обнаружен, grok-cli rc3, grok-code-fast-1 в Copilot Free | — | **Низкое** | **Нет** |
 
-## 4. Рекомендации на неделю
+---
 
-1. **Протестировать Google Stitch для нового проекта:** импортировать дизайн-систему из существующего сайта через URL, сгенерировать 5 экранов, экспортировать DESIGN.md в Claude Code или Cursor через MCP. Это бесплатно (350 генераций/мес) и потенциально заменяет ручной дизайн-этап. Документация: https://stitch.withgoogle.com
+## Рекомендации на неделю
 
-2. **Настроить Claude Code --bare для CI/CD пайплайна:** создать headless скрипт, который запускает Claude Code без hooks/LSP/plugins для автоматизированного code review или test generation в GitHub Actions. --bare + ANTHROPIC_API_KEY — чистый CI без побочных эффектов. Документация: https://code.claude.com/docs/en/cli-reference
+1. **Обновить Claude Code до v2.1.81 и проверить `--bare` в CI/CD.** Если используете Claude Code в GitHub Actions или любых пайплайнах — `--bare` убирает overhead и предотвращает ошибки от IDE-зависимостей. Заодно проверьте, что песочница не была тихо отключена (исправление из v2.1.78).
 
-3. **Начать использовать GPT-5.4 mini как модель субагентов в Codex:** переключить exploration-задачи и code review на GPT-5.4 mini (30% квоты, 2x скорость). Оставить GPT-5.4 для планирования и архитектурных решений. Команда: `codex --model gpt-5.4-mini`
+2. **Обновить Codex CLI до v0.116.0 и настроить `userpromptsubmit` хук.** Даже простой вариант — логирование всех промптов или фильтр секретов — значительно повышает безопасность и traceability. Для команд — обязательно.
+
+3. **Попробовать Google Stitch MCP-сервер для прототипирования UI.** Если в проекте есть задачи по дизайну интерфейсов — Stitch с DESIGN.md и экспортом в React может сэкономить дни работы. Бесплатные 350 генераций достаточно для полноценного теста.
+
+---
 
 ## Источники
 
-1. Releasebot — Claude Code v2.1.76-81 — https://releasebot.io/updates/anthropic/claude-code
-2. Anthropic — Release Notes / Dispatch — https://support.claude.com/en/articles/12138966-release-notes
-3. Forbes — Claude Dispatch — https://www.forbes.com/sites/ronschmelzer/2026/03/20/claude-dispatch-lets-you-control-claude-cowork-with-your-phone/
-4. Neil Dave — 5 Claude Code Features — https://theneildave.substack.com/p/5-claude-code-features-shipped-in
-5. Anthropic 2026 Agentic Coding Report — https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
-6. Viget — Using Claude Code Intentionally — https://www.viget.com/articles/using-claude-code-intentionally
-7. OpenAI — GPT-5.4 mini и nano — https://community.openai.com/t/introducing-gpt-5-4-mini-and-nano-our-most-capable-small-models-yet/1377015
-8. OpenAI — Acquiring Astral — https://openai.com/index/openai-to-acquire-astral/
-9. CNBC — OpenAI Astral acquisition — https://www.cnbc.com/2026/03/19/openai-to-acquire-developer-tooling-startup-astral.html
-10. OpenAI Codex Changelog (CLI 0.115-0.116) — https://developers.openai.com/codex/changelog/
-11. Zack Proser — Codex Review 2026 — https://zackproser.com/blog/openai-codex-review-2026
-12. Nathan Lambert — GPT-5.4 for Codex — https://www.interconnects.ai/p/gpt-54-is-a-big-step-for-codex
-13. Cursor — Composer 2 — https://cursor.com/blog/composer-2
-14. Cursor — Security Agents — https://cursor.com/blog/security-agents
-15. Cursor — Money Forward — https://cursor.com/blog/money-forward
-16. VentureBeat — Composer 2 vs Opus — https://venturebeat.com/technology/cursors-new-coding-model-composer-2-is-here-it-beats-claude-opus-4-6-but
-17. Hacker News — Kimi K2.5 скандал — https://news.ycombinator.com/item?id=47452404
-18. Google Blog — Stitch vibe design — https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-ai-ui-design/
-19. Google Blog — AI Studio full-stack — https://blog.google/innovation-and-ai/technology/developers-tools/full-stack-vibe-coding-google-ai-studio/
-20. Gemini CLI Changelog v0.34.0 — https://geminicli.com/docs/changelogs/
-21. Jules Changelog — https://jules.google/docs/changelog/
-22. DEV Community — Gemini CLI + Jules stack — https://dev.to/rowan_m/gemini-cli-and-jules-my-march-2026-stack-4146
-23. The AI Corner — Google Stitch guide — https://www.the-ai-corner.com/p/google-stitch-ai-design-tool-guide-2026
-24. xAI Release Notes — https://docs.x.ai/developers/release-notes
-25. TechFlow — Grok Computer flag — https://www.techflowpost.com/en-US/newsletter/117513
-26. GitHub — grok-cli v1.0.0-rc3 — https://github.com/superagent-ai/grok-cli
-27. TechCrunch — xAI Starting Over — https://techcrunch.com/2026/03/13/not-built-right-the-first-time-musks-xai-is-starting-over-again-again/
-28. Business Insider — Figma stock sinks — https://www.businessinsider.com/figma-stock-sinks-google-vibe-design-stitch-ai-tool-2026-3
+- [Claude Code Changelog](https://code.claude.com/docs/en/changelog) — официальные release notes v2.1.77–2.1.81
+- [Claude Code GitHub Releases](https://github.com/anthropics/claude-code/releases) — исходный код и бинарные релизы
+- [Codex CLI Changelog](https://developers.openai.com/codex/changelog/) — официальные release notes v0.115.0–0.116.0
+- [Zack Proser — OpenAI Codex Review 2026](https://zackproser.com/blog/openai-codex-review-2026) — кейс WorkOS, daily use
+- [Kingy AI — The Codex App Super Guide](https://kingy.ai/ai/the-codex-app-super-guide-2026-from-hello-world-to-worktrees-skills-mcp-ci-and-enterprise-governance/) — обзор Codex App и Automations
+- [Google Blog — Introducing «vibe design» with Stitch](https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-ai-ui-design/) — анонс перезапуска Stitch
+- [NxCode — Google Stitch Tutorial](https://www.nxcode.io/resources/news/google-stitch-tutorial-design-first-app-2026) — практический гайд по Stitch
+- [MindStudio — How to Use Google Stitch](https://www.mindstudio.ai/blog/how-to-use-google-stitch-website-design-system) — обзор экспорта в React и AI Studio
+- [Gemini CLI Changelogs](https://geminicli.com/docs/changelogs/) — release notes v0.34.0
+- [xAI Release Notes](https://docs.x.ai/developers/release-notes) — Grok 4.20 GA
+- [GitHub Blog — Grok Code Fast 1 in Copilot Free](https://github.blog/changelog/2026-03-04-grok-code-fast-1-is-now-available-in-copilot-free-auto-model-selection/)
+- [superagent-ai/grok-cli Releases](https://github.com/superagent-ai/grok-cli/releases) — grok-cli v1.0.0-rc3
+- [DEV Community — AI Weekly: Claude Code Dominates](https://dev.to/alexmercedcoder/ai-weekly-claude-code-dominates-mcp-goes-mainstream-week-of-march-5-2026-15af) — опрос The Pragmatic Engineer
+- [Releasebot — Claude Release Notes](https://releasebot.io/updates/anthropic/claude) — Cowork persistent thread (17 марта)
