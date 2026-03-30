@@ -1,0 +1,14 @@
+# Tools
+
+Эта папка сейчас играет роль переходного или архивного слоя для отдельных материалов, которые еще не встроены в основной контентный контур репозитория.
+
+## Кейсы: когда эта папка полезна
+
+- Если вам нужен не основной курс, а отдельный supplementary material по теме harness/orchestrator design, начните с [claude-code-book/README.md](/Users/alexeykrolmini/Code/essays/tools/claude-code-book/README.md).
+- Если вы развиваете основной учебный контур и хотите понять, какие внешние или переводные материалы стоит потом встроить в книгу, эта папка работает как staging/reference layer.
+
+Сейчас внутри лежит только один тематический блок:
+
+- [claude-code-book/README.md](/Users/alexeykrolmini/Code/essays/tools/claude-code-book/README.md) — отдельный материал, связанный с `Claude Code`, но пока не влитый в основную книгу в [code-agents/claude-code-book](/Users/alexeykrolmini/Code/essays/code-agents/claude-code-book/README.md).
+
+Эта папка не выглядит как основной публичный вход в репозиторий. Ее лучше рассматривать как staging/archive area для импортированных, переводных или временно изолированных документов.

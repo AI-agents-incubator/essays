@@ -1,73 +1,86 @@
 # essays
 
-Репозиторий содержит материалы по `Codex`, `Claude Code`, AI-assisted разработке, automation-пайплайнам и построению knowledge-систем поверх текстов и видеоархивов.
+Репозиторий с учебными и рабочими материалами по `Codex`, `Claude Code`, code agents, automation-пайплайнам и архитектуре knowledge-систем. Это не одна линейная книга, а несколько связанных контуров: основной учебный курс, инженерные заметки по автоматизации, стратегические мемо и тематические заготовки под будущие разделы.
 
-Сейчас он организован не как одна книга, а как несколько смысловых зон:
+## Если вы пришли с конкретной проблемой
 
-- основной учебно-методический контур по code agents;
-- отдельный automation-раздел про медиа- и knowledge-пайплайны;
-- набор root-level reference-документов и обзорных заметок.
+- Если вы только заходите в тему и не понимаете, с чего начать, откройте [code-agents/README.md](/Users/alexeykrolmini/Code/essays/code-agents/README.md), а затем learning paths в [code-agents/root_docs/README.md](/Users/alexeykrolmini/Code/essays/code-agents/root_docs/README.md).
+- Если вы не можете выбрать между `Codex` и `Claude Code`, начните с [playbook 1](/Users/alexeykrolmini/Code/essays/code-agents/playbooks/01-how-to-choose-between-codex-and-claude-code.md), затем посмотрите сравнительные документы в [code-agents/root_docs/README.md](/Users/alexeykrolmini/Code/essays/code-agents/root_docs/README.md).
+- Если вам нужен первый безопасный старт без хаоса и лишнего риска, идите в [playbooks](/Users/alexeykrolmini/Code/essays/code-agents/playbooks/README.md), особенно к сценариям про первый обзор проекта и первую маленькую правку.
+- Если агент угадывает лишнее, забывает правила или часто требует ручного сопровождения, смотрите материалы про task design, память проекта, настройки и рост автономности в [code-agents/README.md](/Users/alexeykrolmini/Code/essays/code-agents/README.md), а также [claude_code_auto_mode_guide.md](/Users/alexeykrolmini/Code/essays/claude_code_auto_mode_guide.md) и [claude_code_loop_guide.md](/Users/alexeykrolmini/Code/essays/claude_code_loop_guide.md).
+- Если вы хотите перевести работу с агентом из разовых удач в repeatable workflows, weekly cycles или team setup, начинайте с [code-agents/playbooks/README.md](/Users/alexeykrolmini/Code/essays/code-agents/playbooks/README.md) и глав 6–9 в книгах внутри [code-agents](/Users/alexeykrolmini/Code/essays/code-agents/README.md).
+- Если вам нужен media/knowledge automation pipeline, идите в [automations/README.md](/Users/alexeykrolmini/Code/essays/automations/README.md): там есть кейсы про YouTube-публикацию, Vimeo-миграцию, course generation, semantic indexing и RAG-ready knowledge base.
+- Если вы не уверены, нужен ли вам вообще `RAG`, embeddings или векторная база, читайте [beforerag.md](/Users/alexeykrolmini/Code/essays/beforerag.md), [Vectorization_Decision_Framework.md](/Users/alexeykrolmini/Code/essays/Vectorization_Decision_Framework.md) и [automations/semantic_index.md](/Users/alexeykrolmini/Code/essays/automations/semantic_index.md).
+- Если вам нужен стратегический слой, а не только инструментальный, идите в [strategy/README.md](/Users/alexeykrolmini/Code/essays/strategy/README.md): там материалы про judgment, moat, сегментацию и выбор направления в эпоху агентов.
+- Если вам нужно отслеживать рынок code agents и не терять важные обновления инструментов, используйте [code-agents/reports/README.md](/Users/alexeykrolmini/Code/essays/code-agents/reports/README.md), [code-agents/tooling_watchlist.md](/Users/alexeykrolmini/Code/essays/code-agents/tooling_watchlist.md) и [code-agents/twitter_product_filter.md](/Users/alexeykrolmini/Code/essays/code-agents/twitter_product_filter.md).
+- Если вам нужен reference по официальной документации `Claude Code`, откройте [claude_code_docs_map.md](/Users/alexeykrolmini/Code/essays/claude_code_docs_map.md) и [llms.md](/Users/alexeykrolmini/Code/essays/llms.md).
+- Если вас интересуют реальные ограничения, sandboxes и передача данных между средами, полезен [EVOLUTION-OF-APPROACH.md](/Users/alexeykrolmini/Code/essays/EVOLUTION-OF-APPROACH.md).
 
-## Основные разделы
+## Карта репозитория
 
-### 1. Code Agents
+### [code-agents](/Users/alexeykrolmini/Code/essays/code-agents/README.md)
 
-Главный контентный блок находится в [code-agents/README.md](/Users/alexeykrolmini/Code/essays/code-agents/README.md).
+Главный учебно-методический раздел по агентной разработке.
 
-Что там лежит:
+- [code-agents/root_docs/README.md](/Users/alexeykrolmini/Code/essays/code-agents/root_docs/README.md) — быстрые гайды, learning paths, comparisons и reference notes, уже разложенные по кейсам.
+- [code-agents/codex-book/README.md](/Users/alexeykrolmini/Code/essays/code-agents/codex-book/README.md) — структурированная книга по `Codex`.
+- [code-agents/claude-code-book/README.md](/Users/alexeykrolmini/Code/essays/code-agents/claude-code-book/README.md) — структурированная книга по `Claude Code`.
+- [code-agents/playbooks/README.md](/Users/alexeykrolmini/Code/essays/code-agents/playbooks/README.md) — прикладные сценарии работы.
+- [code-agents/reports/README.md](/Users/alexeykrolmini/Code/essays/code-agents/reports/README.md) — watchlist-отчеты по инструментам.
+- [code-agents/The_Anatomy_of_an_Agent_Harness.md](/Users/alexeykrolmini/Code/essays/code-agents/The_Anatomy_of_an_Agent_Harness.md) — отдельный переводной материал про harness design.
 
-- [code-agents/root_docs](/Users/alexeykrolmini/Code/essays/code-agents/root_docs) — guides, explainers, comparisons, learning paths и reference notes.
-- [code-agents/codex-book/README.md](/Users/alexeykrolmini/Code/essays/code-agents/codex-book/README.md) — книга по `Codex`.
-- [code-agents/claude-code-book/README.md](/Users/alexeykrolmini/Code/essays/code-agents/claude-code-book/README.md) — книга по `Claude Code`.
-- [code-agents/playbooks/README.md](/Users/alexeykrolmini/Code/essays/code-agents/playbooks/README.md) — прикладные пошаговые сценарии.
-- [code-agents/reports/README.md](/Users/alexeykrolmini/Code/essays/code-agents/reports/README.md) — weekly watchlist reports.
-- [code-agents/tooling_watchlist.md](/Users/alexeykrolmini/Code/essays/code-agents/tooling_watchlist.md) — спецификация мониторинга инструментов для кода и агентных систем.
-- [code-agents/twitter_product_filter.md](/Users/alexeykrolmini/Code/essays/code-agents/twitter_product_filter.md) — фильтр продуктовых сигналов из X/Twitter.
+### [automations](/Users/alexeykrolmini/Code/essays/automations/README.md)
 
-### 2. Automations
+Раздел про автоматизацию публикации, миграцию видеоархива и подготовку knowledge base.
 
-Отдельный automation-раздел находится в [automations/README.md](/Users/alexeykrolmini/Code/essays/automations/README.md).
+- проектирование пайплайнов Vimeo → YouTube;
+- AI-генерация метаданных и обложек;
+- подготовка видеоархива к RAG;
+- semantic indexing большого Markdown-массива.
 
-Что там лежит:
+### [strategy](/Users/alexeykrolmini/Code/essays/strategy/README.md)
 
-- [automations/video-youtube.md](/Users/alexeykrolmini/Code/essays/automations/video-youtube.md) — дизайн автоматической публикации видео на YouTube.
-- [automations/vimeo-migration.md](/Users/alexeykrolmini/Code/essays/automations/vimeo-migration.md) — high-level roadmap миграции Vimeo-архива.
-- [automations/vimeo-youtube.md](/Users/alexeykrolmini/Code/essays/automations/vimeo-youtube.md) — детальный Vimeo → YouTube transport pipeline.
-- [automations/RAGprepare.md](/Users/alexeykrolmini/Code/essays/automations/RAGprepare.md) — подготовка видеоархива к RAG-ready knowledge base.
-- [automations/semantic_index.md](/Users/alexeykrolmini/Code/essays/automations/semantic_index.md) — семантический индекс и инвентаризация большого Markdown-архива.
+Небольшой блок стратегических мемо о том, куда двигаться в эпоху агентных систем, как устроены moat, judgment и контентные/продуктовые направления.
 
-### 3. Root-Level Guides And Notes
+### Технические заготовки
 
-В корне лежат отдельные документы, которые не являются частью книг или playbooks, но задают важный контекст:
+- [Playwright/README.md](/Users/alexeykrolmini/Code/essays/Playwright/README.md) — будущий раздел про браузерную автоматизацию и extraction workflows.
+- [SQLite/README.md](/Users/alexeykrolmini/Code/essays/SQLite/README.md) — будущий раздел про local-first storage, FTS и структуру знаний.
+- [Supabase/README.md](/Users/alexeykrolmini/Code/essays/Supabase/README.md) — будущий раздел про managed Postgres, storage и backend-интеграции.
 
-- [claude_code_auto_mode_guide.md](/Users/alexeykrolmini/Code/essays/claude_code_auto_mode_guide.md) — подробный guide по Claude Code Auto Mode.
-- [claude_code_loop_guide.md](/Users/alexeykrolmini/Code/essays/claude_code_loop_guide.md) — guide по `/loop` и циклическим задачам в Claude Code.
-- [claude_code_docs_map.md](/Users/alexeykrolmini/Code/essays/claude_code_docs_map.md) — auto-generated карта документации Claude Code.
-- [EVOLUTION-OF-APPROACH.md](/Users/alexeykrolmini/Code/essays/EVOLUTION-OF-APPROACH.md) — разбор эволюции pipeline: от ручного парсинга к параллельной автоматизации.
-- [beforerag.md](/Users/alexeykrolmini/Code/essays/beforerag.md) — essay про SQLite-first подход, структуру данных и преждевременный RAG.
-- [llms.md](/Users/alexeykrolmini/Code/essays/llms.md) — ссылочный список по документации Claude Code.
+### [tools](/Users/alexeykrolmini/Code/essays/tools/README.md)
 
-## Дополнительные тематические директории
+Небольшой переходный раздел для отдельных импортированных или переводных материалов, которые еще не встроены в основной учебный контур.
 
-В корне также присутствуют тематические каталоги:
+## Важные документы в корне
 
-- [Playwright](/Users/alexeykrolmini/Code/essays/Playwright)
-- [SQLite](/Users/alexeykrolmini/Code/essays/SQLite)
-- [Supabase](/Users/alexeykrolmini/Code/essays/Supabase)
+В корне лежат материалы, которые задают общий контекст для нескольких разделов сразу:
 
-Сейчас они выглядят как отдельные рабочие пространства или заготовки под будущие материалы.
+- [claude_code_auto_mode_guide.md](/Users/alexeykrolmini/Code/essays/claude_code_auto_mode_guide.md) — guide по Auto Mode в Claude Code.
+- [claude_code_loop_guide.md](/Users/alexeykrolmini/Code/essays/claude_code_loop_guide.md) — guide по циклическим задачам и `/loop`.
+- [claude_code_docs_map.md](/Users/alexeykrolmini/Code/essays/claude_code_docs_map.md) — карта документации Claude Code.
+- [EVOLUTION-OF-APPROACH.md](/Users/alexeykrolmini/Code/essays/EVOLUTION-OF-APPROACH.md) — кейс эволюции extraction pipeline для большого курса.
+- [beforerag.md](/Users/alexeykrolmini/Code/essays/beforerag.md) — эссе о том, почему не стоит начинать с RAG слишком рано.
+- [Vectorization_Decision_Framework.md](/Users/alexeykrolmini/Code/essays/Vectorization_Decision_Framework.md) — практическая рамка, когда не нужна векторизация, когда хватает open-source, а когда имеет смысл платить.
+- [llms.md](/Users/alexeykrolmini/Code/essays/llms.md) — собранная карта официальной документации Claude Code.
 
-## Start Here
+## С чего начать
 
-Если нужен быстрый маршрут по репозиторию:
+Маршрут зависит от задачи:
 
-1. Начни с [code-agents/README.md](/Users/alexeykrolmini/Code/essays/code-agents/README.md), если интересуют книги, guides и playbooks по code agents.
-2. Открой [automations/README.md](/Users/alexeykrolmini/Code/essays/automations/README.md), если интересуют media/knowledge automation pipelines.
-3. Прочитай [claude_code_auto_mode_guide.md](/Users/alexeykrolmini/Code/essays/claude_code_auto_mode_guide.md) и [claude_code_loop_guide.md](/Users/alexeykrolmini/Code/essays/claude_code_loop_guide.md), если нужен быстрый вход в новые возможности Claude Code.
-4. Используй [claude_code_docs_map.md](/Users/alexeykrolmini/Code/essays/claude_code_docs_map.md), если нужен полный обзор официальной документации.
-5. Перейди к [beforerag.md](/Users/alexeykrolmini/Code/essays/beforerag.md) и [automations/semantic_index.md](/Users/alexeykrolmini/Code/essays/automations/semantic_index.md), если интересует knowledge-инженерия и semantic indexing.
+1. Если нужен системный вход в code agents, начни с [code-agents/README.md](/Users/alexeykrolmini/Code/essays/code-agents/README.md).
+2. Если нужен вход через проблемы и осознаваемые боли, открой [code-agents/root_docs/README.md](/Users/alexeykrolmini/Code/essays/code-agents/root_docs/README.md).
+3. Если интересуют automation-конвейеры для контента и knowledge base, переходи в [automations/README.md](/Users/alexeykrolmini/Code/essays/automations/README.md).
+4. Если интересует стратегический слой, читай [strategy/README.md](/Users/alexeykrolmini/Code/essays/strategy/README.md).
+5. Если задача про data architecture и преждевременный `RAG`, полезно читать вместе [beforerag.md](/Users/alexeykrolmini/Code/essays/beforerag.md), [Vectorization_Decision_Framework.md](/Users/alexeykrolmini/Code/essays/Vectorization_Decision_Framework.md) и [automations/semantic_index.md](/Users/alexeykrolmini/Code/essays/automations/semantic_index.md).
 
-## Repo Notes
+## Служебные файлы
 
-- [CLAUDE.md](/Users/alexeykrolmini/Code/essays/CLAUDE.md) и [`.claude/settings.local.json`](/Users/alexeykrolmini/Code/essays/.claude/settings.local.json) относятся к локальной среде и правилам работы агента.
-- Названия публичных файлов лучше считать стабильными, если на них уже ссылаются внешние материалы.
+- [manifest.md](/Users/alexeykrolmini/Code/essays/manifest.md) задает тип проекта.
+- [AGENTS.md](/Users/alexeykrolmini/Code/essays/AGENTS.md) описывает, где брать проектный манифест.
+- [CLAUDE.md](/Users/alexeykrolmini/Code/essays/CLAUDE.md) относится к локальной агентной среде.
+- Локальные IDE/workspace-файлы могут существовать рядом с репозиторием, но не являются частью основного контентного индекса.
+
+## Примечание
+
+Названия публичных документов лучше считать стабильными: на часть файлов уже могут ссылаться внешние заметки, документы и публикации.
