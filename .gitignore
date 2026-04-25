@@ -5,3 +5,5 @@ CLAUDE.md
 *.code-workspace
 **/__pycache__/
 *.pyc
+.handoffs/local/
+.handoffs/*.local.md
