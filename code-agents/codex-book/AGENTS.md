@@ -3,7 +3,7 @@
 ## Scope
 
 These instructions apply to:
-- `education/codex-book`
+- `code-agents/codex-book`
 
 ## Goal
 
@@ -46,7 +46,7 @@ Each chapter should include:
 
 - One chapter = one file.
 - After each new chapter, update:
-  - `education/codex-book/README.md`
+  - `code-agents/codex-book/README.md`
   - root `README.md`
 - Keep the chapter self-sufficient.
 - Do not require the reader to leave the chapter to understand the chapter.

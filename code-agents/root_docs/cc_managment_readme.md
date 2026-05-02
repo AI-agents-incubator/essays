@@ -6,7 +6,7 @@
 > Связанный полный документ: [cc_managment.md](cc_managment.md)
 >
 
-Этот документ — короткая входная версия к полному гайду [`education/root_docs/cc_managment.md`](cc_managment.md).
+Этот документ — короткая входная версия к полному гайду [`code-agents/root_docs/cc_managment.md`](cc_managment.md).
 
 Он объясняет, как смотреть на `Claude Code` не как на чат с моделью, а как на управляемую агентную среду, где результат зависит не только от prompt'а, но и от `CLAUDE.md`, `settings.json`, `permissions`, `hooks`, `skills`, `subagents` и `MCP`.
 

@@ -6,14 +6,13 @@
 > Основание:
 > - [codex_process_1.md](codex_process_1.md)
 > - [claudecode_vs_codex.md](claudecode_vs_codex.md)
-> - [agent_operating_system.md](../../autonomy/root_docs/agent_operating_system.md)
 >
 
 ## О документе
 
 Этот материал собран как прикладной гайд по `Codex` для тех, кто хочет не просто пользоваться coding agent в терминале или приложении, а осознанно управлять его поведением, автономностью и инженерной дисциплиной. Документ соединяет архитектурное объяснение `Codex` с практическими рекомендациями по настройке `config.toml`, `AGENTS.md`, `subagents`, `skills`, `rules`, `sandbox`, `MCP`, `automations`, `exec` и `SDK`.
 
-Связанная краткая версия: [`education/root_docs/codex_managment_readme.md`](codex_managment_readme.md).
+Связанная краткая версия: [`code-agents/root_docs/codex_managment_readme.md`](codex_managment_readme.md).
 
 ## Короткая аннотация
 
@@ -548,7 +547,7 @@ Docs также говорят:
 
 Практически это означает ещё одну важную вещь:
 когда `Codex` доходит до `exec` и `SDK`, он перестаёт быть "инструментом внутри терминала" и начинает жить на уровне ОС как процесс, сервис или оркестратор.
-По архитектурной логике это тот же класс автономности, который для `Claude Code` подробно разобран в [agent_os_autonomy.md](../../autonomy/root_docs/agent_os_autonomy.md):
+По архитектурной логике это тот же класс автономности, который для `Claude Code` обсуждается в основном курсе:
 терминал — это интерфейс входа, а не место существования агентной организации.
 
 Источник:

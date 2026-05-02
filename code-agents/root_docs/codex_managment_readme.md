@@ -6,7 +6,7 @@
 > Связанный полный документ: [codex_managment.md](codex_managment.md)
 >
 
-Этот документ — короткая входная версия к полному гайду [`education/root_docs/codex_managment.md`](codex_managment.md).
+Этот документ — короткая входная версия к полному гайду [`code-agents/root_docs/codex_managment.md`](codex_managment.md).
 
 Он объясняет, как смотреть на `Codex` не как на “модель для кода”, а как на агентный runtime, поведение которого определяется сочетанием `config.toml`, `AGENTS.md`, `skills`, `subagents`, `rules`, `sandbox`, `MCP`, `automations`, `exec` и `SDK`.
 

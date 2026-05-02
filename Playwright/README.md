@@ -9,4 +9,4 @@
 - кейсы extraction и form automation;
 - материалы, связанные с веб-тестированием и обходом UI.
 
-Если документ относится в первую очередь к общему курсу по code agents, ему лучше оставаться в [code-agents](/Users/alexeykrolmini/Code/essays/code-agents/README.md). В эту папку стоит класть уже более предметные материалы именно про `Playwright`.
+Если документ относится в первую очередь к общему курсу по code agents, ему лучше оставаться в [code-agents](/code-agents/README.md). В эту папку стоит класть уже более предметные материалы именно про `Playwright`.

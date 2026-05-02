@@ -3,7 +3,7 @@
 ## Scope
 
 These instructions apply to:
-- `education/playbooks`
+- `code-agents/playbooks`
 
 ## Goal
 
@@ -19,8 +19,8 @@ Each playbook should help the reader complete one real scenario without needing 
 ## Parent Layer Note
 
 This repository does not use a section-level `2_lessons` layer anymore.
-For work inside `education/playbooks`, this local file is the primary authoring layer.
-Use the repository root [README.md](../../README.md) and [ROADMAP.md](../../autonomy/root_docs/ROADMAP.md) as the upper repo context.
+For work inside `code-agents/playbooks`, this local file is the primary authoring layer.
+Use the repository root [README.md](../../README.md) as the upper repo context.
 
 ## Writing Rules
 
@@ -47,13 +47,12 @@ Each playbook should include:
 
 ## Session Startup Rule
 
-If a new session starts directly inside `education/playbooks`, first read:
+If a new session starts directly inside `code-agents/playbooks`, first read:
 1. `AGENTS.md`
 2. `SESSION-HANDOFF.md`
 3. `BACKLOG.md`
 4. `README.md`
 5. `../../README.md`
-6. `../../autonomy/root_docs/ROADMAP.md`
 
 Then resume from the nearest unfinished playbook.
 

@@ -9,4 +9,4 @@
 - локальные knowledge base и SQLite-first workflows;
 - сравнения `SQLite` с более тяжелыми stack-решениями.
 
-Пока смежные материалы лежат в корне и в [automations](/Users/alexeykrolmini/Code/essays/automations/README.md), например [beforerag.md](/Users/alexeykrolmini/Code/essays/beforerag.md) и [Vectorization_Decision_Framework.md](/Users/alexeykrolmini/Code/essays/Vectorization_Decision_Framework.md).
+Пока смежные материалы лежат в корне и в [automations](/automations/README.md), например [beforerag.md](/beforerag.md) и [Vectorization_Decision_Framework.md](/Vectorization_Decision_Framework.md).

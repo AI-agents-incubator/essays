@@ -38,17 +38,11 @@
 
 **2. Локальные методологические материалы**
 
-Они лежат в папке `/Users/alexeykrolmini/Code/essays`:
-- [agent_operating_system.md](/Users/alexeykrolmini/Code/essays/autonomy/root_docs/agent_operating_system.md)
-- [agent_organization.md](/Users/alexeykrolmini/Code/essays/autonomy/root_docs/agent_organization.md)
-- [agent_organization_design.md](/Users/alexeykrolmini/Code/essays/autonomy/root_docs/agent_organization_design.md)
-- [agent_organization_self_learning.md](/Users/alexeykrolmini/Code/essays/autonomy/root_docs/agent_organization_self_learning.md)
-- [agent_org_tz_core.md](/Users/alexeykrolmini/Code/essays/autonomy/root_docs/agent_org_tz_core.md)
-- [agent_org_tz_claudecode.md](/Users/alexeykrolmini/Code/essays/autonomy/root_docs/agent_org_tz_claudecode.md)
-- [claudecode_process_1.md](/Users/alexeykrolmini/Code/essays/education/root_docs/claudecode_process_1.md)
-- [claudecode-precess_2.md](/Users/alexeykrolmini/Code/essays/education/root_docs/claudecode-precess_2.md)
-- [cc_managment.md](/Users/alexeykrolmini/Code/essays/education/root_docs/cc_managment.md)
-- [claudecode_vs_codex.md](/Users/alexeykrolmini/Code/essays/education/root_docs/claudecode_vs_codex.md)
+Они лежат в репозитории `essays`:
+- [claudecode_process_1.md](/code-agents/root_docs/claudecode_process_1.md)
+- [claudecode-precess_2.md](/code-agents/root_docs/claudecode-precess_2.md)
+- [cc_managment.md](/code-agents/root_docs/cc_managment.md)
+- [claudecode_vs_codex.md](/code-agents/root_docs/claudecode_vs_codex.md)
 
 Из этих материалов взята важная рамка:
 - сначала человек осваивает сам инструмент;

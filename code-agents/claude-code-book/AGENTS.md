@@ -3,7 +3,7 @@
 ## Scope
 
 These instructions apply to:
-- `education/claude-code-book`
+- `code-agents/claude-code-book`
 
 ## Goal
 
@@ -46,7 +46,7 @@ Each chapter should include:
 
 - One chapter = one file.
 - After each new chapter, update:
-  - `education/claude-code-book/README.md`
+  - `code-agents/claude-code-book/README.md`
   - root `README.md`
 - Keep the chapter self-sufficient.
 - Do not require the reader to leave the chapter to understand the chapter.

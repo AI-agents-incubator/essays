@@ -24,7 +24,7 @@
 ## Mandatory Update Rule
 
 After each completed chapter:
-- update `education/codex-book/README.md`
+- update `code-agents/codex-book/README.md`
 - update root `README.md`
 - verify chapter links
 - verify chapter title and file name alignment

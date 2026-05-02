@@ -24,7 +24,7 @@
 ## Mandatory Update Rule
 
 After each completed chapter:
-- update `education/claude-code-book/README.md`
+- update `code-agents/claude-code-book/README.md`
 - update root `README.md`
 - verify chapter links
 - verify chapter title and file name alignment

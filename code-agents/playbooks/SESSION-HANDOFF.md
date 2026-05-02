@@ -3,14 +3,14 @@
 ## Purpose
 
 This file is the transition form for the next session specifically for:
-- `education/playbooks`
+- `code-agents/playbooks`
 
 It should be used after a context reset or when a new clean session starts.
 
 ## Active Scope
 
-- repo: `/Users/alexeykrolmini/Code/essays`
-- active folder: `education/playbooks`
+- repo: `essays`
+- active folder: `code-agents/playbooks`
 - recommended branch: `codex/playbooks-session-reset`
 
 ## What Is Already Complete
@@ -47,7 +47,6 @@ Read in this order:
 3. `BACKLOG.md`
 4. `README.md`
 5. `../../README.md`
-6. `../../autonomy/root_docs/ROADMAP.md`
 
 ## Working Contract
 

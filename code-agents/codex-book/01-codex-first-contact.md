@@ -647,7 +647,7 @@ cd /путь/к/вашему/проекту
 Например:
 
 ```bash
-cd /Users/alexeykrolmini/Code/essays
+cd ~/Code/essays
 ```
 
 Если вы не знаете путь наизусть, есть удобный способ на Mac:
@@ -1426,6 +1426,4 @@ git commit -m "Checkpoint before first Codex task"
 - [Codex web](https://developers.openai.com/codex/cloud)
 
 Локальные материалы:
-- `autonomy/root_docs/agent_operating_system.md`
-- `education/root_docs/codex_process_1.md`
-- `autonomy/root_docs/agent_org_tz_codex.md`
+- `code-agents/root_docs/codex_process_1.md`

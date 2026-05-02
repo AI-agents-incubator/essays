@@ -1,9 +1,9 @@
 # Prompt For Next Playbooks Session
 
-Use this exact prompt in the next session if you open it inside `education/playbooks`:
+Use this exact prompt in the next session if you open it inside `code-agents/playbooks`:
 
 ```text
-Работай в /Users/alexeykrolmini/Code/essays/playbooks.
+Работай в `code-agents/playbooks`.
 
 Сначала прочитай по порядку:
 1. AGENTS.md

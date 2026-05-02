@@ -27,6 +27,6 @@
 ## Working Rule
 
 After each meaningful playbook update:
-- update `education/playbooks/README.md`
+- update `code-agents/playbooks/README.md`
 - update root `README.md`
 - verify that links work on GitHub

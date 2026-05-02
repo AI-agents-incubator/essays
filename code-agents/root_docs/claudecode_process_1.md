@@ -1487,7 +1487,7 @@ Feb 27
 
 I
 appreciate you asking, but I actually only respond in English. That's a
-autonomy/core part of how I work as a voice agent—the text-to-speech system is
+core part of how I work as a voice agent—the text-to-speech system is
 set up for English conversation. Is there something in Russian you'd
 like help with that I can translate or explain to you in English
 instead?
@@ -1751,7 +1751,7 @@ so, in this case what’s difference between skills and sub agents?
 
 Feb 27
 
-Great question. Here's the autonomy/core difference:
+Great question. Here's the core difference:
 
 **Skills = instructions for Claude itself**
 **Sub-agents = separate Claude instances with their own context**
@@ -2078,7 +2078,7 @@ Since
 you've already been researching AGENTS.md format and comparing these
 architectures, you probably have more current info than I do on Codex
 specifics. Want me to search the web for the latest on Codex agent
-architecture so we can do a proper autonomy/comparison?
+architecture so we can do a proper comparison?
 
 yes, i know about agents.md, but actually i dont know about other parts of the frameworks. can you look at this in the internet?
 
@@ -2124,7 +2124,7 @@ I'll be able to do a proper deep dive then.
 Or if you want, you can also turn on **Research**
 (I see it's off in your screenshot) — that would let me do an even more
 thorough multi-step investigation of the Codex architecture and give
-you a detailed autonomy/comparison document.
+you a detailed comparison document.
 
 but this dialog has permition yet
 
@@ -2225,7 +2225,7 @@ Feb 27
 
 Yes, that's real syntax. Let me be more precise though:
 
-**The autonomy/core command is real:**
+**The core command is real:**
 
 bash
 
@@ -4579,7 +4579,7 @@ Feb 27
 Feb 27
 
 Да.
-Это и есть autonomy/core value твоего менторского продукта. Не информация —
+Это и есть core value твоего менторского продукта. Не информация —
 информации полно. А момент когда человек понял и пошёл делать.
 Просветление → действие.
 

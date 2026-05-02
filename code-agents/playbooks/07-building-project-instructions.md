@@ -157,7 +157,7 @@ Update rule
 - scope;
 - goal;
 - audience;
-- autonomy/core writing rules;
+- core writing rules;
 - workflow rules;
 - stop rule;
 - update rule.
@@ -195,7 +195,7 @@ Update rule
 - scope;
 - goal;
 - audience;
-- autonomy/core rules;
+- core rules;
 - workflow rules;
 - stop rule;
 - update rule.
@@ -325,7 +325,7 @@ Update rule
 - scope;
 - goal;
 - audience;
-- autonomy/core rules;
+- core rules;
 - workflow rules;
 - stop rule;
 - update rule.
