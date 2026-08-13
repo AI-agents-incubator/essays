@@ -12,6 +12,8 @@
 - Если вам нужен media/knowledge automation pipeline, идите в [automations/README.md](/automations/README.md): там есть кейсы про YouTube-публикацию, Vimeo-миграцию, course generation, semantic indexing и RAG-ready knowledge base.
 - Если вы не уверены, нужен ли вам вообще `RAG`, embeddings или векторная база, читайте [beforerag.md](/beforerag.md), [Vectorization_Decision_Framework.md](/Vectorization_Decision_Framework.md) и [automations/semantic_index.md](/automations/semantic_index.md).
 - Если вам нужен стратегический слой, а не только инструментальный, идите в [strategy/README.md](/strategy/README.md): там материалы про judgment, moat, сегментацию и выбор направления в эпоху агентов.
+- Если у вас лимит на ИИ-агента «сгорает» неожиданно быстро и вы хотите понять экономику токенов, читайте [economy/LESSON-token-economy-and-model-choice-ru.md](/economy/LESSON-token-economy-and-model-choice-ru.md).
+- Если вы проектируете авторизованное red-team тестирование собственной инфраструктуры, смотрите концептуальное ТЗ в [security/readteemspec.md](/security/readteemspec.md).
 - Если вам нужно отслеживать рынок code agents и не терять важные обновления инструментов, используйте [code-agents/reports/README.md](/code-agents/reports/README.md), [code-agents/tooling_watchlist.md](/code-agents/tooling_watchlist.md) и [code-agents/twitter_product_filter.md](/code-agents/twitter_product_filter.md).
 - Если вам нужен reference по официальной документации `Claude Code`, откройте [claude_code_docs_map.md](/claude_code_docs_map.md) и [llms.md](/llms.md).
 - Если вас интересуют реальные ограничения, sandboxes и передача данных между средами, полезен [EVOLUTION-OF-APPROACH.md](/EVOLUTION-OF-APPROACH.md).
@@ -42,6 +44,18 @@
 
 Небольшой блок стратегических мемо о том, куда двигаться в эпоху агентных систем, как устроены moat, judgment и контентные/продуктовые направления.
 
+### economy
+
+Материалы про экономику работы с ИИ-агентами: расход токенов, выбор модели, стоимость сессий и разбор реальных кейсов.
+
+- [economy/LESSON-token-economy-and-model-choice-ru.md](/economy/LESSON-token-economy-and-model-choice-ru.md) — конспект занятия про экономику многосессионной работы с агентом, выведенный из измеренного инцидента.
+
+### security
+
+Концептуальные документы по безопасности и авторизованному тестированию собственной инфраструктуры.
+
+- [security/readteemspec.md](/security/readteemspec.md) — концептуальное ТЗ на red team toolkit для проверки собственных активов (kill chain, ROE, контейнмент).
+
 ### Технические заготовки
 
 - [Playwright/README.md](/Playwright/README.md) — будущий раздел про браузерную автоматизацию и extraction workflows.
@@ -50,7 +64,10 @@
 
 ### [tools](/tools/README.md)
 
-Небольшой переходный раздел для отдельных импортированных или переводных материалов, которые еще не встроены в основной учебный контур.
+Staging/archive-слой для отдельных импортированных или переводных материалов, которые еще не встроены в основной учебный контур (частично дублирует по темам [code-agents](/code-agents/README.md), но не является основным входом).
+
+- [tools/claude-code-book/README.md](/tools/claude-code-book/README.md) — материал про `Claude Code`, пока не влитый в [code-agents/claude-code-book](/code-agents/claude-code-book/README.md).
+- [tools/reports/](/tools/reports/) — параллельная копия weekly tooling watchlist отчётов, см. основной набор в [code-agents/reports/README.md](/code-agents/reports/README.md).
 
 ## Важные документы в корне
 
