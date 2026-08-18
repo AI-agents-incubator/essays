@@ -14,6 +14,7 @@
 - Если вам нужен стратегический слой, а не только инструментальный, идите в [strategy/README.md](/strategy/README.md): там материалы про judgment, moat, сегментацию и выбор направления в эпоху агентов.
 - Если у вас лимит на ИИ-агента «сгорает» неожиданно быстро и вы хотите понять экономику токенов, читайте [economy/LESSON-token-economy-and-model-choice-ru.md](/economy/LESSON-token-economy-and-model-choice-ru.md).
 - Если вы проектируете авторизованное red-team тестирование собственной инфраструктуры, смотрите концептуальное ТЗ в [security/readteemspec.md](/security/readteemspec.md).
+- Если вам нужен детерминированный pipeline генерации картинок для соцсетей вместо непредсказуемой генеративки, смотрите [image/instagram-html-render-pipeline.md](/image/instagram-html-render-pipeline.md).
 - Если вам нужно отслеживать рынок code agents и не терять важные обновления инструментов, используйте [code-agents/reports/README.md](/code-agents/reports/README.md), [code-agents/tooling_watchlist.md](/code-agents/tooling_watchlist.md) и [code-agents/twitter_product_filter.md](/code-agents/twitter_product_filter.md).
 - Если вам нужен reference по официальной документации `Claude Code`, откройте [claude_code_docs_map.md](/claude_code_docs_map.md) и [llms.md](/llms.md).
 - Если вас интересуют реальные ограничения, sandboxes и передача данных между средами, полезен [EVOLUTION-OF-APPROACH.md](/EVOLUTION-OF-APPROACH.md).
@@ -55,6 +56,12 @@
 Концептуальные документы по безопасности и авторизованному тестированию собственной инфраструктуры.
 
 - [security/readteemspec.md](/security/readteemspec.md) — концептуальное ТЗ на red team toolkit для проверки собственных активов (kill chain, ROE, контейнмент).
+
+### image
+
+Материалы про генерацию визуального контента для соцсетей.
+
+- [image/instagram-html-render-pipeline.md](/image/instagram-html-render-pipeline.md) — детерминированный pipeline генерации Instagram-картинок: модель отвечает за контент и параметры шаблона, рендер в PNG делает код (HTML/CSS → Playwright/Puppeteer).
 
 ### Технические заготовки
 
